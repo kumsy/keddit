@@ -5,11 +5,13 @@
 </head>
 <body>
 
-Test
+Nav Bar
 
 {% if "user_id" in session %}
+  <a href="/">Home</a>
   <a href="/logout">Logout</a>
 {% else %}
+  <a href="/">Home</a> 
   <a href="/login">Login</a>
 {% endif %}
 

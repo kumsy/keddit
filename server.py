@@ -24,6 +24,74 @@ def index():
 
     return render_template("homepage.html")
 
+@app.route('/registration', methods=['GET'])
+def register_form():
+    """Show form for user signup."""
+
+    return render_template("registration.html")
+
+
+@app.route('/registration', methods=['POST'])
+def register_process():
+    """Test database."""
+
+    # Process registration forms
+
+    # Get form variables
+
+    email = request.form['email']
+    username = request.form['username']
+    password = request.form['username']
+
+    new_user = Users(username=username, email=email, password=password)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+
+    flash(f"Success! Welcome {username}!")
+    return redirect("/")
+
+
+@app.route('/login', methods=['GET'])
+def login_form():
+    """Show login form"""
+
+    return render_template('login.html')
+
+@app.route('/login', methods=['POST'])
+def login_process():
+    """Process login"""
+
+    # Get form variables
+    email = request.form['email']
+    password = request.form['password']
+
+    user = Users.query.filter_by(email=email).first()
+
+    if not user:
+        flash("User does not exist")
+        return redirect("/login")
+
+    if user.password != password:
+        flash("Incorrect password. Please try again.")
+        return redirect("/login")
+
+    session['user_id'] = user.user_id
+    flash("Logged in")
+    return redirect(f"/users/{user.user_id}")
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
