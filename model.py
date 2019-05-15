@@ -131,13 +131,13 @@ class Comments(db.Model):
     date = db.Column(db.DateTime, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
 
-    def__repr__(self):
+    def __repr__(self):
         return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
                 self.comment_id, self.user_id, self.thread_id, self.date)
 
     # comments.author is getting the user obj assoicated with the comment
 
-class CommentRatings(db.Model)
+class CommentRatings(db.Model):
     """Upvotes and Downvotes on Comments"""
     # Assoication Table between Comments and Users
 
@@ -150,7 +150,7 @@ class CommentRatings(db.Model)
                                                         nullable=False)
     votes = db.Column(db.Integer, nullable=True)
 
-    def__repr__(self):
+    def __repr__(self):
         return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
                 self.comment_id, self.user_id, self.thread_id, self.date)
 
