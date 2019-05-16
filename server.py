@@ -41,9 +41,12 @@ def register_process():
 
     email = request.form['email']
     username = request.form['username']
-    password = request.form['username']
+    username = username.lower()
+    password = request.form['password']
 
     new_user = Users(username=username, email=email, password=password)
+    print('NEED TO ERROR CHECK IF USERNAME AND EMAIL ALREADY EXISTS')
+
 
     db.session.add(new_user)
     db.session.commit()
@@ -69,6 +72,7 @@ def login_process():
 
     user = Users.query.filter_by(email=email).first()
 
+
     if not user:
         flash("User does not exist")
         return redirect("/login")
@@ -77,14 +81,31 @@ def login_process():
         flash("Incorrect password. Please try again.")
         return redirect("/login")
 
+    username = user.username
+
     session['user_id'] = user.user_id
     flash("Logged in")
-    return redirect(f"/users/{user.user_id}")
+    # return redirect(f"/users/{user.username}")
+    return render_template("frontpage.html")
+
+
+@app.route('/logout')
+def logout():
+    """Log out."""
+
+    del session['user_id']
+    flash("Logged Out. Hope to see you again!")
+    return redirect("/")
 
 
 
 
+# When you make account page add this orignally from login route.
+# username = user.username
 
+#     session['user_id'] = user.user_id
+#     flash("Logged in")
+#     return redirect(f"/u/{user.username}")
 
 
 
