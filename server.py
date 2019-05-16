@@ -2,11 +2,11 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session
+from flask import Flask, render_template, request, flash, redirect, session, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
-
+from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
 
@@ -24,69 +24,81 @@ def index():
 
     return render_template("homepage.html")
 
-@app.route('/registration', methods=['GET'])
+@app.route('/registration', methods=['GET', 'POST'])
 def register_form():
     """Show form for user signup."""
-
-    return render_template("registration.html")
-
-
-@app.route('/registration', methods=['POST'])
-def register_process():
-    """Test database."""
-
-    # Process registration forms
-
-    # Get form variables
-
-    email = request.form['email']
-    username = request.form['username']
-    username = username.lower()
-    password = request.form['password']
-
-    new_user = Users(username=username, email=email, password=password)
-    print('NEED TO ERROR CHECK IF USERNAME AND EMAIL ALREADY EXISTS')
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'sucess')
+        return redirect('/')
+    return render_template("registration.html", form=form)
 
 
-    db.session.add(new_user)
-    db.session.commit()
+
+# @app.route('/registration', methods=['POST'])
+# def register_process():
+#     """Test database."""
+
+#     # Process registration forms
+
+#     # Get form variables
+
+#     email = request.form['email']
+#     username = request.form['username']
+#     username = username.lower()
+#     password = request.form['password']
+
+#     new_user = Users(username=username, email=email, password=password)
+#     print('NEED TO ERROR CHECK IF USERNAME AND EMAIL ALREADY EXISTS')
 
 
-    flash(f"Success! Welcome {username}!")
-    return redirect("/")
+#     db.session.add(new_user)
+#     db.session.commit()
 
 
-@app.route('/login', methods=['GET'])
-def login_form():
-    """Show login form"""
-
-    return render_template('login.html')
-
-@app.route('/login', methods=['POST'])
-def login_process():
-    """Process login"""
-
-    # Get form variables
-    email = request.form['email']
-    password = request.form['password']
-
-    user = Users.query.filter_by(email=email).first()
+#     flash(f"Success! Welcome {username}!")
+#     return redirect("/")
 
 
-    if not user:
-        flash("User does not exist")
-        return redirect("/login")
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Show form for user signup."""
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data:
+            # put my code here
+            flash('You have been logged in!', 'success')
+            return redirect('/')
+        else:
+            flash('Login Unsucessful. Please check username and password.',
+                                                                    'danger')
+    return render_template("login.html", form=form)
 
-    if user.password != password:
-        flash("Incorrect password. Please try again.")
-        return redirect("/login")
+# @app.route('/login', methods=['POST'])
+# def login_process():
+#     """Process login"""
 
-    username = user.username
+#     # Get form variables
+#     email = request.form['email']
+#     password = request.form['password']
 
-    session['user_id'] = user.user_id
-    flash("Logged in")
-    # return redirect(f"/users/{user.username}")
-    return render_template("frontpage.html")
+#     user = Users.query.filter_by(email=email).first()
+
+
+#     if not user:
+#         flash("User does not exist")
+#         return redirect("/login")
+
+#     if user.password != password:
+#         flash("Incorrect password. Please try again.")
+#         return redirect("/login")
+
+#     username = user.username
+
+#     session['user_id'] = user.user_id
+#     flash("Logged in")
+#     # return redirect(f"/users/{user.username}")
+#     return render_template("frontpage.html")
 
 
 @app.route('/logout')

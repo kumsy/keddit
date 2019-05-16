@@ -17,9 +17,19 @@ Nav Bar
 
 <hr>
 
-{% for flash in get_flashed_messages() %}
+<!-- {% for flash in get_flashed_messages() %}
   {{ flash }}
-{% endfor %}
+{% endfor %} -->
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert--{{ category}}">
+            {{message}}
+        </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
 {% block content %}
   Put your body here.
