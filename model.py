@@ -27,7 +27,7 @@ class Users(db.Model, UserMixin):
 
     __tablename__ = 'users'
 
-    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(256), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
@@ -49,7 +49,7 @@ class Users(db.Model, UserMixin):
 
     def __repr__(self):
         return "<user_id={}, username={}, email={}, pw={}, image={}>\n".format(
-                self.user_id, self.username, self.email, self.password,
+                self.id, self.username, self.email, self.password,
                 self.img_url)
 
 class Community(db.Model):
@@ -60,7 +60,7 @@ class Community(db.Model):
     community_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     # Creator of the community
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                                                         nullable=False)
     community_name = db.Column(db.String(20), nullable=False, unique=True)
 
@@ -80,7 +80,7 @@ class CommunityMembers(db.Model):
 
     community_member_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.community_id'),
                                                         nullable=False)
 
@@ -96,7 +96,7 @@ class Threads(db.Model):
     __tablename__ = 'threads'
 
     thread_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.community_id'),
                                                             nullable=False)
     title = db.Column(db.String(30), nullable=False)
@@ -119,7 +119,7 @@ class ThreadRatings(db.Model):
     __tablename__ = 'thread_ratings'
 
     rating_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'),
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                                                         nullable=False)
     thread_id = db.Column(db.Integer, db.ForeignKey('threads.thread_id'), 
                                                         nullable=False)
@@ -137,7 +137,7 @@ class Comments(db.Model):
     __tablename__ = 'comments'
 
     comment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                     nullable=False)
     thread_id = db.Column(db.Integer, db.ForeignKey('threads.thread_id'), 
                                                         nullable=False)
@@ -158,7 +158,7 @@ class CommentRatings(db.Model):
     __tablename__ = 'comment_ratings'
 
     rating_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), 
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                         nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.comment_id'),
                                                         nullable=False)
