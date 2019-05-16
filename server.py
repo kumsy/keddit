@@ -7,8 +7,10 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
 from forms import RegistrationForm, LoginForm
+from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
+bcrypt = Bcrypt(app)
 
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC"
@@ -29,8 +31,13 @@ def register_form():
     """Show form for user signup."""
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created for {form.username.data}!', 'sucess')
-        return redirect('/')
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = Users(username=form.username.data, email=form.email.data,
+                    password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash(f'Account created for {form.username.data}! Please log in.', 'sucess')
+        return redirect('/login')
     return render_template("registration.html", form=form)
 
 

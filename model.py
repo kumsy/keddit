@@ -16,7 +16,7 @@ class Users(db.Model):
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(256), nullable=False, unique=True)
-    password = db.Column(db.String(50), nullable=False)
+    password = db.Column(db.String(100), nullable=False)
     img_url = db.Column(db.String(500), nullable=True)
 
     # Define relationship to communities
