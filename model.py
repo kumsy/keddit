@@ -1,14 +1,28 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, LoginManager, login_required, login_user, logout_user
+
 
 db = SQLAlchemy()
+
+# ISSUE HERE FROM THIS LINE.
+
+# ERRORS OFTEN INCLUDE CANNOT CONNECT TO DB WHEN I RUN SERVER.PY
+# OR ERROR CANNOT IMPORT SERVER LOGIN_MANAGER WHEN I RUN model.py
+# from server import login_manager 
+
+# Handle User Logins
+# @login_manager.user_loader
+# def load_user(user_id):
+#     return Users.query.get(int(user_id))
+
 
 
 # ______________________________________________________________________________
 
 # Model definitions
 
-class Users(db.Model):
+class Users(db.Model, UserMixin):
     """Users of Keddit"""
 
     __tablename__ = 'users'
@@ -17,7 +31,7 @@ class Users(db.Model):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(256), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
-    img_url = db.Column(db.String(500), nullable=True)
+    img_url = db.Column(db.String(500), nullable=True, default='default.jpg')
 
     # Define relationship to communities
     communities = db.relationship('Community', 
