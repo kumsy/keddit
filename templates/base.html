@@ -5,10 +5,11 @@
 </head>
 <body>
 
-Nav Bar
+keddit
 
 <!-- Show Home Link and Login/Logout depending if the user in logged in or not -->
 {% if current_user.is_authenticated %}
+    <a href="{{url_for('new_community')}}">Create Community</a>
     <a href="/">Home</a>
     <a href="/logout">Logout</a>
     

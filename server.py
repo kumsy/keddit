@@ -6,7 +6,7 @@ from flask import Flask, render_template, request, flash, redirect, session, url
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, CommunityForm
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required
 
@@ -21,20 +21,21 @@ app.secret_key = "ABC"
 # This is horrible. Fix this so that, instead, it raises an error.
 app.jinja_env.undefined = StrictUndefined
 
-#Handle User Logins
+# Handle User Logins
 @login_manager.user_loader
 def load_user(user_id):
     print("LOAD USER")
     print(user_id)
     return Users.query.get(user_id)
 
-
+# Landing Page route
 @app.route('/')
 def home():
     """Homepage."""
 
     return render_template("homepage.html")
 
+# Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
 def register_form():
     """Show form for user signup."""
@@ -54,7 +55,7 @@ def register_form():
     
     return render_template("registration.html", form=form)
 
-
+# Login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Show login form."""
@@ -63,7 +64,7 @@ def login():
     # When user submits login. Query for email data, validate, and check password.
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
-        
+        # Validation Check before logging in
         if user and bcrypt.check_password_hash(user.password, form.password.data):
 
             login_user(user, remember=form.remember.data)
@@ -76,7 +77,7 @@ def login():
                                                                     'danger')
     return render_template("login.html", form=form)
 
-
+# Logout route
 @app.route('/logout')
 def logout():
     """Log out."""
@@ -85,16 +86,31 @@ def logout():
     flash("Logged Out. Hope to see you again!")
     return redirect("/")
 
-
+# User Account route page
 @app.route('/account')
 @login_required
 def account():
     return render_template('account.html')
 
-
+# ******************************
+# Keddit's main frontpage route
+# ******************************
 @app.route('/home')
 def frontpage():
     return render_template('frontpage.html')
+
+# Create Community route
+@app.route('/community/new', methods=['GET', 'POST'])
+@login_required
+def new_community():
+    form = CommunityForm()
+
+    if form.validate_on_submit():
+        flash('Your community has been created!', 'sucess')
+        return redirect(url_for('frontpage'))
+
+
+    return render_template('create_community.html', form=form)
 
 
 # When you make account page add this orignally from login route.
