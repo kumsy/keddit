@@ -7,13 +7,24 @@
 
 Nav Bar
 
-{% if "user_id" in session %}
+<!-- Show Home Link and Login/Logout depending if the user in logged in or not -->
+{% if current_user.is_authenticated %}
+    <a href="/">Home</a>
+    <a href="/logout">Logout</a>
+    
+{% else %}
+    <a href="/">Home</a> 
+    <a href="/login">Login</a>
+
+{% endif %}
+
+<!-- {% if "user_id" in session %}
   <a href="/">Home</a>
   <a href="/logout">Logout</a>
 {% else %}
   <a href="/">Home</a> 
   <a href="/login">Login</a>
-{% endif %}
+{% endif %} -->
 
 <hr>
 

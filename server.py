@@ -8,7 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
 from forms import RegistrationForm, LoginForm
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, logout_user, login_required
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -30,7 +30,7 @@ def load_user(user_id):
 
 
 @app.route('/')
-def index():
+def home():
     """Homepage."""
 
     return render_template("homepage.html")
@@ -63,19 +63,14 @@ def login():
     # When user submits login. Query for email data, validate, and check password.
     if form.validate_on_submit():
         user = Users.query.filter_by(email=form.email.data).first()
-        print(user)
-        print('DEBUGGGGGGGGGGGGG TESTSSSSSSSSSSSS')
+        
         if user and bcrypt.check_password_hash(user.password, form.password.data):
 
             login_user(user, remember=form.remember.data)
-            print(user)
-            print("HEY LOOK AT MEEEEEEEEEE")
             flash("You are now logged in!")
 
-            # Create session THIS DOES NOT WORK WHILE USING FLASK-LOGIN
-            # username = user.username
-            # session['user_id'] = user.user_id
-            return redirect("/")
+          # Redirect to Front Page after logging in
+            return redirect("/home") 
         else:
             flash('Login Unsucessful. Please check email and password.',
                                                                     'danger')
@@ -86,11 +81,20 @@ def login():
 def logout():
     """Log out."""
 
-    del session['user_id']
+    logout_user()
     flash("Logged Out. Hope to see you again!")
     return redirect("/")
 
 
+@app.route('/account')
+@login_required
+def account():
+    return render_template('account.html')
+
+
+@app.route('/home')
+def frontpage():
+    return render_template('frontpage.html')
 
 
 # When you make account page add this orignally from login route.
@@ -118,6 +122,8 @@ if __name__ == "__main__":
 
     connect_to_db(app)
     login_manager.init_app(app)
+    login_manager.login_view = "/login"
+    login_manager.login_message_category = 'info'
 
     # Use the DebugToolbar
     DebugToolbarExtension(app)
