@@ -132,8 +132,11 @@ def view_community(community_name):
 
     # Passes the string from parameter
     # Use that string to query the database for community (filter_by)
+
+    community = Community.query.filter_by(community_name=community_name)
+
     print(community_name)
-    return community_name
+    return render_template('community.html', community_name=community)
 
 
 
