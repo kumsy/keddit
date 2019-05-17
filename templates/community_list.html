@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Title of Community List page -->
+  <h1>Communities</h1>
+  <ul>
+
+  {% for community in communities %}
+  <div>
+        <li>
+          <a href= "/communities/{{ community.community_name }}">
+          {{ community.community_name }}</a>
+        </li>
+    </div>
+  {% endfor %}
+  </ul>
+{% endblock %}

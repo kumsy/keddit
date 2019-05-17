@@ -57,7 +57,7 @@ class Community(db.Model):
 
     __tablename__ = 'communities'
 
-    community_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     # Creator of the community
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
@@ -69,7 +69,7 @@ class Community(db.Model):
 
     def __repr__(self):
         return "<community_id={}, user_id={}, community_name={}>\n".format(
-                self.community_id, self.user_id, self.community_name)
+                self.id, self.user_id, self.community_name)
 
 class CommunityMembers(db.Model):
     """Community Members of Users"""
@@ -78,15 +78,15 @@ class CommunityMembers(db.Model):
 
     __tablename__ = 'community_members'
 
-    community_member_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    community_id = db.Column(db.Integer, db.ForeignKey('communities.community_id'),
+    community_id = db.Column(db.Integer, db.ForeignKey('communities.id'),
                                                         nullable=False)
 
     def __repr__(self):
         return "<community_member_id={}, user_id={}, community_id={}>\n".format(
-                self.community_member_id, self.user_id, self.community_id)
+                self.id, self.user_id, self.community_id)
 
 
 
@@ -95,9 +95,9 @@ class Threads(db.Model):
 
     __tablename__ = 'threads'
 
-    thread_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    community_id = db.Column(db.Integer, db.ForeignKey('communities.community_id'),
+    community_id = db.Column(db.Integer, db.ForeignKey('communities.id'),
                                                             nullable=False)
     title = db.Column(db.String(30), nullable=False)
     post = db.Column(db.Text, nullable=False)
@@ -108,7 +108,7 @@ class Threads(db.Model):
 
     def __repr__(self):
         return "<thread_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(
-                self.thread_id, self.user_id, self.community_id, self.title, self.date)
+                self.id, self.user_id, self.community_id, self.title, self.date)
 
 
 class ThreadRatings(db.Model):
@@ -118,17 +118,17 @@ class ThreadRatings(db.Model):
 
     __tablename__ = 'thread_ratings'
 
-    rating_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                                                         nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('threads.thread_id'), 
+    thread_id = db.Column(db.Integer, db.ForeignKey('threads.id'), 
                                                         nullable=False)
   
     votes = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, thread_id={}, votes={}>\n".format(
-                self.rating_id, self.user_id, self.thread_id, self.votes)
+                self.id, self.user_id, self.thread_id, self.votes)
 
 
 class Comments(db.Model):
@@ -136,10 +136,10 @@ class Comments(db.Model):
 
     __tablename__ = 'comments'
 
-    comment_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                     nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('threads.thread_id'), 
+    thread_id = db.Column(db.Integer, db.ForeignKey('threads.id'), 
                                                         nullable=False)
     post = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, nullable=True)
@@ -147,7 +147,7 @@ class Comments(db.Model):
 
     def __repr__(self):
         return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
-                self.comment_id, self.user_id, self.thread_id, self.date)
+                self.id, self.user_id, self.thread_id, self.date)
 
     # comments.author is getting the user obj assoicated with the comment
 
@@ -157,16 +157,16 @@ class CommentRatings(db.Model):
 
     __tablename__ = 'comment_ratings'
 
-    rating_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                         nullable=False)
-    comment_id = db.Column(db.Integer, db.ForeignKey('comments.comment_id'),
+    comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'),
                                                         nullable=False)
     votes = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
-                self.comment_id, self.user_id, self.thread_id, self.date)
+                self.id, self.user_id, self.thread_id, self.date)
 
 
 

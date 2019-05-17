@@ -35,5 +35,5 @@ class LoginForm(FlaskForm):
 
 
 class CommunityForm(FlaskForm):
-    title = StringField('Community Name', validators=[DataRequired()])
-    submit = SubmitField('Post')
+    community_name = StringField('Community Name', validators=[DataRequired()])
+    submit = SubmitField('Create')

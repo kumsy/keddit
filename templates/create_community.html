@@ -12,17 +12,17 @@
     <!-- Title Form of Community -->
 
       <div class="form-group">
-        {{form.title.label(class="form-control-label")}}
+        {{form.community_name.label(class="form-control-label")}}
 
-        {% if form.title.errors %}
-          {{form.title(class="form-control form-control-lg is-invalid")}}
+        {% if form.community_name.errors %}
+          {{form.community_name(class="form-control form-control-lg is-invalid")}}
           <div class="invalid-feedback">
-            {% for error in form.title.errors%}
+            {% for error in form.community_name.errors%}
               <span>{{ error }}</span>
             {% endfor %}
           </div>
         {% else %}
-          {{form.title(class="form-control form-control-lg")}}
+          {{form.community_name(class="form-control form-control-lg")}}
         {% endif %}
       </div>
 

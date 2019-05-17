@@ -8,7 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
 from forms import RegistrationForm, LoginForm, CommunityForm
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, logout_user, login_required
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -106,11 +106,48 @@ def new_community():
     form = CommunityForm()
 
     if form.validate_on_submit():
-        flash('Your community has been created!', 'sucess')
-        return redirect(url_for('frontpage'))
+        # Check if Commmunity name exists. Redirect if it does. Otherwise, process.
+        if Community.query.filter_by(community_name=form.community_name.data):
+            flash('Community name taken. Please try again.')
+            redirect('/community/new')
+        else:
+            community = Community(user_id=current_user.id, community_name=form.community_name.data)
+            db.session.add(community)
+            db.session.commit()
+            flash('Your community has been created!', 'sucess')
+            return redirect(url_for('frontpage'))
 
 
     return render_template('create_community.html', form=form)
+
+@app.route("/communities")
+def community_list():
+    """Show list of communities"""
+
+    communities = Community.query.order_by('community_name').all()
+    return render_template("community_list.html", communities=communities)
+
+@app.route("/communities/<community_name>")
+def view_community(community_name):
+
+    # Passes the string from parameter
+    # Use that string to query the database for community (filter_by)
+    print(community_name)
+    return community_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # When you make account page add this orignally from login route.

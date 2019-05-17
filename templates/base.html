@@ -5,17 +5,19 @@
 </head>
 <body>
 
-keddit
+<a href="/">keddit</a>
 
 <!-- Show Home Link and Login/Logout depending if the user in logged in or not -->
 {% if current_user.is_authenticated %}
+    <a href="/home">Front Page</a>
     <a href="{{url_for('new_community')}}">Create Community</a>
-    <a href="/">Home</a>
+    <a href="/communities">View Communities</a>
     <a href="/logout">Logout</a>
     
 {% else %}
     <a href="/">Home</a> 
     <a href="/login">Login</a>
+    <a href="/communities">View Communities</a>
 
 {% endif %}
 

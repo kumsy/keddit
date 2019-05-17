@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <h1>Join us</h1>
+    <h1> ** keddit ** </h1>
+    <h2> A home away from home</h2>
 
-  <p><a href="/registration"> Sign Up </a></p>
-  <p><a href="/login"> Log In</a></p>
+<!-- If current user is logged in show this....! -->
+{% if current_user.is_authenticated %}
+
+    <a href="{{url_for('new_community')}}">Create Community</a>
+    <p><a href="/communities">View Communities</a></p>
+    <a href="/logout">Logout</a>
+    
+<!-- If current user is NOT logged in, show this...! -->
+{% else %}
+
+    <h2>Join us!</h2>
+    <p><a href="/registration"> Sign Up </a></p>
+    <p><a href="/login"> Log In</a></p>
+    <p><a href="/communities">View Communities</a></p>
+
+{% endif %}
+  
 
 {% endblock %}
