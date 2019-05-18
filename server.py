@@ -106,8 +106,9 @@ def new_community():
     form = CommunityForm()
 
     if form.validate_on_submit():
+
         # Check if Commmunity name exists. Redirect if it does. Otherwise, process.
-        if Community.query.filter_by(community_name=form.community_name.data):
+        if Community.query.filter_by(community_name=form.community_name.data).first():
             flash('Community name taken. Please try again.')
             redirect('/community/new')
         else:
