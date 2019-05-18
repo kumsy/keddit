@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<!-- Title of Community List page -->
+  <!-- Title of Community List page -->
   <h1>Communities</h1>
-  <ul>
 
   {% for community in communities %}
   <div>
@@ -13,5 +12,5 @@
         </li>
     </div>
   {% endfor %}
-  </ul>
+  
 {% endblock %}
