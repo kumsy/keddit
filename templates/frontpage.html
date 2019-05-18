@@ -3,9 +3,9 @@
 
   <h2>The Front Page of LocalHost:5000</h2>
 
-{% if current_user.is_authenticated %}
-  <h3> Welcome home, {{ current_user.username }}!</h3>
-{% endif %}
+    {% if current_user.is_authenticated %}
+      <h3> Welcome home, {{ current_user.username }}!</h3>
+    {% endif %}
 
   <a href="/account"> Go to your account </a>
   <br>
