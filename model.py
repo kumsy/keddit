@@ -91,7 +91,7 @@ class Post(db.Model):
     date = db.Column(db.DateTime, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
 
-    # Author (posts.author) is an User Object
+    # Author (post.author) is an User Object
 
     def __repr__(self):
         return "<post_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(
@@ -136,7 +136,7 @@ class Comment(db.Model):
         return "<comment_id={}, user_id={}, post_id={}, date={}\n".format(
                 self.id, self.user_id, self.post_id, self.date)
 
-    # comments.author is getting the user obj assoicated with the comment
+    # comment.author is getting the user obj assoicated with the comment
 
 class CommentRatings(db.Model):
     """Upvotes and Downvotes on Comments"""

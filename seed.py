@@ -27,10 +27,19 @@ def load_users():
     db.session.add_all([a, b, c, d, e])
     db.session.commit()
 
-# def load_communities():
-#     """ Load communities into our database """
-#     print("communitites")
-#     a = Community()
+def load_communities():
+    """ Load communities into our database """
+    print("communitites")
+    a = Community(user_id=1, community_name="hackbright")
+    b = Community(user_id=2, community_name="finalfantasy")
+    c = Community(user_id=3, community_name="gameofthrones")
+    d = Community(user_id=4, community_name="starwars")
+    e = Community(user_id=5, community_name="python")
+    f = Community(user_id=1, community_name="cplusplus")
+    g = Community(user_id=1, community_name="marvel")
+
+    db.session.add_all([a, b, c, d, e, f, g])
+    db.session.commit()
 
 
 def set_val_user_id():
@@ -51,6 +60,6 @@ if __name__ == "__main__":
     db.create_all()
 
     load_users()
-    # load_movies()
+    load_communities()
     # load_ratings()
     set_val_user_id()
