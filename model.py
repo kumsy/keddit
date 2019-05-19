@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import UserMixin, LoginManager, login_required, login_user, logout_user
+from flask_login import (UserMixin, LoginManager, login_required, login_user, 
+                        logout_user)
 
 
 db = SQLAlchemy()
@@ -78,7 +79,7 @@ class CommunityMembers(db.Model):
 
 
 class Post(db.Model):
-    """Threads of Keddit"""
+    """Posts of Keddit"""
 
     __tablename__ = 'posts'
 
@@ -99,9 +100,9 @@ class Post(db.Model):
 
 
 class PostRatings(db.Model):
-    """Upvotes and Downvotes on Threads"""
+    """Upvotes and Downvotes on Posts"""
 
-    # Assoication Table between Threads and Users
+    # Assoication Table between Posts and Users
 
     __tablename__ = 'post_ratings'
 
@@ -119,7 +120,7 @@ class PostRatings(db.Model):
 
 
 class Comment(db.Model):
-    """User Comments on threads"""
+    """User Comments on Posts"""
 
     __tablename__ = 'comments'
 

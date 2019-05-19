@@ -11,7 +11,6 @@ from server import app, bcrypt
 
 def load_users():
     """ Load users into our database """
-    print("Users")
 
     a = User(username="kumy", email="sunnywithclouds@gmail.com",
             password=bcrypt.generate_password_hash('12').decode('utf-8'))
@@ -26,10 +25,11 @@ def load_users():
     
     db.session.add_all([a, b, c, d, e])
     db.session.commit()
+    print('Users ✔️')
 
 def load_communities():
     """ Load communities into our database """
-    print("communitites")
+    
     a = Community(user_id=1, community_name="hackbright")
     b = Community(user_id=2, community_name="finalfantasy")
     c = Community(user_id=3, community_name="gameofthrones")
@@ -40,6 +40,7 @@ def load_communities():
 
     db.session.add_all([a, b, c, d, e, f, g])
     db.session.commit()
+    print("Communities ✔️")
 
 
 def set_val_user_id():

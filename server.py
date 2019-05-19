@@ -2,20 +2,23 @@
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, render_template, request, flash, redirect, session, url_for
+from flask import (Flask, render_template, request, flash, redirect, 
+                    session, url_for)
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, User, Community, CommunityMembers, Post, PostRatings, Comment, CommentRatings
+from model import (connect_to_db, db, User, Community, CommunityMembers, 
+                    Post, PostRatings, Comment, CommentRatings)
 from forms import RegistrationForm, LoginForm, CommunityForm
 from flask_bcrypt import Bcrypt
-from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from flask_login import (LoginManager, login_user, logout_user, 
+                        login_required, current_user)
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
 # Required to use Flask sessions and the debug toolbar
-app.secret_key = "ABC"
+app.secret_key = "ABC123"
 
 # Normally, if you use an undefined variable in Jinja2, it fails silently.
 # This is horrible. Fix this so that, instead, it raises an error.
@@ -24,6 +27,7 @@ app.jinja_env.undefined = StrictUndefined
 # Handle User Logins
 @login_manager.user_loader
 def load_user(user_id):
+    # Debugging
     print("LOAD USER")
     print(user_id)
     return User.query.get(user_id)
