@@ -29,7 +29,7 @@ def load_users():
 
 def load_communities():
     """ Load communities into our database """
-    
+
     a = Community(user_id=1, community_name="hackbright")
     b = Community(user_id=2, community_name="finalfantasy")
     c = Community(user_id=3, community_name="gameofthrones")
@@ -41,6 +41,24 @@ def load_communities():
     db.session.add_all([a, b, c, d, e, f, g])
     db.session.commit()
     print("Communities ✔️")
+
+def load_posts():
+    """ Load communities into our database """
+    
+    a = Post(user_id=1, community_id=1, title="Why is Hackbright?",
+                body="Hackbright is a coding bootcamp school.")
+    b = Post(user_id=2, community_id=2, title="Favorite Final Fantasy?",
+                body="FF7 is the best FF..")
+    c = Post(user_id=3, community_id=3, title="Season is 8 is....",
+                body="Excited for the new season, but I don't know what to think anymore.")
+    d = Post(user_id=4, community_id=4, title="New Star Wars Actors",
+                body="New actor Jane Doe was hired as the new Jedi for the upcoming movie.")
+    e = Post(user_id=5, community_id=5, title="Best way to learn Python?",
+                body="There are free resources online.")
+
+    db.session.add_all([a, b, c, d, e])
+    db.session.commit()
+    print("Posts ✔️")
 
 
 def set_val_user_id():
@@ -62,5 +80,5 @@ if __name__ == "__main__":
 
     load_users()
     load_communities()
-    # load_ratings()
+    load_posts()
     set_val_user_id()

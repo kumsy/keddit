@@ -145,11 +145,27 @@ def view_community(community_name):
     # Passes the string from parameter
     # Use that string to query the database for community (filter_by)
 
-    community = Community.query.filter_by(community_name=community_name)
+    # Object community
+    community = Community.query.filter_by(community_name=community_name).first()
+    # Get all posts for the community
+    posts = Post.query.filter_by(community_id=community.id).all() # from community object
+    # Get total number of members in the community
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
+    
+    return render_template('community.html', community=community, posts=posts, 
+                                                    members_count=members_count)
 
-    print(community_name)
-    return render_template('community.html', community_name=community)
+# @app.route("/<community_name>/posts/<int:post_id>")
+# def posts():
+#     pass
 
+# @app.route("/<community_name>/posts/<int:post_id>/upvote")
+# def posts():
+#     pass
+
+# @app.route("/<community_name>/posts/<int:post_id>/downvote")
+# def posts():
+#     pass
 
 
 
