@@ -27,16 +27,12 @@ app.jinja_env.undefined = StrictUndefined
 # Handle User Logins
 @login_manager.user_loader
 def load_user(user_id):
-    # Debugging
-    print("LOAD USER")
-    print(user_id)
     return User.query.get(user_id)
 
 # Landing Page route
 @app.route('/')
 def home():
     """Homepage."""
-
     return render_template("homepage.html")
 
 # Registration Page Route

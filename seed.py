@@ -12,7 +12,7 @@ from server import app, bcrypt
 def load_users():
     """ Load users into our database """
 
-    a = User(username="kumy", email="sunnywithclouds@gmail.com",
+    a = User(username="kristencampbell", email="kristenpincampbell@gmail.com",
             password=bcrypt.generate_password_hash('12').decode('utf-8'))
     b = User(username="ropers", email="triddle26@gmail.com",
             password=bcrypt.generate_password_hash('ou812').decode('utf-8'))
@@ -25,12 +25,12 @@ def load_users():
     
     db.session.add_all([a, b, c, d, e])
     db.session.commit()
-    print('Users ✔️')
+    print('Users 😚')
 
 def load_communities():
     """ Load communities into our database """
 
-    a = Community(user_id=1, community_name="hackbright")
+    a = Community(user_id=1, community_name="guitar")
     b = Community(user_id=2, community_name="finalfantasy")
     c = Community(user_id=3, community_name="gameofthrones")
     d = Community(user_id=4, community_name="starwars")
@@ -40,15 +40,15 @@ def load_communities():
 
     db.session.add_all([a, b, c, d, e, f, g])
     db.session.commit()
-    print("Communities ✔️")
+    print("Communities 😚")
 
 def load_posts():
     """ Load communities into our database """
     
-    a = Post(user_id=1, community_id=1, title="Why is Hackbright?",
-                body="Hackbright is a coding bootcamp school.")
-    b = Post(user_id=2, community_id=2, title="Favorite Final Fantasy?",
-                body="FF7 is the best FF..")
+    a = Post(user_id=1, community_id=1, title="Fender vs Ibanez?",
+                body="I'm loving my new Fender Strat. Thoughts on Ibanez?")
+    b = Post(user_id=2, community_id=2, title="Looking for group members!",
+                body="Hi kedditors, I'm forming a new group, who wants to join?")
     c = Post(user_id=3, community_id=3, title="Season is 8 is....",
                 body="Excited for the new season, but I don't know what to think anymore.")
     d = Post(user_id=4, community_id=4, title="New Star Wars Actors",
@@ -58,7 +58,7 @@ def load_posts():
 
     db.session.add_all([a, b, c, d, e])
     db.session.commit()
-    print("Posts ✔️")
+    print("Posts 😚")
 
 
 def set_val_user_id():
