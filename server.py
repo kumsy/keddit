@@ -45,8 +45,13 @@ def register_form():
 
     # When form submitted, add user to our database from our model.py classes
     if form.validate_on_submit():
+        # Convert username to lower and remove spaces
+        username = (form.username.data).lower()
+        username = username.replace(" ", "")
+        # Hash password
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = Users(username=form.username.data, email=form.email.data,
+        # Add our user to our database
+        user = Users(username=username, email=form.email.data,
                     password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -107,12 +112,14 @@ def new_community():
 
     if form.validate_on_submit():
 
+        name = (form.community_name.data).lower()
+        name = name.replace(" ", "")
         # Check if Commmunity name exists. Redirect if it does. Otherwise, process.
-        if Community.query.filter_by(community_name=form.community_name.data).first():
+        if Community.query.filter_by(community_name=name).first():
             flash('Community name taken. Please try again.')
             redirect('/community/new')
         else:
-            community = Community(user_id=current_user.id, community_name=form.community_name.data)
+            community = Community(user_id=current_user.id, community_name=name)
             db.session.add(community)
             db.session.commit()
             flash('Your community has been created!', 'sucess')
