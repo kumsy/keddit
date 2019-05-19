@@ -1,0 +1,14 @@
+/*Title*/
+#title{
+    background-color:blue;
+    color:white;
+}
+
+
+.navbar-image{
+    width: 4.5rem;
+}
+
+.navbar{
+    padding:0;
+}

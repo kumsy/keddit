@@ -14,13 +14,13 @@ def load_users():
 
     a = User(username="kristencampbell", email="kristenpincampbell@gmail.com",
             password=bcrypt.generate_password_hash('12').decode('utf-8'))
-    b = User(username="ropers", email="triddle26@gmail.com",
+    b = User(username="ropers", email="riddle@gmail.com",
             password=bcrypt.generate_password_hash('ou812').decode('utf-8'))
-    c = User(username="kbr22", email="kbrballer22@msn.com",
+    c = User(username="kbr22", email="kbr@msn.com",
             password=bcrypt.generate_password_hash('kbr').decode('utf-8'))
-    d = User(username="jedimaster2019", email="jedimaster19@icloud.com",
+    d = User(username="jedimaster2019", email="jedi@icloud.com",
             password=bcrypt.generate_password_hash('jedi').decode('utf-8'))
-    e = User(username="pizzapizza", email="pizzajane@hotmail.com",
+    e = User(username="pizzapizza", email="pjane@hotmail.com",
             password=bcrypt.generate_password_hash('pj').decode('utf-8'))
     
     db.session.add_all([a, b, c, d, e])
