@@ -95,7 +95,8 @@ def logout():
 @app.route('/account')
 @login_required
 def account():
-    return render_template('account.html')
+    image_file = url_for('static', filename='images/' + current_user.image_file)
+    return render_template('account.html', image_file=image_file)
 
 # ******************************
 # Keddit's main frontpage route

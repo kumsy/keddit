@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(256), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
-    img_url = db.Column(db.String(500), nullable=True, default='default.jpg')
+    image_file = db.Column(db.String(500), nullable=True, default='default.jpg')
 
     # Define relationship to communities
     communities = db.relationship('Community', 
@@ -38,7 +38,7 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return "<user_id={}, username={}, email={}, pw={}, image={}>\n".format(
                 self.id, self.username, self.email, self.password,
-                self.img_url)
+                self.image_file)
 
 class Community(db.Model):
     """Communites of Keddit"""

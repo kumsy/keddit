@@ -1,14 +1,14 @@
 /*Title*/
 #title{
-    background-color:blue;
+    background-color:#7289da;
     color:white;
 }
 
-
 .navbar-image{
     width: 4.5rem;
+    border-radius: 50%;
+    padding:2px;
 }
-
 .navbar{
     padding:0;
 }
