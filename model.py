@@ -28,7 +28,7 @@ class User(db.Model, UserMixin):
     # Define relationship to posts
     posts = db.relationship('Post',
                                 secondary='post_ratings',
-                                backref='author') 
+                                backref='creator') 
     # Define relationship to comments
     comments = db.relationship('Comment',
                                 secondary='comment_ratings',
@@ -92,7 +92,7 @@ class Post(db.Model):
     date = db.Column(db.DateTime, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
 
-    # Author (post.author) is an User Object
+    # Author (post.creator) is an User Object
 
     def __repr__(self):
         return "<post_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(

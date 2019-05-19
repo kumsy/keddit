@@ -3,12 +3,12 @@
 
 <!-- community_name is the object we got in our route -->
   
-  <div>
+  <div style="background-color:blue;color:white;padding:20px;margin:10px;border-style: ridge">
      <h1>k/ {{ community.community_name }}</h1> {{ members_count }} members
   </div>
 
   {% for post in posts %}
-    <div>
+    <div style="border: 1px solid black; border-radius: 8px; padding:10px;margin:10px">
         <h3>{{ post.title }}</h3>
         
         {{ post.body }}

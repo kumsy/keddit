@@ -49,7 +49,7 @@ def load_posts():
                 body="I'm loving my new Fender Strat. Thoughts on Ibanez?")
     b = Post(user_id=2, community_id=2, title="Looking for group members!",
                 body="Hi kedditors, I'm forming a new group, who wants to join?")
-    c = Post(user_id=3, community_id=3, title="Season is 8 is....",
+    c = Post(user_id=3, community_id=3, title="Season 8 is....",
                 body="Excited for the new season, but I don't know what to think anymore.")
     d = Post(user_id=4, community_id=4, title="New Star Wars Actors",
                 body="New actor Jane Doe was hired as the new Jedi for the upcoming movie.")
