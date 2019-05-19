@@ -143,33 +143,6 @@ def view_community(community_name):
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-# When you make account page add this orignally from login route.
-# username = user.username
-
-#     session['user_id'] = user.user_id
-#     flash("Logged in")
-#     return redirect(f"/u/{user.username}")
-
-
-
-
-
-
-
-
-
-
 #____________________________________________________________
 
 if __name__ == "__main__":

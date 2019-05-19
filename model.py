@@ -5,19 +5,6 @@ from flask_login import UserMixin, LoginManager, login_required, login_user, log
 
 db = SQLAlchemy()
 
-# ISSUE HERE FROM THIS LINE.
-
-# ERRORS OFTEN INCLUDE CANNOT CONNECT TO DB WHEN I RUN SERVER.PY
-# OR ERROR CANNOT IMPORT SERVER LOGIN_MANAGER WHEN I RUN model.py
-# from server import login_manager 
-
-# Handle User Logins
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return Users.query.get(int(user_id))
-
-
-
 # ______________________________________________________________________________
 
 # Model definitions
