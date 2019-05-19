@@ -5,7 +5,7 @@ from jinja2 import StrictUndefined
 from flask import Flask, render_template, request, flash, redirect, session, url_for
 from flask_debugtoolbar import DebugToolbarExtension
 
-from model import connect_to_db, db, Users, Community, CommunityMembers, Threads, ThreadRatings, Comments, CommentRatings
+from model import connect_to_db, db, User, Community, CommunityMembers, Post, PostRatings, Comment, CommentRatings
 from forms import RegistrationForm, LoginForm, CommunityForm
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -26,7 +26,7 @@ app.jinja_env.undefined = StrictUndefined
 def load_user(user_id):
     print("LOAD USER")
     print(user_id)
-    return Users.query.get(user_id)
+    return User.query.get(user_id)
 
 # Landing Page route
 @app.route('/')
@@ -51,7 +51,7 @@ def register_form():
         # Hash password
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         # Add our user to our database
-        user = Users(username=username, email=form.email.data,
+        user = User(username=username, email=form.email.data,
                     password=hashed_password)
         db.session.add(user)
         db.session.commit()
@@ -68,7 +68,7 @@ def login():
 
     # When user submits login. Query for email data, validate, and check password.
     if form.validate_on_submit():
-        user = Users.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         # Validation Check before logging in
         if user and bcrypt.check_password_hash(user.password, form.password.data):
 

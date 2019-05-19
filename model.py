@@ -9,7 +9,7 @@ db = SQLAlchemy()
 
 # Model definitions
 
-class Users(db.Model, UserMixin):
+class User(db.Model, UserMixin):
     """Users of Keddit"""
 
     __tablename__ = 'users'
@@ -24,12 +24,12 @@ class Users(db.Model, UserMixin):
     communities = db.relationship('Community', 
                                   secondary='community_members', 
                                   backref='subscribers')
-    # Define relationship to threads
-    threads = db.relationship('Threads',
-                                secondary='thread_ratings',
+    # Define relationship to posts
+    posts = db.relationship('Post',
+                                secondary='post_ratings',
                                 backref='author') 
     # Define relationship to comments
-    comments = db.relationship('Comments',
+    comments = db.relationship('Comment',
                                 secondary='comment_ratings',
                                 backref='author')
 
@@ -46,7 +46,7 @@ class Community(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
 
-    # Creator of the community
+    # Created By
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                                                         nullable=False)
     community_name = db.Column(db.String(20), nullable=False, unique=True)
@@ -77,48 +77,48 @@ class CommunityMembers(db.Model):
 
 
 
-class Threads(db.Model):
+class Post(db.Model):
     """Threads of Keddit"""
 
-    __tablename__ = 'threads'
+    __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.id'),
                                                             nullable=False)
     title = db.Column(db.String(30), nullable=False)
-    post = db.Column(db.Text, nullable=False)
+    body = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
 
-    # Author (threads.author) is an User Object
+    # Author (posts.author) is an User Object
 
     def __repr__(self):
-        return "<thread_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(
+        return "<post_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(
                 self.id, self.user_id, self.community_id, self.title, self.date)
 
 
-class ThreadRatings(db.Model):
+class PostRatings(db.Model):
     """Upvotes and Downvotes on Threads"""
 
     # Assoication Table between Threads and Users
 
-    __tablename__ = 'thread_ratings'
+    __tablename__ = 'post_ratings'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'),
                                                         nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('threads.id'), 
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), 
                                                         nullable=False)
   
     votes = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<rating_id={}, user_id={}, thread_id={}, votes={}>\n".format(
-                self.id, self.user_id, self.thread_id, self.votes)
+        return "<rating_id={}, user_id={}, post_id={}, votes={}>\n".format(
+                self.id, self.user_id, self.post_id, self.votes)
 
 
-class Comments(db.Model):
+class Comment(db.Model):
     """User Comments on threads"""
 
     __tablename__ = 'comments'
@@ -126,15 +126,15 @@ class Comments(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                     nullable=False)
-    thread_id = db.Column(db.Integer, db.ForeignKey('threads.id'), 
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), 
                                                         nullable=False)
-    post = db.Column(db.Text, nullable=False)
+    body = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, nullable=True)
     image_url = db.Column(db.String(500), nullable=True)
 
     def __repr__(self):
-        return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
-                self.id, self.user_id, self.thread_id, self.date)
+        return "<comment_id={}, user_id={}, post_id={}, date={}\n".format(
+                self.id, self.user_id, self.post_id, self.date)
 
     # comments.author is getting the user obj assoicated with the comment
 
@@ -152,8 +152,8 @@ class CommentRatings(db.Model):
     votes = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<comment_id={}, user_id={}, thread_id={}, date={}\n".format(
-                self.id, self.user_id, self.thread_id, self.date)
+        return "<rating_id={}, user_id={}, comment_id={}, date={}\n".format(
+                self.id, self.user_id, self.comment_id, self.date)
 
 
 
