@@ -12,7 +12,7 @@ from server import app, bcrypt
 def load_users():
     """ Load users into our database """
 
-    a = User(username="kristencampbell", email="kristenpincampbell@gmail.com",
+    a = User(username="kumsy", email="kristenpincampbell@gmail.com",
             password=bcrypt.generate_password_hash('12').decode('utf-8'))
     b = User(username="ropers", email="riddle@gmail.com",
             password=bcrypt.generate_password_hash('ou812').decode('utf-8'))

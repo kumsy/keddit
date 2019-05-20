@@ -8,7 +8,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
                     Post, PostRatings, Comment, CommentRatings)
-from forms import RegistrationForm, LoginForm, CommunityForm
+from forms import (RegistrationForm, LoginForm, CommunityForm, 
+                    AccountForm)
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
@@ -92,11 +93,22 @@ def logout():
     return redirect("/")
 
 # User Account route page
-@app.route('/account')
+@app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
+    form = AccountForm()
+    if form.validate_on_submit():
+        current_user.username= form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash("Your account has been updated!", 'sucess')
+        return redirect(url_for('account'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
     image_file = url_for('static', filename='images/' + current_user.image_file)
-    return render_template('account.html', image_file=image_file)
+    return render_template('account.html', image_file=image_file, 
+                                                            form=form)
 
 # ******************************
 # Keddit's main frontpage route

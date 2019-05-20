@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-  
+
     <title>keddit</title>
     <!-- Link bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -101,9 +101,27 @@
 {% endwith %}
 
 <!-- BODY CONTENT BLOCK -->
-{% block content %}
-  Put your body here.
-{% endblock %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-8">
+      {% block content %}PUT CONTENT BLOCK HERE{% endblock %}
+    </div>
+    <div class="col-md-4">
+      <div class="content-section">
+        <h3><img class="navbar-image" src="/static/images/logo.png" alt="Keddit Logo"></a> Keddit Sidebar</h3> 
+        
+        <p class='text-muted'>Be apart of amazing. Post and create today!
+          <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Post</li>
+            <li class="list-group-item list-group-item-light">Create Community</li>
+            <li class="list-group-item list-group-item-light">Home</li>
+            <li class="list-group-item list-group-item-light">Account</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
 
 
 <!-- Imported JQuery and JS scrips -->

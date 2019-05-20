@@ -3,16 +3,23 @@
 
 <!-- community_name is the object we got in our route -->
   
-  <div style="background-color:blue;color:white;padding:20px;margin:10px;border-style: ridge">
-     <h1>k/ {{ community.community_name }}</h1> {{ members_count }} members
+  <div style="background-color:pink;color:white;padding:20px;margin:10px;border-style: ridge">
+     <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
+     <small>{{ members_count }} members</small>
   </div>
 
   {% for post in posts %}
-    <div style="border: 1px solid black; border-radius: 8px; padding:10px;margin:10px">
-        <h3>{{ post.title }}</h3>
-        
-        {{ post.body }}
-    </div>
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">author</a>
+          <small class="text-muted">date</small>
+        </div>
+        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.body }}</p>
+      </div>
+    </article>
+      
   {% endfor %}
 
   
