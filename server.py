@@ -10,7 +10,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
                     Post, PostRatings, Comment, CommentRatings)
 from forms import (RegistrationForm, LoginForm, CommunityForm, 
-                    AccountForm)
+                    AccountForm, PostForm)
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
@@ -111,15 +111,18 @@ def save_picture(form_picture):
 def account():
     form = AccountForm()
     if form.validate_on_submit():
+        # Update user picture
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             current_user.image_file = picture_file
+        # Update user info
         current_user.username= form.username.data
         current_user.email = form.email.data
         db.session.commit()
         flash("Your account has been updated!", 'sucess')
         return redirect(url_for('account'))
     elif request.method == 'GET':
+        # Prepopulate field with user info
         form.username.data = current_user.username
         form.email.data = current_user.email
     image_file = url_for('static', filename='images/' + current_user.image_file)
@@ -179,6 +182,16 @@ def view_community(community_name):
     
     return render_template('community.html', community=community, posts=posts, 
                                                     members_count=members_count)
+
+
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Your post has been created!', 'sucess')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', form=form)
 
 # @app.route("/<community_name>/posts/<int:post_id>")
 # def posts():

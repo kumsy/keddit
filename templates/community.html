@@ -7,7 +7,11 @@
      <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
      <small>{{ members_count }} members</small>
   </div>
-
+  <div>
+    <a href="/post/new">Create Post</a>
+  </div>
+  
+  <!-- Display Posts -->
   {% for post in posts %}
     <article class="media content-section">
       <div class="media-body">
