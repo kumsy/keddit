@@ -1,7 +1,10 @@
 /*Title*/
-#title{
-    background-color:#648DFF;
+#navbar_header{
+    background:#648DFF;
     color:white;
+    position:fixed;
+    width:100%;
+
 }
 
 .navbar-image{
@@ -19,7 +22,7 @@
 body {
   background: #fafafa;
   color: #333333;
-  margin-top: 5rem;
+  /*margin-top: 5rem;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -101,4 +104,8 @@ a.article-title:hover {
 
 .community_name{
   color:white;
+}
+
+.container{
+  margin-top: 65px;
 }

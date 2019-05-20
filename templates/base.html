@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<section id='title'>
+<section id='navbar_header'>
   <div class="container-fluid">
     <!-- Nav Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -90,7 +90,7 @@
   {{ flash }}
 {% endfor %} -->
 
-{% with messages = get_flashed_messages(with_categories=true) %}
+<!-- {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         {% for category, message in messages %}
             <div class="alert alert--{{ category}}">
@@ -99,12 +99,24 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-
+ -->
 <!-- BODY CONTENT BLOCK -->
 <main role="main" class="container">
-  <div class="row">
-    <div class="col-md-8">
-      {% block content %}PUT CONTENT BLOCK HERE{% endblock %}
+      <div class="row">
+        <div class="col-md-8">
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+      {% block content %}
+      PUT CONTENT BLOCK HERE
+      {% endblock %}
     </div>
     <div class="col-md-4">
       <div class="content-section">

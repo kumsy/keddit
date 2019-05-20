@@ -15,13 +15,17 @@ def load_users():
     a = User(username="kumsy", email="kristenpincampbell@gmail.com",
             password=bcrypt.generate_password_hash('12').decode('utf-8'))
     b = User(username="ropers", email="riddle@gmail.com",
-            password=bcrypt.generate_password_hash('ou812').decode('utf-8'))
+            password=bcrypt.generate_password_hash('ou812').decode('utf-8'),
+            image_file='TK.png')
     c = User(username="kbr22", email="kbr@msn.com",
-            password=bcrypt.generate_password_hash('kbr').decode('utf-8'))
+            password=bcrypt.generate_password_hash('kbr').decode('utf-8'),
+            image_file='rex.jpg')
     d = User(username="jedimaster2019", email="jedi@icloud.com",
-            password=bcrypt.generate_password_hash('jedi').decode('utf-8'))
+            password=bcrypt.generate_password_hash('jedi').decode('utf-8'),
+            image_file='luke-skywalker.jpg')
     e = User(username="pizzapizza", email="pjane@hotmail.com",
-            password=bcrypt.generate_password_hash('pj').decode('utf-8'))
+            password=bcrypt.generate_password_hash('pj').decode('utf-8'),
+            image_file='ww_nubia.jpg')
     
     db.session.add_all([a, b, c, d, e])
     db.session.commit()

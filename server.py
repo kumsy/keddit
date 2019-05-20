@@ -57,7 +57,7 @@ def register_form():
                     password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash(f'Account created for {form.username.data}! Please log in.', 'sucess')
+        flash(f'Account created for {form.username.data}! Please log in.', 'success')
         return redirect('/login')
     
     return render_template("registration.html", form=form)
@@ -75,7 +75,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, form.password.data):
 
             login_user(user, remember=form.remember.data)
-            flash("You are now logged in!")
+            flash("You are now logged in!", 'success')
 
           # Redirect to Front Page after logging in
             return redirect("/home") 
@@ -90,7 +90,7 @@ def logout():
     """Log out."""
 
     logout_user()
-    flash("Logged Out. Hope to see you again!")
+    flash("Logged Out. Hope to see you again!", 'success')
     return redirect("/")
 # User Profile picture
 def save_picture(form_picture):
@@ -119,7 +119,7 @@ def account():
         current_user.username= form.username.data
         current_user.email = form.email.data
         db.session.commit()
-        flash("Your account has been updated!", 'sucess')
+        flash("Your account has been updated!", 'success')
         return redirect(url_for('account'))
     elif request.method == 'GET':
         # Prepopulate field with user info
@@ -148,13 +148,13 @@ def new_community():
         name = name.replace(" ", "")
         # Check if Commmunity name exists. Redirect if it does. Otherwise, process.
         if Community.query.filter_by(community_name=name).first():
-            flash('Community name taken. Please try again.')
+            flash('Community name taken. Please try again.', 'danger')
             redirect('/community/new')
         else:
             community = Community(user_id=current_user.id, community_name=name)
             db.session.add(community)
             db.session.commit()
-            flash('Your community has been created!', 'sucess')
+            flash('Your community has been created!', 'success')
             return redirect(url_for('frontpage'))
 
 
@@ -190,7 +190,7 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         # Put data into our database here
-        flash('Your post has been created!', 'sucess')
+        flash('Your post has been created!', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', form=form)
 
