@@ -13,6 +13,7 @@
     padding:0;
 }
 
+
 /*=================================================*/
 
 body {
@@ -94,4 +95,10 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+/*=================*/
+
+.community_name{
+  color:white;
 }

@@ -51,7 +51,7 @@ def load_posts():
                 body="Hi kedditors, I'm forming a new group, who wants to join?")
     c = Post(user_id=3, community_id=3, title="Season 8 is....",
                 body="Excited for the new season, but I don't know what to think anymore.")
-    d = Post(user_id=4, community_id=4, title="New Star Wars Actors",
+    d = Post(user_id=4, community_id=4, title="New Star Wars Actor",
                 body="New actor Jane Doe was hired as the new Jedi for the upcoming movie.")
     e = Post(user_id=5, community_id=5, title="Best way to learn Python?",
                 body="One great resource is an Software Engineering Fellowing called Hackbright Academy in San Francisco, CA. Any others?")

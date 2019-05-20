@@ -6,7 +6,9 @@
         {{ form.hidden_tag() }}
         <!-- Title -->
         <fieldset class="form-group">
+
             <legend class="border-bottom mb-4">New Post</legend>
+
             <div class="form-group">
                 {{ form.title.label(class="form-control-label") }}
                 {% if form.title.errors %}
@@ -35,6 +37,7 @@
                 {% endif %}
             </div>
         </fieldset>
+
         <div class="form-group">
             {{ form.submit(class="btn btn-outline-info") }}
         </div>

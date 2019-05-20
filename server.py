@@ -189,9 +189,12 @@ def view_community(community_name):
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
+        # Put data into our database here
         flash('Your post has been created!', 'sucess')
         return redirect(url_for('home'))
     return render_template('create_post.html', form=form)
+
+
 
 # @app.route("/<community_name>/posts/<int:post_id>")
 # def posts():

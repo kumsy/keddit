@@ -3,14 +3,14 @@
 
 <!-- community_name is the object we got in our route -->
   
-  <div style="background-color:pink;color:white;padding:20px;margin:10px;border-style: ridge">
+  <div style="background-color:silver;color:white;padding:20px;margin:10px;border-style: ridge">
      <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
      <small>{{ members_count }} members</small>
   </div>
   <div>
-    <a href="/post/new">Create Post</a>
-  </div>
-  
+    <a class="btn btn-primary" href="/post/new" role="button">Create Post</a>
+  </div><br>
+
   <!-- Display Posts -->
   {% for post in posts %}
     <article class="media content-section">

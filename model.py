@@ -22,17 +22,24 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(500), nullable=True, default='default.jpg')
 
     # Define relationship to communities
-    communities = db.relationship('Community', 
+    communities_subbed = db.relationship('Community', 
                                   secondary='community_members', 
                                   backref='subscribers')
+
+    communities_created = db.relationship('Community', backref='creator')
     # Define relationship to posts
-    posts = db.relationship('Post',
-                                secondary='post_ratings',
-                                backref='creator') 
+    posts_created = db.relationship('Post', backref='creator') 
+
+    posts_rated = db.relationship('Post', 
+                                    secondary= 'post_ratings',
+                                    backref= 'user_ratings')
+
     # Define relationship to comments
-    comments = db.relationship('Comment',
-                                secondary='comment_ratings',
-                                backref='author')
+    comments_created = db.relationship('Comment', backref='creator')
+
+    comments_rated = db.relationship('Comment', 
+                                    secondary= 'comment_ratings',
+                                    backref= 'user_ratings')
 
 
     def __repr__(self):
@@ -112,11 +119,11 @@ class PostRatings(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), 
                                                         nullable=False)
   
-    votes = db.Column(db.Integer, nullable=True)
+    vote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, post_id={}, votes={}>\n".format(
-                self.id, self.user_id, self.post_id, self.votes)
+                self.id, self.user_id, self.post_id, self.vote)
 
 
 class Comment(db.Model):
@@ -150,7 +157,7 @@ class CommentRatings(db.Model):
                                                         nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'),
                                                         nullable=False)
-    votes = db.Column(db.Integer, nullable=True)
+    vote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, comment_id={}, date={}\n".format(
