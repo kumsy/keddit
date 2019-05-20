@@ -54,7 +54,7 @@ def load_posts():
     d = Post(user_id=4, community_id=4, title="New Star Wars Actors",
                 body="New actor Jane Doe was hired as the new Jedi for the upcoming movie.")
     e = Post(user_id=5, community_id=5, title="Best way to learn Python?",
-                body="There are free resources online.")
+                body="One great resource is an Software Engineering Fellowing called Hackbright Academy in San Francisco, CA. Any others?")
 
     db.session.add_all([a, b, c, d, e])
     db.session.commit()
