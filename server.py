@@ -92,7 +92,7 @@ def logout():
     logout_user()
     flash("Logged Out. Hope to see you again!")
     return redirect("/")
-
+# User Profile picture
 def save_picture(form_picture):
     # Hash filename to not error with other similar file names
     random_hex = secrets.token_hex(8)
