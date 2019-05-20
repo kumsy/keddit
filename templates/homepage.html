@@ -1,23 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
 
-    <h1> ** keddit ** </h1>
-    <h2> A home away from home</h2>
+    <h1>Keddit</h1>
+    <br>
+    
 
 <!-- If current user is logged in show this....! -->
 {% if current_user.is_authenticated %}
-
-    <a href="{{url_for('new_community')}}">Create Community</a>
-    <p><a href="/communities">View Communities</a></p>
-    <a href="/logout">Logout</a>
+    <a class="btn btn-primary" href="{{url_for('new_community')}}" role="button">Create Community</a>
+    <br><br>
+    <a class="btn btn-primary" href="/communities" role="button">View Communities</a>
+    <br><br>
+    <a class="btn btn-primary" href="/logout" role="button">Logout</a>
+    <br><br>
     
 <!-- If current user is NOT logged in, show this...! -->
 {% else %}
 
-    <h2>Join us!</h2>
-    <p><a href="/registration"> Sign Up </a></p>
-    <p><a href="/login"> Log In</a></p>
-    <p><a href="/communities">View Communities</a></p>
+    <h4>Join Today</h4><br>
+    <a class="btn btn-primary" href="/registration" role="button">Sign Up</a>
+    <br><br>
+    <a class="btn btn-primary" href="/login" role="button">Login</a>
+    <br><br>
+    <a class="btn btn-primary" href="/communities" role="button">View Communities</a>
+    <br><br>
 
 {% endif %}
   

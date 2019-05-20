@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <h2>The Front Page of LocalHost:5000</h2>
+  <h3>Front Page</h3>
 
     {% if current_user.is_authenticated %}
-      <h3> Welcome home, {{ current_user.username }}!</h3>
+      <h4> Welcome, {{ current_user.username }}.</h4>
     {% endif %}
-
-  <a href="/account"> Go to your account </a>
   <br>
-  <a href="/communities">View Communities</a>
+  <a class="btn btn-primary" href="/communities" role="button">View Communities</a>
+  <br><br>
+  <a class="btn btn-primary" href="/account" role="button">Account</a>
+    <br><br>
 
 {% endblock %}
