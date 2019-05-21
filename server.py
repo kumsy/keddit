@@ -4,7 +4,7 @@ import secrets
 from jinja2 import StrictUndefined
 
 from flask import (Flask, render_template, request, flash, redirect, 
-                    session, url_for)
+                    session, url_for, abort)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
@@ -183,7 +183,7 @@ def view_community(community_name):
     return render_template('community.html', community=community, posts=posts, 
                                                     members_count=members_count)
 
-
+# CREATE A NEW POST
 @app.route("/<community_name>/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post(community_name):
@@ -200,15 +200,48 @@ def new_post(community_name):
         flash('Your post has been created!', 'success')
         # How to route user back to the community's page efficiently?
         return redirect(url_for('frontpage'))
-    return render_template('create_post.html', form=form, community=community)
+    return render_template('create_post.html', form=form, community=community, 
+                                                            legend='New Post')
 
+# VIEW SINGLE POST
 @app.route("/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
-    return render_template('post.html', post=post, community_name=community_name)
+    return render_template('post.html', post=post, community=community)
 
+# UPDATE POST
+@app.route("/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
+@login_required
+def update_post(post_id, community_name):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    if post.creator != current_user:
+        abort(403)
+    form = PostForm()
+    if form.validate_on_submit():
+        post.title=form.title.data
+        post.body=form.content.data
+        db.session.commit()
+        flash('Your post has been updated!', 'success')
+        return redirect('/'+community_name+'/post/'+str(post.id))
+    elif request.method == 'GET':    
+        form.title.data=post.title
+        form.content.data=post.body
+    return render_template('create_post.html', form=form, post=post,community=community, 
+                                                        legend='Update Post')
 
+@app.route("/<community_name>/post/<int:post_id>/delete", methods=['POST'])
+@login_required
+def delete_post(post_id, community_name):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    if post.creator != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect('/communities/'+community_name)
 
 # @app.route("/<community_name>/posts/<int:post_id>")
 # def posts():

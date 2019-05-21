@@ -1,16 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
-    
+    <h1>k/{{ community.community_name }}</h1>
+
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post.creator.username }}</a>
               <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+              {% if post.creator == current_user %}
+              <div>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/{{community.community_name}}/post/{{post.id}}/update">Update</a>
+                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                
+
+              </div>
+              {% endif %}
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <h2><a class="article-title" href="/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.body }}</p>
           </div>
         </article>
+
+        <!-- Modal  which is a drop down confirmation to "delete" box -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <form action="/{{community.community_name}}/post/{{post.id}}/delete" method="POST">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
     
 {% endblock content %}
