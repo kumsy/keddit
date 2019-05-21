@@ -184,15 +184,19 @@ def view_community(community_name):
                                                     members_count=members_count)
 
 
-@app.route("/post/new", methods=['GET', 'POST'])
+@app.route("/<community_name>/post/new", methods=['GET', 'POST'])
 @login_required
-def new_post():
+def new_post(community_name):
+
+    community = Community.query.filter_by(community_name=community_name).first()
+
     form = PostForm()
     if form.validate_on_submit():
         # Put data into our database here
         flash('Your post has been created!', 'success')
-        return redirect(url_for('home'))
-    return render_template('create_post.html', form=form)
+        # How to route user back to the community's page efficiently?
+        return redirect(url_for('frontpage'))
+    return render_template('create_post.html', form=form, community=community)
 
 
 
