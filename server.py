@@ -243,15 +243,13 @@ def delete_post(post_id, community_name):
     flash('Your post has been deleted!', 'success')
     return redirect('/k/'+community_name)
 
-# @app.route("/<community_name>/posts/<int:post_id>")
+
+
+# @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
 # def posts():
 #     pass
 
-# @app.route("/<community_name>/posts/<int:post_id>/upvote")
-# def posts():
-#     pass
-
-# @app.route("/<community_name>/posts/<int:post_id>/downvote")
+# @app.route("/k/<community_name>/posts/<int:post_id>/downvote")
 # def posts():
 #     pass
 
