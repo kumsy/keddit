@@ -167,7 +167,7 @@ def community_list():
     communities = Community.query.order_by('community_name').all()
     return render_template("community_list.html", communities=communities)
 
-@app.route("/communities/<community_name>")
+@app.route("/k/<community_name>")
 def view_community(community_name):
 
     # Passes the string from parameter
@@ -184,7 +184,7 @@ def view_community(community_name):
                                                     members_count=members_count)
 
 # CREATE A NEW POST
-@app.route("/<community_name>/post/new", methods=['GET', 'POST'])
+@app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post(community_name):
 
@@ -199,19 +199,19 @@ def new_post(community_name):
         db.session.commit()
         flash('Your post has been created!', 'success')
         # How to route user back to the community's page efficiently?
-        return redirect(url_for('frontpage'))
+        return redirect('/k/'+community_name)
     return render_template('create_post.html', form=form, community=community, 
                                                             legend='New Post')
 
 # VIEW SINGLE POST
-@app.route("/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
+@app.route("/k/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
     return render_template('post.html', post=post, community=community)
 
 # UPDATE POST
-@app.route("/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
+@app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
@@ -231,7 +231,7 @@ def update_post(post_id, community_name):
     return render_template('create_post.html', form=form, post=post,community=community, 
                                                         legend='Update Post')
 
-@app.route("/<community_name>/post/<int:post_id>/delete", methods=['POST'])
+@app.route("/k/<community_name>/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
@@ -241,7 +241,7 @@ def delete_post(post_id, community_name):
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
-    return redirect('/communities/'+community_name)
+    return redirect('/k/'+community_name)
 
 # @app.route("/<community_name>/posts/<int:post_id>")
 # def posts():

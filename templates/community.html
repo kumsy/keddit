@@ -9,7 +9,7 @@
   </div>
   <div>
     <!-- Create Post Button -->
-    <a class='btn btn-primary' href="/{{ community.community_name }}/post/new" role='button'>Create Post</a>
+    <a class='btn btn-primary' href="/k/{{ community.community_name }}/post/new" role='button'>Create Post</a>
   </div><br>
 
   <!-- Display Posts -->
@@ -22,7 +22,7 @@
           <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
         </div>
         <!-- Link post title to post link -->
-        <h2><a class="article-title" href="/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
+        <h2><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.body }}</p>
       </div>
     </article>

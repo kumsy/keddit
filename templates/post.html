@@ -10,14 +10,14 @@
               <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
               {% if post.creator == current_user %}
               <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/{{community.community_name}}/post/{{post.id}}/update">Update</a>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/k/{{community.community_name}}/post/{{post.id}}/update">Update</a>
                 <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
                 
 
               </div>
               {% endif %}
             </div>
-            <h2><a class="article-title" href="/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h2>
+            <h2><a class="article-title" href="/k/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.body }}</p>
           </div>
         </article>
@@ -34,7 +34,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <form action="/{{community.community_name}}/post/{{post.id}}/delete" method="POST">
+          <form action="/k/{{community.community_name}}/post/{{post.id}}/delete" method="POST">
             <input class="btn btn-danger" type="submit" value="Delete">
           </form>
         </div>
