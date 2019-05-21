@@ -106,6 +106,10 @@ a.article-title:hover {
   color:white;
 }
 
+.community_title{
+  background:blue;
+}
+
 .container{
   margin-top: 65px;
 }

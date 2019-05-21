@@ -1,3 +1,4 @@
+from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import (UserMixin, LoginManager, login_required, login_user, 
@@ -96,7 +97,7 @@ class Post(db.Model):
                                                             nullable=False)
     title = db.Column(db.String(30), nullable=False)
     body = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, nullable=True)
+    date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     image_url = db.Column(db.String(500), nullable=True)
 
     # Author (post.creator) is an User Object
@@ -122,7 +123,7 @@ class PostRatings(db.Model):
     vote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<rating_id={}, user_id={}, post_id={}, votes={}>\n".format(
+        return "<rating_id={}, user_id={}, post_id={}, vote={}>\n".format(
                 self.id, self.user_id, self.post_id, self.vote)
 
 
@@ -160,8 +161,8 @@ class CommentRatings(db.Model):
     vote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<rating_id={}, user_id={}, comment_id={}, date={}\n".format(
-                self.id, self.user_id, self.comment_id, self.date)
+        return "<rating_id={}, user_id={}, comment_id={}, vote={}\n".format(
+                self.id, self.user_id, self.comment_id, self.vote)
 
 
 

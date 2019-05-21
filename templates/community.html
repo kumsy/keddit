@@ -3,7 +3,7 @@
 
 <!-- community_name is the object we got in our route -->
   
-  <div style="background-color:silver;color:white;padding:20px;margin:10px;border-style: ridge">
+  <div class="community_title">
      <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
      <small>{{ members_count }} members</small>
   </div>
@@ -19,9 +19,10 @@
       <div class="media-body">
         <div class="article-metadata">
           <a class="mr-2" href="#">{{ post.creator.username }}</a>
-          <small class="text-muted">date</small>
+          <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
         </div>
-        <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+        <!-- Link post title to post link -->
+        <h2><a class="article-title" href="/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.body }}</p>
       </div>
     </article>

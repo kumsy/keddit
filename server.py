@@ -193,10 +193,20 @@ def new_post(community_name):
     form = PostForm()
     if form.validate_on_submit():
         # Put data into our database here
+        post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
+                    body=form.content.data)
+        db.session.add(post)
+        db.session.commit()
         flash('Your post has been created!', 'success')
         # How to route user back to the community's page efficiently?
         return redirect(url_for('frontpage'))
     return render_template('create_post.html', form=form, community=community)
+
+@app.route("/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
+def post(post_id, community_name):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    return render_template('post.html', post=post, community_name=community_name)
 
 
 
