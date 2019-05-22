@@ -208,7 +208,9 @@ def new_post(community_name):
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
-    return render_template('post.html', post=post, community=community)
+
+    comments = Comment.query.filter_by(post_id=post_id).all()
+    return render_template('post.html', post=post, community=community, comments=comments)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])

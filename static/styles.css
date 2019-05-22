@@ -169,6 +169,14 @@ a.article-title:hover {
   margin-right: 16px;
 }
 
+.article-img_comment {
+  height: 35px;
+  width: 35px;
+  margin-right: 16px;
+}
+
+
+
 .article-metadata {
   padding-bottom: 1px;
   margin-bottom: 4px;

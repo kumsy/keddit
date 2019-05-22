@@ -2,6 +2,7 @@
 {% block content %}
     <h1>k/{{ community.community_name }}</h1>
 
+        <!-- Main USER POST -->
         <article class="media content-section">
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
           <div class="media-body">
@@ -42,4 +43,26 @@
     </div>
   </div>
     
+
+<!-- Create Post Button -->
+  <div>
+    <a class='btn btn-outline-primary btn-sm' href="#" role='button'>Create Comment</a>
+  </div><br>
+
+
+  <!-- Display comments -->
+  {% for comment in comments %}
+    <article class="media content-section">
+      <img class="rounded-circle article-img_comment" src="{{ url_for('static', filename='images/' + comment.creator.image_file) }}">
+      <div class="media-body">
+        <div class="article-metadata">
+          <a class="mr-2" href="#">{{ comment.creator.username }}</a>
+          <small class="text-muted">{{ comment.date.strftime('%Y-%m-%d') }}</small>
+        </div>
+        
+        <p class="article-content">{{ comment.body }}</p>
+      </div>
+    </article>
+      
+  {% endfor %}
 {% endblock content %}
