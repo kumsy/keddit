@@ -10,7 +10,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
                     Post, PostRatings, Comment, CommentRatings)
 from forms import (RegistrationForm, LoginForm, CommunityForm, 
-                    AccountForm, PostForm)
+                    AccountForm, PostForm, CommentForm)
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
@@ -226,13 +226,13 @@ def update_post(post_id, community_name):
         post.body=form.content.data
         db.session.commit()
         flash('Your post has been updated!', 'success')
-        return redirect('/'+community_name+'/post/'+str(post.id))
+        return redirect('/k/'+community_name+'/post/'+str(post.id))
     elif request.method == 'GET':    
         form.title.data=post.title
         form.content.data=post.body
     return render_template('create_post.html', form=form, post=post,community=community, 
                                                         legend='Update Post')
-
+# DELETE POST
 @app.route("/k/<community_name>/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id, community_name):
@@ -244,6 +244,76 @@ def delete_post(post_id, community_name):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect('/k/'+community_name)
+
+
+# CREATE COMMENT
+@app.route("/k/<community_name>/post/<int:post_id>/comment/new", 
+                                                        methods=['GET','POST'])
+@login_required
+def create_comment(post_id, community_name):
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment = Comment(user_id=current_user.id, post_id=post_id,
+                            body=form.content.data)
+        db.session.add(comment)
+        db.session.commit()
+        flash('Your comment has been created!', 'success')
+        return redirect("/k/"+community_name+"/post/"+str(post_id))
+    return render_template('create_comment.html', form=form)
+
+# VIEW SINGLE COMMENT
+@app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>", methods=['GET', 'POST'])
+def comment(post_id, community_name, comment_id):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    comment = Comment.query.get(comment_id)
+
+    return render_template('comment.html', post=post, community=community, comment=comment)
+
+# UPDATE COMMENT
+@app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/update", 
+                                                        methods=['GET', 'POST'])
+@login_required
+def update_comment(post_id, community_name, comment_id):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    comment = Comment.query.get(comment_id)
+    if comment.creator != current_user:
+        abort(403)
+    form = CommentForm()
+    if form.validate_on_submit():
+        comment.body=form.content.data
+        db.session.commit()
+        flash('Your post has been updated!', 'success')
+        return redirect('/k/'+community_name+'/post/'+str(post.id))
+    elif request.method == 'GET':    
+        form.content.data=comment.body
+    return render_template('create_comment.html', form=form, post=post,community=community, 
+                                                        legend='Update Post')
+
+@app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/delete",
+                                                    methods=['POST'])
+@login_required
+def delete_comment(post_id, community_name, comment_id):
+    post = Post.query.get_or_404(post_id)
+    community = Community.query.filter_by(community_name=community_name).first()
+    comment = Comment.query.get(comment_id)
+    if comment.creator != current_user:
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('Your comment has been deleted!', 'success')
+    return redirect('/k/'+community_name+'/post/'+str(post.id))
+
+
+
+
+
+
+
+
+
+
 
 
 
