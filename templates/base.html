@@ -39,15 +39,11 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/communities">View Communities</a>
-            </li>
-
-            <li class="nav-item">
               <a class="nav-link" href="/account">{{ current_user.username }}</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
+              <a class="nav-link" href="/logout">Logout <i class="logout fas fa-moon"></i></a>
             </li>
             <!-- If not logged in, show ... -->
             {% else %}
@@ -60,12 +56,10 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/login">Log In</a>
+              <a class="nav-link" href="/login">Log In <i class="login fas fa-door-open"></i></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/communities">View Communities</a>
-            </li>
+          
             {% endif %} 
           </ul> 
         </div>
@@ -73,20 +67,6 @@
   </div>
 </section>
 
-<a href="/">keddit</a>
-
-<!-- Show Home Link and Login/Logout depending if the user in logged in or not -->
-{% if current_user.is_authenticated %}
-    <a href="/home">Front Page</a>
-    <a href="{{url_for('new_community')}}">Create Community</a>
-    <a href="/communities">View Communities</a>
-    <a href="/account"> {{ current_user.username }} </a>
-    <a href="/logout">Logout</a>   
-{% else %}
-    <a href="/">Home</a> 
-    <a href="/login">Login</a>
-    <a href="/communities">View Communities</a>
-{% endif %}
 
 
 <!-- Flash Messages -->
