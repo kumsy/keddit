@@ -2,7 +2,7 @@
 #navbar_header{
     background:#648DFF;
     color:white;
-    position:fixed;
+    /*position:fixed;*/
     width:100%;
 
 }
@@ -21,6 +21,98 @@
     /*color: rgba(0,0,0,1.00)*/
 }
 
+.navbar-nav{
+
+  margin-right: 400px;
+}
+
+.linkedin{
+  padding: 10px;
+  border-radius: 5px;
+  
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+
+}
+.linkedin:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color:#0e76a8;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+.github{
+  padding: 10px;
+  border-radius: 5px;
+  
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+  
+}
+.github:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color: black;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+.twitter{
+  padding: 10px;
+  border-radius: 5px;
+  
+
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+  
+}
+.twitter:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color:#1dcaff;
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+.facebook{
+  padding: 10px;
+  border-radius: 5px;
+  
+
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+  
+}
+.facebook:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color:#3b5998;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+.reddit{
+  padding: 10px;
+  border-radius: 5px;
+  
+
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+  
+}
+.reddit:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color:#FF4500;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+
+.social_icons{
+  display:inline-flex;
+  
+}
 
 /*=================================================*/
 
