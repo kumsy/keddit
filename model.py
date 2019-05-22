@@ -138,7 +138,7 @@ class Comment(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), 
                                                         nullable=False)
     body = db.Column(db.Text, nullable=False)
-    date = db.Column(db.DateTime, nullable=True)
+    date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     image_url = db.Column(db.String(500), nullable=True)
 
     def __repr__(self):

@@ -64,6 +64,26 @@ def load_posts():
     db.session.commit()
     print("Posts 😚")
 
+def load_comments():
+    """ Load comments into our database """
+
+    a = Comment(user_id=1, post_id=2, body="Hey ropers, yeah I'll join! Count me in me! :)")
+    b = Comment(user_id=1, post_id=3, body="The mother of dragons deserved better...")
+    c = Comment(user_id=2, post_id=1, body="Why not both? I'm me.")
+    d = Comment(user_id=2, post_id=3, body="I still need to watch it lol.")
+    e = Comment(user_id=3, post_id=1, body="Heard Ibanez is great. Also PRS's.")
+    f = Comment(user_id=3, post_id=4, body="May the force be with Jane Doe.")
+    g = Comment(user_id=4, post_id=2, body="Yeah I'm down, do you need a DPS?")
+    h = Comment(user_id=4, post_id=5, body="Google is your friend?")
+    i = Comment(user_id=5, post_id=1, body="I second the PRS Guitars.")
+    j = Comment(user_id=5, post_id=5, body="And Bing must be yours?")
+    k = Comment(user_id=1, post_id=4, body="The Rise of Skywalker is like The Last Hope, literally.")
+    l = Comment(user_id=1, post_id=5, body="Yeah HB is good, also leetcode has good practice online.")
+
+    db.session.add_all([a, b, c, d, e, f, g, h, i, j, k, l])
+    db.session.commit()
+    print("Comments 😚")
+
 
 def set_val_user_id():
     """Set value for the next user_id after seeding database"""
@@ -85,4 +105,5 @@ if __name__ == "__main__":
     load_users()
     load_communities()
     load_posts()
+    load_comments()
     set_val_user_id()
