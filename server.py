@@ -179,9 +179,10 @@ def view_community(community_name):
     posts = Post.query.filter_by(community_id=community.id).all() # from community object
     # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
+    # comments_count = Comment.query.filter_by(post_id=posts.id).count()
     
     return render_template('community.html', community=community, posts=posts, 
-                                                    members_count=members_count)
+                     members_count=members_count)
 
 # CREATE A NEW POST
 @app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])
@@ -210,7 +211,9 @@ def post(post_id, community_name):
     community = Community.query.filter_by(community_name=community_name).first()
 
     comments = Comment.query.filter_by(post_id=post_id).all()
-    return render_template('post.html', post=post, community=community, comments=comments)
+    comments_count = Comment.query.filter_by(post_id=post_id).count()
+    return render_template('post.html', post=post, community=community, 
+                        comments=comments, comments_count=comments_count)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])

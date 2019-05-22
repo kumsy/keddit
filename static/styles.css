@@ -109,6 +109,10 @@
   -webkit-transition: border-radius 2s;
 }
 
+.comments{
+  color:#1dcaff;
+}
+
 .social_icons{
   display:inline-flex;
   
