@@ -7,9 +7,9 @@
         <article class="media content-section">
           <!-- Upvotes/Downvotes -->
           <div class="vote-container">
-            <div class="up"><a href="#"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
-            <div class="votecount"> 7 </div>
-            <div class="down"><a href="#"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+            <div class="up"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+            <div class="votecount"> {{rating_count}} </div>
+            <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
        
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
@@ -27,7 +27,12 @@
 
             <h2><a class="article-title" href="/k/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.body }}</p>
-            <p><small class="text-muted"><i class="comments fas fa-meteor"></i> {{comments_count}} Comments</small></p>
+            <p><small class="text-muted"><i class="comments fas fa-meteor"></i> {{comments_count}} Comments</small>
+            <small class="text-muted"><i class="likes far fa-thumbs-up"></i></i> {{upvote_count}} likes</small>
+            <small class="text-muted"><i class="dislikes far fa-thumbs-down"></i></i> {{downvote_count}} dislikes</small>
+
+            </p>
+            
           </div>
         </article>
      

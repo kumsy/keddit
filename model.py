@@ -120,11 +120,12 @@ class PostRatings(db.Model):
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'), 
                                                         nullable=False)
   
-    vote = db.Column(db.Integer, nullable=True)
+    upvote = db.Column(db.Integer, nullable=True)
+    downvote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<rating_id={}, user_id={}, post_id={}, vote={}>\n".format(
-                self.id, self.user_id, self.post_id, self.vote)
+        return "<rating_id={}, user_id={}, post_id={}, upvote={}, downvote={}>\n".format(
+                self.id, self.user_id, self.post_id, self.upvote, self.downvote)
 
 
 class Comment(db.Model):
@@ -158,11 +159,12 @@ class CommentRatings(db.Model):
                                                         nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'),
                                                         nullable=False)
-    vote = db.Column(db.Integer, nullable=True)
+    upvote = db.Column(db.Integer, nullable=True)
+    downvote = db.Column(db.Integer, nullable=True)
 
     def __repr__(self):
-        return "<rating_id={}, user_id={}, comment_id={}, vote={}\n".format(
-                self.id, self.user_id, self.comment_id, self.vote)
+        return "<rating_id={}, user_id={}, comment_id={}, upvote={}, downvote={}\n".format(
+                self.id, self.user_id, self.comment_id, self.upvote, self.downvote)
 
 
 

@@ -212,8 +212,16 @@ def post(post_id, community_name):
 
     comments = Comment.query.filter_by(post_id=post_id).all()
     comments_count = Comment.query.filter_by(post_id=post_id).count()
+    # filter by post id and upvote count, get total, do same for downvote. then subtract.
+    upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
+    downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
+    rating_count = upvote - downvote
     return render_template('post.html', post=post, community=community, 
-                        comments=comments, comments_count=comments_count)
+                                        comments=comments, 
+                                        comments_count=comments_count, 
+                                        rating_count=rating_count,
+                                        upvote_count=upvote,
+                                        downvote_count=downvote)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -293,7 +301,7 @@ def update_comment(post_id, community_name, comment_id):
         form.content.data=comment.body
     return render_template('create_comment.html', form=form, post=post,community=community, 
                                                         legend='Update Post')
-
+# DELETE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/delete",
                                                     methods=['POST'])
 @login_required
@@ -309,14 +317,23 @@ def delete_comment(post_id, community_name, comment_id):
     return redirect('/k/'+community_name+'/post/'+str(post.id))
 
 
-
-# @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
-# def posts():
-#     pass
-
-# @app.route("/k/<community_name>/posts/<int:post_id>/downvote")
-# def posts():
-#     pass
+# UPVOTE POST
+@app.route("/k/<community_name>/posts/<int:post_id>/upvote")
+@login_required
+def upvote(community_name, post_id):
+    post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
+    db.session.add(post_rating)
+    db.session.commit()
+    # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
+    return redirect('/k/'+community_name+'/post/'+str(post_id))
+# DOWNVOTE POST
+@app.route("/k/<community_name>/posts/<int:post_id>/downvote")
+@login_required
+def downvote(community_name, post_id):
+    post_rating=PostRatings(user_id=current_user.id,post_id=post_id,downvote=1)
+    db.session.add(post_rating)
+    db.session.commit()
+    return redirect('/k/'+community_name+'/post/'+str(post_id))
 
 
 

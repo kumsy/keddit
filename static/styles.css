@@ -112,6 +112,14 @@
 .comments{
   color:#1dcaff;
 }
+.likes{
+  color:#3b5998;
+  margin-left: 10px
+}
+.dislikes{
+  color:#3b5998;
+  margin-left: 10px
+}
 
 .social_icons{
   display:inline-flex;
@@ -134,7 +142,7 @@
 }
 
 .upvote{
-  
+  color:gray;
 
 }
 .upvote:hover{
@@ -142,11 +150,11 @@
 }
 
 .downvote{
-  
+  color:gray;
 
 }
 .downvote:hover{
-  color:black;
+  color:#7289da;
 }
 
 .votecount{
