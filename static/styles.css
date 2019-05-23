@@ -1,8 +1,10 @@
 /*Title*/
 #navbar_header{
-    background:#648DFF;
+    /*background:#648DFF;*/
     color:white;
     width:100%;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(100,141,255,1) 52%, rgba(255,69,0,1) 100%); 
 
 }
 
@@ -114,11 +116,11 @@
 }
 .likes{
   color:#3b5998;
-  margin-left: 10px
+  margin-left: 20px
 }
 .dislikes{
   color:#3b5998;
-  margin-left: 10px
+  margin-left: 20px
 }
 
 .social_icons{

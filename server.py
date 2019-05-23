@@ -167,6 +167,7 @@ def community_list():
     communities = Community.query.order_by('community_name').all()
     return render_template("community_list.html", communities=communities)
 
+# Display communitys with posts
 @app.route("/k/<community_name>")
 def view_community(community_name):
 
@@ -180,6 +181,11 @@ def view_community(community_name):
     # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
+
+    # filter by post id and upvote count, get total, do same for downvote. then subtract.
+    # upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
+    # downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
+    # rating_count = upvote - downvote
     
     return render_template('community.html', community=community, posts=posts, 
                      members_count=members_count)
