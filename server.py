@@ -310,16 +310,6 @@ def delete_comment(post_id, community_name, comment_id):
 
 
 
-
-
-
-
-
-
-
-
-
-
 # @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
 # def posts():
 #     pass

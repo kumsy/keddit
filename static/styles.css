@@ -125,7 +125,42 @@
   color:#be7e3e;
 }
 
+.vote-container{
+  display: flex;
+  flex-direction: column;
+  margin-top:25px;
+  margin-right: 10px
 
+}
+
+.upvote{
+  
+
+}
+.upvote:hover{
+  color:#FF4500;
+}
+
+.downvote{
+  
+
+}
+.downvote:hover{
+  color:black;
+}
+
+.votecount{
+ 
+ margin-left:10px;
+
+}
+.votecount:hover{
+  color:gray;
+}
+
+.up{
+
+}
 /*=================================================*/
 
 body {

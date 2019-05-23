@@ -3,7 +3,15 @@
     <h1>k/{{ community.community_name }}</h1>
 
         <!-- Main USER POST -->
+       
         <article class="media content-section">
+          <!-- Upvotes/Downvotes -->
+          <div class="vote-container">
+            <div class="up"><a href="#"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+            <div class="votecount"> 7 </div>
+            <div class="down"><a href="#"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+          </div>
+       
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
           <div class="media-body">
             <div class="article-metadata">
@@ -22,6 +30,7 @@
             <p><small class="text-muted"><i class="comments fas fa-meteor"></i> {{comments_count}} Comments</small></p>
           </div>
         </article>
+     
 
         <!-- Modal  which is a drop down confirmation to "delete" box -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
