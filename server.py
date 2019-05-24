@@ -22,8 +22,7 @@ login_manager = LoginManager(app)
 # Required to use Flask sessions and the debug toolbar
 app.secret_key = "ABC123"
 
-# Normally, if you use an undefined variable in Jinja2, it fails silently.
-# This is horrible. Fix this so that, instead, it raises an error.
+# Raises an error in Jinja2 for to debug
 app.jinja_env.undefined = StrictUndefined
 
 # Handle User Logins
@@ -171,9 +170,6 @@ def community_list():
 @app.route("/k/<community_name>")
 def view_community(community_name):
 
-    # Passes the string from parameter
-    # Use that string to query the database for community (filter_by)
-
     # Object community
     community = Community.query.filter_by(community_name=community_name).first()
     # Get all posts for the community
@@ -182,17 +178,22 @@ def view_community(community_name):
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
 
-    # filter by post id and upvote count, get total, do same for downvote. then subtract.
+    
     votes = []
-
+    comments = []
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
+    # Then append them to a list after subtracting.
     for post in posts:
         upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
         downvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.downvote>=1).count()
         votes.append(upvote - downvote)
-    print(votes, "******************")
+        comments_count = Comment.query.filter_by(post_id=post.id).count()
+        comments.append(comments_count)
+    print(comments, "**********************")
+
     
     return render_template('community.html', community=community, posts=posts, 
-                     members_count=members_count, votes = votes)
+                    members_count=members_count, votes = votes, comments=comments)
 
 # CREATE A NEW POST
 @app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])

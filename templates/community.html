@@ -5,7 +5,7 @@
   
   <div class="community_title">
      <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
-     <small>{{ members_count }} members</small>
+     <small class="members_count">{{ members_count }} members</small>
   </div>
   <br>
   <div>
@@ -19,7 +19,7 @@
         <!-- Upvotes/Downvotes -->
           <div class="vote-container">
             <div class="up"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
-            <div class="votecount"> {{votes[loop.index-1]}} </div>
+            <div class="votecount"> {{votes[loop.index0]}} </div>
             <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
 
@@ -32,6 +32,7 @@
         <!-- Link post title to post link -->
         <h2><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.body }}</p>
+         <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
 
       </div>
     </article>
