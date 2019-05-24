@@ -16,6 +16,13 @@
   <!-- Display Posts -->
   {% for post in posts %}
     <article class="media content-section">
+        <!-- Upvotes/Downvotes -->
+          <div class="vote-container">
+            <div class="up"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+            <div class="votecount"> {{votes[loop.index-1]}} </div>
+            <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+          </div>
+
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
@@ -25,6 +32,7 @@
         <!-- Link post title to post link -->
         <h2><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.body }}</p>
+
       </div>
     </article>
       

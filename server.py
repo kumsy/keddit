@@ -183,12 +183,16 @@ def view_community(community_name):
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
 
     # filter by post id and upvote count, get total, do same for downvote. then subtract.
-    # upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
-    # downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
-    # rating_count = upvote - downvote
+    votes = []
+
+    for post in posts:
+        upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
+        downvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.downvote>=1).count()
+        votes.append(upvote - downvote)
+    print(votes, "******************")
     
     return render_template('community.html', community=community, posts=posts, 
-                     members_count=members_count)
+                     members_count=members_count, votes = votes)
 
 # CREATE A NEW POST
 @app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])
