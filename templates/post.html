@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block title %}
+{% endblock %}
+
+
 {% block content %}
 
 
@@ -77,7 +82,7 @@
     <div class="votecount_comment"> {{votes[loop.index0]}} </div>
     <div class="down"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down"></i></a></div>
   </div>
-  
+
       <img class="rounded-circle article-img_comment" src="{{ url_for('static', filename='images/' + comment.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">

@@ -1,13 +1,11 @@
 /*Title*/
 #navbar_header{
-    /*background:#648DFF;*/
-    color:white;
-    width:100%;
-   /* background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(100,141,255,1) 52%, rgba(255,69,0,1) 100%); 
-*/
-background: rgb(255,255,255);
-background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(91,98,175,1) 36%, rgba(13,38,175,1) 100%);    
+  color:white;
+  width:100%;
+  position:fixed;
+  z-index: 999999;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(91,98,175,1) 36%, rgba(13,38,175,1) 100%);    
 }
 
 .navbar-image{
@@ -234,6 +232,7 @@ a.article-title:hover {
 
 .article-content {
   white-space: pre-line;
+
 }
 
 .article-img {
@@ -286,8 +285,10 @@ a.article-title:hover {
 
 .community_title{
   background:blue;
+  width: 100%;
 }
 
 .container{
-  margin-top: 65px;
+  /*margin-top: 65px;*/
+  padding-top:90px;
 }

@@ -73,22 +73,29 @@
 
 <!-- BODY CONTENT BLOCK -->
 <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-              {% for category, message in messages %}
-                <div class="alert alert-{{ category }}">
-                  {{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
+  <div class="col-md-12">
+    {% block title %}
 
-      {% block content %}
-      PUT CONTENT BLOCK HERE
-      {% endblock %}
-    </div>
+    {% endblock%}
+  </div>
+  <div class="row">
+
+    <div class="col-md-8">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+    {% block content %}
+    PUT CONTENT BLOCK HERE
+    {% endblock %}
+        </div>
+
     <div class="col-md-4">
       <div class="content-section">
         <h3><img class="navbar-image" src="/static/images/logo.png" alt="Keddit Logo"></a> Placeholder</h3> 

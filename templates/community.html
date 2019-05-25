@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
-{% block content %}
-
 <!-- community_name is the object we got in our route -->
-  
+  {% block title%}
   <div class="community_title">
      <h1 class = "community_name">k/ {{ community.community_name }}</h1> 
      <small class="members_count">{{ members_count }} members</small>
   </div>
   <br>
   <div>
-    <!-- Create Post Button -->
+    
+    <!-- Create a Post -->
     <a class='btn btn-primary' href="/k/{{ community.community_name }}/post/new" role='button'>Create Post</a>
   </div><br>
+  {% endblock %}
+
+{% block content %}
+
+<!--  -->
 
   <!-- Display Posts -->
   {% for post in posts %}
