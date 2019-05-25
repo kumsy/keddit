@@ -227,12 +227,24 @@ def post(post_id, community_name):
     upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
     downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
     rating_count = upvote - downvote
+
+    #comment upvote and downvotes
+    votes = []
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
+    # Then append them to a list after subtracting.
+    for comment in comments:
+        # filter by comment id and upvote count, get total, do same for downvote. then subtract.
+        upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment.id, CommentRatings.upvote>=1).count()
+        downvote = CommentRatings.query.filter(CommentRatings.comment_id==comment.id, CommentRatings.downvote>=1).count()
+        votes.append(upvote - downvote)
+
     return render_template('post.html', post=post, community=community, 
                                         comments=comments, 
                                         comments_count=comments_count, 
                                         rating_count=rating_count,
                                         upvote_count=upvote,
-                                        downvote_count=downvote)
+                                        downvote_count=downvote,
+                                        votes=votes)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -297,7 +309,8 @@ def comment(post_id, community_name, comment_id):
     rating_count = upvote - downvote
 
 
-    return render_template('comment.html', post=post, community=community, comment=comment)
+    return render_template('comment.html', post=post, community=community, 
+                                    comment=comment, rating_count=rating_count)
 
 
 
@@ -360,20 +373,18 @@ def downvote(community_name, post_id):
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/upvote")
 @login_required
 def upvote_comment(community_name, post_id, comment_id):
-    # post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
-    # db.session.add(post_rating)
-    # db.session.commit()
-    # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
+    comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,upvote=1)
+    db.session.add(comment_rating)
+    db.session.commit()
     return redirect('/k/'+community_name+'/post/'+str(post_id))
 
 # DOWNVOTE COMMENT
-@app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/down")
+@app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/downvote")
 @login_required
 def downvote_comment(community_name, post_id, comment_id):
-    # post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
-    # db.session.add(post_rating)
-    # db.session.commit()
-    # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
+    comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,downvote=1)
+    db.session.add(comment_rating)
+    db.session.commit()
     return redirect('/k/'+community_name+'/post/'+str(post_id))
 
 #____________________________________________________________
