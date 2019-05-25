@@ -1,9 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<h5><i class="far fa-comment"></i> Comment</h5><br>
 
 <article class="media content-section">
+    <!-- Upvotes/Downvotes -->
+  <div class="vote-container">
+    <div class="up"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up"></i></a></div>
+    <div class="votecount_comment"> 2 </div>
+    <div class="down"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down"></i></a></div>
+  </div>
+
+
       <img class="rounded-circle article-img_comment" src="{{ url_for('static', filename='images/' + comment.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
