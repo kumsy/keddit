@@ -387,6 +387,27 @@ def downvote_comment(community_name, post_id, comment_id):
     db.session.commit()
     return redirect('/k/'+community_name+'/post/'+str(post_id))
 
+
+# User Page
+@app.route("/user/<string:username>")
+def user_account(username):
+    user= User.query.filter_by(username=username).first_or_404()
+    posts = Post.query.filter_by(creator=user).all()
+    
+
+    votes = []
+    comments = []
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
+    # Then append them to a list after subtracting.
+    for post in posts:
+        upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
+        downvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.downvote>=1).count()
+        votes.append(upvote - downvote)
+        comments_count = Comment.query.filter_by(post_id=post.id).count()
+        comments.append(comments_count)
+
+    return render_template('user_account.html', posts=posts, user=user, votes=votes, comments=comments)
+
 #____________________________________________________________
 
 if __name__ == "__main__":
