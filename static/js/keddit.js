@@ -144,4 +144,36 @@ function downvoteComment(evt) {
 }
 $(".down_comment").on('click', downvoteComment);
 
+/*********************************************
+// Show upvote from the community PAGE HTML
+***********************************************/
+function upvotePostList(evt) {
+    evt.preventDefault();
+    debugger
+    // Get values for post_id and community to use in our url
+    // Getting the element that was clicked on, it's dataset and it's property id from it's dataset
+    let post_id = evt.target.dataset.id;
+            
+
+    let community_name = $("#community_name").val();
+    let url = "/k/" + community_name + "/posts/" +post_id+ "/upvote";
+
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data['vote_count']);
+
+        let postID = (data.post_id)
+
+        $(".votecount#votecount" + postID).html(data.vote_count);
+  });
+
+}
+$(".up_post_list").on('click', upvotePostList);
+
 

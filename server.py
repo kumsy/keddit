@@ -363,7 +363,7 @@ def upvote(community_name, post_id):
 
     vote_count = upvote_count - downvote_count
 
-    return jsonify({'vote_count': vote_count})
+    return jsonify({'vote_count': vote_count, 'post_id': post_id})
 
 # DOWNVOTE POST
 @app.route("/k/<community_name>/posts/<int:post_id>/downvote")

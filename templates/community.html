@@ -20,13 +20,15 @@
 
   <!-- Display Posts -->
   {% for post in posts %}
+  <h1>{{post.id}}
+  </h1>
   <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
        <input type="hidden" id="community_name" name="community_name" value="{{community.community_name}}">
     <article class="media content-section">
         <!-- Upvotes/Downvotes -->
           <div class="vote-container">
-            <div class="up_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
-            <div class="votecount"> {{votes[loop.index0]}} </div>
+            <div class="up_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+            <div class="votecount" id="votecount{{post.id}}"> {{votes[loop.index0]}} </div>
             <div class="down_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
 
