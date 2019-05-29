@@ -70,8 +70,16 @@ function showDownvote(evt) {
     let community_name = $("#community_name").val();
     let url = "/k/" + community_name + "/posts/" +post_id+ "/downvote";
 
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+
     $.get(url, function(data){
         // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data['vote_count']);
+
         $(".votecount").html(data.vote_count);
   });
 
