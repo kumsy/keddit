@@ -4,7 +4,7 @@ import secrets
 from jinja2 import StrictUndefined
 
 from flask import (Flask, render_template, request, flash, redirect, 
-                    session, url_for, abort)
+                    session, url_for, abort, jsonify)
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
@@ -359,7 +359,13 @@ def upvote(community_name, post_id):
     db.session.add(post_rating)
     db.session.commit()
     # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
-    return redirect('/k/'+community_name+'/post/'+str(post_id))
+    downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()
+    upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
+
+    vote_count = upvote_count - downvote_count
+
+    return jsonify({'vote_count': vote_count})
+
 # DOWNVOTE POST
 @app.route("/k/<community_name>/posts/<int:post_id>/downvote")
 @login_required
@@ -367,7 +373,13 @@ def downvote(community_name, post_id):
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,downvote=1)
     db.session.add(post_rating)
     db.session.commit()
-    return redirect('/k/'+community_name+'/post/'+str(post_id))
+
+    downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()
+    upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
+
+    vote_count = upvote_count - downvote_count
+
+    return jsonify({'vote_count': vote_count})
 
 # UPVOTE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/upvote")

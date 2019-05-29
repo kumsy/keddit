@@ -11,11 +11,15 @@
     
 
         <!-- Main USER POST -->
-       
+
+        <!-- Hidden Field -->
+        <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
+       <input type="hidden" id="community_name" name="community_name" value="{{community.community_name}}">
+
         <article class="media content-section">
           <!-- Upvotes/Downvotes -->
           <div class="vote-container">
-            <div class="up"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+            <div class="up"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></div>
             <div class="votecount"> {{rating_count}} </div>
             <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>

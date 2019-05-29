@@ -82,7 +82,7 @@ def load_posts():
                 body="Donec purus velit, gravida vel elit a, tincidunt ultricies nulla. Phasellus nec diam malesuada, mattis tortor ut, tempus velit. Proin euismod leo eu euismod volutpat. Aenean rutrum velit nunc, sit amet dictum diam pellentesque eu. Curabitur in lacus urna. Nam vitae magna sapien. Suspendisse luctus vestibulum nisi sit amet imperdiet. In condimentum dignissim ex, sollicitudin pretium enim ultricies ac. Praesent ut suscipit tortor.")
     p = Post(user_id=3, community_id=8, title="So I saw a coyote and...",
                 body="Vivamus cursus, velit vel dignissim pretium, leo orci elementum leo, et hendrerit eros ante non nunc. Phasellus finibus eros eu dapibus varius. Phasellus fringilla purus ut condimentum gravida. Etiam quis sagittis lacus.")
-    q = Post(user_id=4, community_id=8, title="Apartment View [NSFW]",
+    q = Post(user_id=4, community_id=8, title="Apartment View",
                 body="Praesent cursus ante mauris, et aliquet velit pulvinar sed. Integer pretium blandit justo, id fringilla ex convallis et. ")
     r = Post(user_id=5, community_id=8, title="Warriors vs Lakers",
                 body="Vestibulum feugiat convallis est, quis semper metus fringilla non. Sed sollicitudin tempor dictum. Phasellus in aliquam sem. Nullam dictum et lectus ut dapibus.")

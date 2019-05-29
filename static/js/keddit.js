@@ -21,11 +21,40 @@ $(function() {
     // one or many will have to modify the page (DOM)
 });
 
-let $votecount = $(".votecount");
+// let $votecount = $(".votecount");
 
-function upvote(results){
-    $votecount.html("TEST");
+// function upvote(results){
+//     $votecount.html("TEST");
+// }
+
+// $(".votecount").on('click', upvote);
+
+function showVote(evt) {
+    evt.preventDefault();
+
+    // Get values for post_id and community to use in our url
+    let post_id = $("#post_id").val();
+    let community_name = $("#community_name").val();
+    let url = "/k/" + community_name + "/posts/" +post_id+ "/upvote";
+
+    // Debug
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+
+    $.get(url, function(data){
+        // Debug (JSON.stringify)
+        var response = JSON.stringify(data);
+        console.log(response);
+        
+        console.log(data['vote_count']);
+
+        let $votecount = $(".votecount");
+        $votecount.html(data['vote_count']);
+  });
+
 }
 
+$(".up").on('click', showVote);
 
-$(".votecount").on('click', upvote);
+
