@@ -409,7 +409,7 @@ def downvote_comment(community_name, post_id, comment_id):
     vote_count = upvote - downvote
 
 
-    return jsonify({'vote_count_comment': vote_count})
+    return jsonify({'vote_count_comment': vote_count, 'comment_id': comment_id})
 
 
 # User Page
