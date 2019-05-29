@@ -20,16 +20,21 @@
 
   <!-- Display Posts -->
   {% for post in posts %}
-  <h1>{{post.id}}
+  <!-- <h1>{{post.id}} -->
   </h1>
   <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
        <input type="hidden" id="community_name" name="community_name" value="{{community.community_name}}">
+       
     <article class="media content-section">
-        <!-- Upvotes/Downvotes -->
+            <!-- Upvote Arrow -->
           <div class="vote-container">
             <div class="up_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+
+            <!-- Display Votes -->
             <div class="votecount" id="votecount{{post.id}}"> {{votes[loop.index0]}} </div>
-            <div class="down_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+
+            <!-- Downvote Arrow -->
+            <div class="down_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}"class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
 
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">

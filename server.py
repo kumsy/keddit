@@ -378,7 +378,7 @@ def downvote(community_name, post_id):
 
     vote_count = upvote_count - downvote_count
 
-    return jsonify({'vote_count': vote_count})
+    return jsonify({'vote_count': vote_count, 'post_id': post_id})
 
 # UPVOTE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/upvote")
@@ -394,7 +394,7 @@ def upvote_comment(community_name, post_id, comment_id):
     vote_count = upvote - downvote
 
 
-    return jsonify({'vote_count_comment': vote_count})
+    return jsonify({'vote_count_comment': vote_count, 'comment_id': comment_id})
 
 # DOWNVOTE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/downvote")

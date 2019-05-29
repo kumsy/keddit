@@ -176,4 +176,70 @@ function upvotePostList(evt) {
 }
 $(".up_post_list").on('click', upvotePostList);
 
+/*********************************************
+// Show downvote from the community PAGE HTML
+***********************************************/
+function downvotePostList(evt) {
+    evt.preventDefault();
+    debugger
+    // Get values for post_id and community to use in our url
+    // Getting the element that was clicked on, it's dataset and it's property id from it's dataset
+    let post_id = evt.target.dataset.id;
+            
+
+    let community_name = $("#community_name").val();
+    let url = "/k/" + community_name + "/posts/" +post_id+ "/downvote";
+
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data['vote_count']);
+
+        let postID = (data.post_id)
+
+        $(".votecount#votecount" + postID).html(data.vote_count);
+  });
+
+}
+$(".down_post_list").on('click', downvotePostList);
+
+
+/*********************************************
+// Show downvote from the community PAGE HTML
+***********************************************/
+function upvoteCommentList(evt) {
+    evt.preventDefault();
+    debugger
+    // Get values for post_id and community to use in our url
+    // Getting the element that was clicked on, it's dataset and it's property id from it's dataset
+    let comment_id = evt.target.dataset.id;
+    let post_id = $("#post_id").val();
+            
+
+    let community_name = $("#community_name").val();
+    let url = "/k/" + community_name + "/post/" +post_id+ "/comment/" + comment_id +"/upvote";
+
+    console.log(url);
+    console.log(community_name);
+    console.log(comment_id);
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data['vote_count']);
+
+        let commentID = (data.comment_id)
+
+        $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment);
+  });
+
+}
+$(".up_comment_list").on('click', upvoteCommentList);
+
 
