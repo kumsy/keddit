@@ -1,3 +1,5 @@
+"use strict";
+
 $(function() {
     //alert("ready!");
 
@@ -18,3 +20,12 @@ $(function() {
 
     // one or many will have to modify the page (DOM)
 });
+
+let $votecount = $(".votecount");
+
+function upvote(results){
+    $votecount.html("TEST");
+}
+
+
+$(".votecount").on('click', upvote);

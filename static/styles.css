@@ -280,12 +280,39 @@ a.article-title:hover {
 /*=================*/
 
 .community_name{
-  color:white;
+
+font-family: "Trebuchet MS", sans-serif;
+font-size: 4em;
+letter-spacing: -2px;
+border-bottom: 2px solid black;
+text-transform: uppercase;
+
 }
+.community_name:hover{
+  letter-spacing: 10px;
+  
+  -webkit-transition: letter-spacing 2s;
+  
+  }
+
+.community_list{
+
+font-family: "Trebuchet MS", sans-serif;
+font-size: 2em;
+letter-spacing: -2px;
+/*border-bottom: 2px solid black;*/
+text-transform: uppercase;
+
+}
+.community_list:hover{
+  letter-spacing: 10px;
+  
+  -webkit-transition: letter-spacing 2s;
+  
+  }
 
 .community_title{
-  background:blue;
-  width: 100%;
+  
 }
 
 .container{
