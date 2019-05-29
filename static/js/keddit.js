@@ -29,7 +29,10 @@ $(function() {
 
 // $(".votecount").on('click', upvote);
 
-function showVote(evt) {
+/*********************************************
+// Show UPVOTE from the POST PAGE HTML
+***********************************************/
+function showUpvote(evt) {
     evt.preventDefault();
 
     // Get values for post_id and community to use in our url
@@ -46,7 +49,7 @@ function showVote(evt) {
         // Debug (JSON.stringify)
         var response = JSON.stringify(data);
         console.log(response);
-        
+
         console.log(data['vote_count']);
 
         let $votecount = $(".votecount");
@@ -54,7 +57,83 @@ function showVote(evt) {
   });
 
 }
+$(".up").on('click', showUpvote);
 
-$(".up").on('click', showVote);
+/*********************************************
+// Show DOWNVOTE from the POST PAGE HTML
+***********************************************/
+function showDownvote(evt) {
+    evt.preventDefault();
+
+    // Get values for post_id and community to use in our url
+    let post_id = $("#post_id").val();
+    let community_name = $("#community_name").val();
+    let url = "/k/" + community_name + "/posts/" +post_id+ "/downvote";
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        $(".votecount").html(data.vote_count);
+  });
+
+}
+$(".down").on('click', showDownvote);
+
+/*********************************************
+// UPVOTE COMMENTS from comment page
+***********************************************/
+function upvoteComment(evt) {
+    evt.preventDefault();
+
+    // Get values for post_id and community to use in our url
+    let post_id = $("#post_id").val();
+    let community_name = $("#community_name").val();
+    let comment_id = $("#comment_id").val();
+    let url = "/k/" + community_name + "/post/" +post_id+ "/comment/" + comment_id + "/upvote";
+
+    // Debug
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+    console.log(comment_id);
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data.vote_count_comment);
+        $(".votecount_comment").html(data.vote_count_comment);
+  });
+
+}
+$(".up_comment").on('click', upvoteComment);
+
+/*********************************************
+// DOWNVOTE COMMENTS from comment page
+***********************************************/
+function downvoteComment(evt) {
+    evt.preventDefault();
+
+    // Get values for post_id and community to use in our url
+    let post_id = $("#post_id").val();
+    let community_name = $("#community_name").val();
+    let comment_id = $("#comment_id").val();
+    let url = "/k/" + community_name + "/post/" +post_id+ "/comment/" + comment_id + "/downvote";
+
+    // Debug
+    console.log(url);
+    console.log(community_name);
+    console.log(post_id);
+    console.log(comment_id);
+
+    $.get(url, function(data){
+        // We are getting what our url route returns which is a json object
+        var response = JSON.stringify(data);
+        console.log(response);
+        console.log(data.vote_count_comment);
+        $(".votecount_comment").html(data.vote_count_comment);
+  });
+
+}
+$(".down_comment").on('click', downvoteComment);
 
 

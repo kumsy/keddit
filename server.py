@@ -177,7 +177,6 @@ def view_community(community_name):
     # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
-
     
     votes = []
     comments = []
@@ -388,7 +387,14 @@ def upvote_comment(community_name, post_id, comment_id):
     comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,upvote=1)
     db.session.add(comment_rating)
     db.session.commit()
-    return redirect('/k/'+community_name+'/post/'+str(post_id))
+
+    upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.upvote>=1).count()
+    downvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.downvote>=1).count()
+
+    vote_count = upvote - downvote
+
+
+    return jsonify({'vote_count_comment': vote_count})
 
 # DOWNVOTE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/downvote")
@@ -397,7 +403,13 @@ def downvote_comment(community_name, post_id, comment_id):
     comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,downvote=1)
     db.session.add(comment_rating)
     db.session.commit()
-    return redirect('/k/'+community_name+'/post/'+str(post_id))
+    upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.upvote>=1).count()
+    downvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.downvote>=1).count()
+
+    vote_count = upvote - downvote
+
+
+    return jsonify({'vote_count_comment': vote_count})
 
 
 # User Page

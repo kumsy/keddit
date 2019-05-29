@@ -9,12 +9,17 @@
 
 <small class="text-muted"><i class="far fa-comment"></i> Comment</small><br><br>
 
+ <!-- Hidden Field -->
+        <input type="hidden" id="post_id" name="post_id" value="{{post.id}}">
+       <input type="hidden" id="community_name" name="community_name" value="{{community.community_name}}">
+       <input type="hidden" id="comment_id" name="comment_id" value="{{comment.id}}">
+
 <article class="media content-section">
     <!-- Upvotes/Downvotes -->
   <div class="vote-container">
-    <div class="up"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up"></i></a></div>
+    <div class="up_comment"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/upvote"><i class="upvote fas fa-arrow-alt-circle-up"></i></a></div>
     <div class="votecount_comment"> {{ rating_count }} </div>
-    <div class="down"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down"></i></a></div>
+    <div class="down_comment"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down"></i></a></div>
   </div>
 
 
