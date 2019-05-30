@@ -126,10 +126,26 @@ p {
   color: #EF8172;
   margin-bottom: 1rem;
 }
-
 .icon:hover {
   color: #FF4C68;
 }
+.iconcomment {
+  color: #75cffc;
+  margin-bottom: 1rem;
+}
+.iconcomment:hover {
+  color: #00aaff;
+}
+
+.iconvote {
+  color: #ff8c62;
+  margin-bottom: 1rem;
+}
+
+.iconvote:hover {
+  color: #FF4500;
+}
+
 
 /*testimonials section*/
 #testimonials {
