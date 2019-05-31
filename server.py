@@ -34,7 +34,7 @@ def load_user(user_id):
 @app.route('/')
 def home():
     """Homepage."""
-    return render_template("landing_page.html")
+    return render_template("homepage.html")
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
@@ -193,6 +193,27 @@ def view_community(community_name):
     
     return render_template('community.html', community=community, posts=posts, 
                     members_count=members_count, votes = votes, comments=comments)
+
+# Join Communities
+@app.route("/k/<community_name>/join")
+@login_required
+def join_community(community_name):
+    '''Users can join communities'''
+
+    community = Community.query.filter_by(community_name=community_name).first()
+    member = CommunityMembers.query.filter(CommunityMembers.user_id==current_user.id, CommunityMembers.community_id==community.id).first()
+    print(member)
+    if member == None:
+       new_member = CommunityMembers(user_id=current_user.id, community_id=community.id)
+       db.session.add(new_member)
+       db.session.commit()
+       flash('You have successfully joined ' + community_name + '!', 'success')
+       return redirect('/k/'+community_name)
+    else:
+        flash('There was an error in joining.', 'danger')
+        return redirect('/k/'+community_name)
+
+
 
 # CREATE A NEW POST
 @app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])
