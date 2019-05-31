@@ -103,8 +103,8 @@ class Post(db.Model):
     # Author (post.creator) is an User Object
 
     def __repr__(self):
-        return "<post_id={}, user_id={}, community_id={}, title={}, date={}>\n".format(
-                self.id, self.user_id, self.community_id, self.title, self.date)
+        return "<post_id={}, user_id={}, community_id={}, title={}, date={}>, image_url={}\n".format(
+                self.id, self.user_id, self.community_id, self.title, self.date, self.image_url)
 
 
 class PostRatings(db.Model):

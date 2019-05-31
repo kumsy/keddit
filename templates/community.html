@@ -7,9 +7,11 @@
   </div>
   <br>
   <div>
+    {% if current_user.is_authenticated %}
     <!-- Join Community -->
     <a class='btn btn-primary' href="/k/{{ community.community_name }}/join" role='button'>Join</a>
   </div><br>
+  {% endif %}
     
     <!-- Create a Post -->
     <a class='btn btn-primary' href="/k/{{ community.community_name }}/post/new" role='button'>Create Post</a>
@@ -49,7 +51,12 @@
         <!-- Link post title to post link -->
         <h2><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
         <p class="article-content">{{ post.body }}</p>
+        <!-- Put picture here -->
+        {% if post.image_url %}
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
+        {% endif %}
          <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
+        
 
       </div>
     </article>

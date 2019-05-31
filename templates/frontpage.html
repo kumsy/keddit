@@ -2,17 +2,24 @@
 
 
 {% block title %}
-{% endblock %}
-
-
-{% block content %}
-
-  <h3>Front Page</h3>
+<h3>Front Page</h3>
 
     {% if current_user.is_authenticated %}
       <h4> Welcome, {{ current_user.username }}.</h4>
     {% endif %}
   <br>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+
+
+
   <a class="btn btn-primary" href="/communities" role="button">View Communities</a>
   <br><br>
   <a class="btn btn-primary" href="/account" role="button">Account</a>

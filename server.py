@@ -34,7 +34,10 @@ def load_user(user_id):
 @app.route('/')
 def home():
     """Homepage."""
-    return render_template("homepage.html")
+
+    form =  LoginForm()
+
+    return render_template("homepage.html", form = form)
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
@@ -81,6 +84,7 @@ def login():
         else:
             flash('Login Unsucessful. Please check email and password.',
                                                                     'danger')
+
     return render_template("login.html", form=form)
 
 # Logout route
@@ -133,6 +137,7 @@ def account():
 # ******************************
 @app.route('/home')
 def frontpage():
+
     return render_template('frontpage.html')
 
 # Create Community route
@@ -225,13 +230,25 @@ def new_post(community_name):
     form = PostForm()
     if form.validate_on_submit():
         # Put data into our database here
-        post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
-                    body=form.content.data)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post has been created!', 'success')
-        # How to route user back to the community's page efficiently?
-        return redirect('/k/'+community_name)
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
+                        body=form.content.data, image_url=picture_file)
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
+            return redirect('/k/'+community_name)
+
+        else:
+            post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
+                        body=form.content.data)
+            db.session.add(post)
+            db.session.commit()
+
+            flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
+            return redirect('/k/'+community_name)
     return render_template('create_post.html', form=form, community=community, 
                                                             legend='New Post')
 

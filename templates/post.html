@@ -29,6 +29,7 @@
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post.creator.username }}</a>
               <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+
               {% if post.creator == current_user %}
               <div>
                 <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/k/{{community.community_name}}/post/{{post.id}}/update">Update</a>
@@ -51,7 +52,7 @@
 
         <!-- Modal  which is a drop down confirmation to "delete" box -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="deleteModalLabel">Delete Post?</h5>
