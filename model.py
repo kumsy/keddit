@@ -96,7 +96,7 @@ class Post(db.Model):
     community_id = db.Column(db.Integer, db.ForeignKey('communities.id'),
                                                             nullable=False)
     title = db.Column(db.String(30), nullable=False)
-    body = db.Column(db.Text, nullable=False)
+    body = db.Column(db.Text, nullable=True)
     date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     image_url = db.Column(db.String(500), nullable=True)
     votecount = db.Column(db.Integer, default=0)
@@ -104,8 +104,8 @@ class Post(db.Model):
     # Author (post.creator) is an User Object
 
     def __repr__(self):
-        return "<post_id={}, user_id={}, community_id={}, title={}, date={}>, image_url={}\n".format(
-                self.id, self.user_id, self.community_id, self.title, self.date, self.image_url)
+        return "<post_id={}, user_id={}, community_id={}, title={}, date={}>, image_url={}, votecount={}\n".format(
+                self.id, self.user_id, self.community_id, self.title, self.date, self.image_url, self.votecount)
 
 
 class PostRatings(db.Model):

@@ -313,6 +313,7 @@ def update_post(post_id, community_name):
 @login_required
 def delete_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
+    # ratings = PostRatings.query.filter_by(post_id=post_id).all()
     community = Community.query.filter_by(community_name=community_name).first()
     if post.creator != current_user:
         abort(403)
@@ -397,11 +398,18 @@ def delete_comment(post_id, community_name, comment_id):
 @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
 @login_required
 def upvote(community_name, post_id):
-    Post.query.filter_by(post_id=post_id).votecount+=1
+    # Post.query.filter_by(post_id=post_id).votecount+=1
 
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
     db.session.add(post_rating)
     db.session.commit()
+
+    # Increment votecount in our Post table, commit to save changes
+    rating = Post.query.get_or_404(post_id)
+    rating.votecount += 1
+    db.session.add(rating)
+    db.session.commit()
+
     # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
     downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()
     upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
@@ -414,8 +422,15 @@ def upvote(community_name, post_id):
 @app.route("/k/<community_name>/posts/<int:post_id>/downvote")
 @login_required
 def downvote(community_name, post_id):
+
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,downvote=1)
     db.session.add(post_rating)
+    db.session.commit()
+
+    # Decrement votecount in our Post table, commit to save changes
+    rating = Post.query.get_or_404(post_id)
+    rating.votecount -= 1
+    db.session.add(rating)
     db.session.commit()
 
     downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()

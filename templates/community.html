@@ -53,7 +53,7 @@
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}
-        <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
+        <img class="post-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
         {% endif %}
          <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
         
