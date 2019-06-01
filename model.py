@@ -1,6 +1,7 @@
 from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 from flask_login import (UserMixin, LoginManager, login_required, login_user, 
                         logout_user)
 
@@ -60,6 +61,7 @@ class Community(db.Model):
                                                         nullable=False)
     community_name = db.Column(db.String(20), nullable=False, unique=True)
 
+    posts = db.relationship('Post', backref='community')
     # subscribers (communities.subscribers): list of users that are part of this community
     # Ex: GameofThrones.subscribers will get all users objs who joined GameOfThrones
 

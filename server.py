@@ -96,6 +96,7 @@ def logout():
     logout_user()
     flash("Logged Out. Hope to see you again!", 'success')
     return redirect("/")
+
 # User Profile picture
 def save_picture(form_picture):
     # Hash filename to not error with other similar file names
@@ -139,9 +140,24 @@ def account():
 @app.route('/home')
 def frontpage():
 
+    posts = Post.query.order_by(desc(Post.votecount)).all()
+    # community = Community.query.filter_by(id=Post.community_id).all()
 
+    votes = []
+    comments = []
+    communities= []
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
+    # Then append them to a list after subtracting.
+    for post in posts:
+        upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
+        downvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.downvote>=1).count()
+        votes.append(upvote - downvote)
+        comments_count = Comment.query.filter_by(post_id=post.id).count()
+        comments.append(comments_count)
+        communities.append(post.community.community_name)
 
-    return render_template('frontpage.html')
+    return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
+                            communities=communities)
 
 # Create Community route
 @app.route('/community/new', methods=['GET', 'POST'])
