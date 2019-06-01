@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 
 from flask import (Flask, render_template, request, flash, redirect, 
                     session, url_for, abort, jsonify)
+from sqlalchemy import desc
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
@@ -138,6 +139,8 @@ def account():
 @app.route('/home')
 def frontpage():
 
+
+
     return render_template('frontpage.html')
 
 # Create Community route
@@ -264,6 +267,8 @@ def post(post_id, community_name):
     upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
     downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
     rating_count = upvote - downvote
+
+    print (post.ratings)
 
     #comment upvote and downvotes
     votes = []
@@ -392,6 +397,8 @@ def delete_comment(post_id, community_name, comment_id):
 @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
 @login_required
 def upvote(community_name, post_id):
+    Post.query.filter_by(post_id=post_id).votecount+=1
+
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
     db.session.add(post_rating)
     db.session.commit()

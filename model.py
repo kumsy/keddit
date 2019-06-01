@@ -99,6 +99,7 @@ class Post(db.Model):
     body = db.Column(db.Text, nullable=False)
     date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     image_url = db.Column(db.String(500), nullable=True)
+    votecount = db.Column(db.Integer, default=0)
 
     # Author (post.creator) is an User Object
 
@@ -122,6 +123,8 @@ class PostRatings(db.Model):
   
     upvote = db.Column(db.Integer, nullable=True)
     downvote = db.Column(db.Integer, nullable=True)
+
+    post = db.relationship('Post', backref='ratings')
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, post_id={}, upvote={}, downvote={}>\n".format(

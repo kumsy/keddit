@@ -200,7 +200,7 @@ function downvotePostList(evt) {
         console.log(response);
         console.log(data['vote_count']);
 
-        let postID = (data.post_id)
+        let postID = (data.post_id);
 
         $(".votecount#votecount" + postID).html(data.vote_count);
   });
@@ -234,9 +234,11 @@ function upvoteCommentList(evt) {
         console.log(response);
         console.log(data['vote_count']);
 
-        let commentID = (data.comment_id)
+        let commentID = (data.comment_id);
 
         $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment);
+        
+
   });
 
 }
