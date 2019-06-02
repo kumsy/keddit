@@ -494,10 +494,12 @@ def downvote_comment(community_name, post_id, comment_id):
 def user_account(username):
     user= User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(creator=user).all()
+    # posts = Post.query.order_by(desc(Post.votecount)).all()
     
 
     votes = []
     comments = []
+    communities= []
     # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
@@ -506,8 +508,10 @@ def user_account(username):
         votes.append(upvote - downvote)
         comments_count = Comment.query.filter_by(post_id=post.id).count()
         comments.append(comments_count)
+        communities.append(post.community.community_name)
 
-    return render_template('user_account.html', posts=posts, user=user, votes=votes, comments=comments)
+    return render_template('user_account.html', posts=posts, user=user, 
+        votes=votes, comments=comments, communities=communities)
 
 #____________________________________________________________
 

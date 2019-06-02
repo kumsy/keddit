@@ -14,22 +14,38 @@
   <!-- Display Posts -->
   {% for post in posts %}
     <article class="media content-section">
-        <!-- Upvotes/Downvotes -->
-          <!-- <div class="vote-container">
-            <div class="up"><a href="#"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
-            <div class="votecount"> {{votes[loop.index0]}} </div>
-            <div class="down"><a href="#"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
-          </div> -->
+           <!-- Upvote Arrow -->
+          <div class="vote-container"> 
+            <div class="arrow-container">
+            <div class="up_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
+
+            <!-- Display Votes -->
+            <div class="votecount" id="votecount{{post.id}}"> {{votes[loop.index0]}} </div>
+
+            <!-- Downvote Arrow -->
+            <div class="down_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}"class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+          </div>
+      </div>
 
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="{{ url_for('user_account', username=post.creator.username) }}">{{ post.creator.username }}</a>
-          <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+
+          <a class="subkeddit-title mr-2" href="/k/{{communities[loop.index0]}}"><small class="text-muted"></small>k/{{communities[loop.index0]}}</a>
+
+          <small class="text-muted">• Posted by <a class="subkeddit-user mr-1" href="{{ url_for('user_account', username=post.creator.username) }}">{{ post.creator.username }}</a></small>
+
+          <small class="text-muted">on {{ post.date.strftime('%Y-%m-%d') }}</small>
         </div>
         <!-- Link post title to post link -->
-        <h2><a class="article-title" href="#"></a></h2>
+        <h5><a class="article-title" href="/k/{{communities[loop.index0]}}/post/{{post.id}}">{{ post.title }}</a></h5>
         <p class="article-content">{{ post.body }}</p>
+
+         <!-- Put picture here -->
+          {% if post.image_url %}
+          <img class="post-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
+          {% endif %}
+
          <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
 
       </div>

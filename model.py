@@ -97,7 +97,7 @@ class Post(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     community_id = db.Column(db.Integer, db.ForeignKey('communities.id'),
                                                             nullable=False)
-    title = db.Column(db.String(30), nullable=False)
+    title = db.Column(db.String(300), nullable=False)
     body = db.Column(db.Text, nullable=True)
     date = db.Column(db.DateTime, nullable=True, default=datetime.utcnow)
     image_url = db.Column(db.String(500), nullable=True)

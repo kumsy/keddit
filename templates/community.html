@@ -33,6 +33,7 @@
     <article class="media content-section">
             <!-- Upvote Arrow -->
           <div class="vote-container">
+            <div class="arrow-container">
             <div class="up_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
 
             <!-- Display Votes -->
@@ -41,21 +42,26 @@
             <!-- Downvote Arrow -->
             <div class="down_post_list"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}"class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
+        </div>
 
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="{{ url_for('user_account', username=post.creator.username) }}">{{ post.creator.username }}</a>
-          <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+          <a class="subkeddit-title mr-2" href="/k/{{community.community_name}}"><small class="text-muted"></small>k/{{community.community_name}}</a>
+
+          <small class="text-muted">• Posted by <a class="subkeddit-user mr-1" href="{{ url_for('user_account', username=post.creator.username) }}">u/{{ post.creator.username }}</a></small>
+          
+          <small class="text-muted">on {{ post.date.strftime('%Y-%m-%d') }}</small>
+
         </div>
         <!-- Link post title to post link -->
-        <h3><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h3>
+        <h5><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h5>
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}
         <img class="post-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
         {% endif %}
-         <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
+         <p><small class="text-muted"><i class="comments fas fa-comment-alt"></i> {{comments[loop.index0]}} Comments</small>
         
 
       </div>

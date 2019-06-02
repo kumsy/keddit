@@ -1,14 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
+<a href="/k/{{community.community_name}}"><h1>k/{{ community.community_name }}</h1></a>
 {% endblock %}
 
 
 {% block content %}
 
-
-<a href="/k/{{community.community_name}}"><h1>k/{{ community.community_name }}</h1></a>
-    
 
         <!-- Main USER POST -->
 
@@ -19,16 +17,21 @@
         <article class="media content-section">
           <!-- Upvotes/Downvotes -->
           <div class="vote-container">
+            <div class="arrow-container">
             <div class="up"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></div>
             <div class="votecount"> {{rating_count}} </div>
             <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
+        </div>
        
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
           <div class="media-body">
             <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.creator.username }}</a>
-              <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+              <a class="subkeddit-title mr-2" href="/k/{{community.community_name}}"><small class="text-muted"></small>k/{{community.community_name}}</a>
+
+              <small class="text-muted">• Posted by <a class="subkeddit-user mr-1" href="#">u/{{ post.creator.username }}</a></small>
+              <small class="text-muted">on {{ post.date.strftime('%Y-%m-%d') }}</small>
+          
 
               {% if post.creator == current_user %}
               <div>
@@ -38,9 +41,15 @@
               {% endif %}
             </div>
 
-            <h2><a class="article-title" href="/k/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h2>
+            <h5><a class="article-title" href="/k/{{community.community_name}}/post/{{post.id}}/update">{{ post.title }}</a></h5>
             <p class="article-content">{{ post.body }}</p>
-            <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments_count}} Comments</small>
+
+             <!-- Put picture here -->
+          {% if post.image_url %}
+          <img class="post-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
+          {% endif %}
+
+            <p><small class="text-muted"><i class="comments fas fa-comment-alt"></i> {{comments_count}} Comments</small>
             <small class="text-muted"><i class="likes far fa-thumbs-up"></i></i> {{upvote_count}} likes</small>
             <small class="text-muted"><i class="dislikes far fa-thumbs-down"></i></i> {{downvote_count}} dislikes</small>
 

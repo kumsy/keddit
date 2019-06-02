@@ -22,7 +22,8 @@
        
     <article class="media content-section">
             <!-- Upvote Arrow -->
-          <div class="vote-container">
+          <div class="vote-container"> 
+            <div class="arrow-container">
             <div class="up_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></a></div>
 
             <!-- Display Votes -->
@@ -31,6 +32,7 @@
             <!-- Downvote Arrow -->
             <div class="down_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}"class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
           </div>
+      </div>
 
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
       <div class="media-body">
@@ -43,13 +45,13 @@
 
         </div>
         <!-- Link post title to post link -->
-        <h4><a class="article-title" href="/k/{{communities[loop.index0]}}/post/{{post.id}}">{{ post.title }}</a></h4>
+        <h5><a class="article-title" href="/k/{{communities[loop.index0]}}/post/{{post.id}}">{{ post.title }}</a></h5>
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}
         <img class="post-img" src="{{ url_for('static', filename='images/' + post.image_url) }}">
         {% endif %}
-         <p><small class="text-muted"><i class="comments far fa-comment-dots"></i> {{comments[loop.index0]}} Comments</small>
+         <p><small class="text-muted"><i class="comments fas fa-comment-alt"></i> {{comments[loop.index0]}} Comments</small>
         
 
       </div>
