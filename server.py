@@ -45,6 +45,7 @@ def home():
 def register_form():
     """Show form for user signup."""
 
+    image_file = url_for('static', filename='images/' + current_user.image_file)
     # Set form to our RegistrationForm() class from forms.py
     form = RegistrationForm()
 
@@ -92,7 +93,7 @@ def login():
 @app.route('/logout')
 def logout():
     """Log out."""
-
+    image_file = url_for('static', filename='images/' + current_user.image_file)
     logout_user()
     flash("Logged Out. Hope to see you again!", 'success')
     return redirect("/")

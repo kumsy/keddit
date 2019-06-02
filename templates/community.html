@@ -49,7 +49,7 @@
           <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
         </div>
         <!-- Link post title to post link -->
-        <h2><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h2>
+        <h3><a class="article-title" href="/k/{{ community.community_name }}/post/{{post.id}}">{{ post.title }}</a></h3>
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}

@@ -79,7 +79,6 @@
     {% endblock%}
   </div>
   <div class="row">
-
     <div class="col-md-8">
       {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
@@ -91,14 +90,17 @@
         {% endif %}
       {% endwith %}
 
-    {% block content %}
-    PUT CONTENT BLOCK HERE
-    {% endblock %}
-        </div>
+      {% block content %}
+      PUT CONTENT BLOCK HERE
+      {% endblock %}
+    </div>
 
+    <!-- SIDE BAR -->
     <div class="col-md-4">
       <div class="content-section">
-        <h3><img class="navbar-image" src="/static/images/logo.png" alt="Keddit Logo"></a> Placeholder</h3> 
+        <h3><img class="navbar-image" src="/static/images/logo.png" alt="Keddit Logo"></a> Placeholder</h3>
+
+      
         
         <p class='text-muted'>Start the converstaion. Post and create today.
           <ul class="list-group">

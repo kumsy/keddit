@@ -35,11 +35,15 @@
       <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="{{ url_for('user_account', username=post.creator.username) }}">{{ post.creator.username }}</a>
-          <small class="text-muted">{{ post.date.strftime('%Y-%m-%d') }}</small>
+         <a class="subkeddit-title mr-2" href="/k/{{communities[loop.index0]}}"><small class="text-muted"></small>k/{{communities[loop.index0]}}</a>
+
+          <small class="text-muted">• Posted by <a class="subkeddit-user mr-1" href="{{ url_for('user_account', username=post.creator.username) }}">u/{{ post.creator.username }}</a></small>
+    
+          <small class="text-muted">on {{ post.date.strftime('%Y-%m-%d') }}</small>
+
         </div>
         <!-- Link post title to post link -->
-        <h2><a class="article-title" href="/k/{{communities[loop.index0]}}/post/{{post.id}}">{{ post.title }}</a></h2>
+        <h4><a class="article-title" href="/k/{{communities[loop.index0]}}/post/{{post.id}}">{{ post.title }}</a></h4>
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}
