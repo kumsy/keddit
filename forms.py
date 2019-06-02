@@ -62,8 +62,9 @@ class AccountForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    title = StringField('Title', validators=[DataRequired()])
-    content = TextAreaField('Content', validators=[DataRequired()])
+    title = StringField('Title', validators=[DataRequired()], render_kw={"placeholder": "Title"})
+    # content = TextAreaField('Content', validators=[DataRequired()])
+    content = TextAreaField('Content', render_kw={"placeholder": "Text (Optional)"})
     picture = FileField('Upload Image', validators=[FileAllowed(['jpg',
                                                         'png','jpeg','gif'])])
     submit = SubmitField('Post')
