@@ -198,7 +198,8 @@ def view_community(community_name):
     # Object community
     community = Community.query.filter_by(community_name=community_name).first()
     # Get all posts for the community
-    posts = Post.query.filter_by(community_id=community.id).all() # from community object
+    # posts = Post.query.filter_by(community_id=community.id).all() # from community object
+    posts = Post.query.filter_by(community_id=community.id).order_by(Post.date.desc()).all()
     # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
@@ -493,7 +494,7 @@ def downvote_comment(community_name, post_id, comment_id):
 @app.route("/user/<string:username>")
 def user_account(username):
     user= User.query.filter_by(username=username).first_or_404()
-    posts = Post.query.filter_by(creator=user).all()
+    posts = Post.query.filter_by(creator=user).order_by(Post.date.desc()).all()
     # posts = Post.query.order_by(desc(Post.votecount)).all()
     
 
