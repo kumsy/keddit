@@ -63,6 +63,11 @@ p {
     color: white;
 }
 
+/*#press.colored-section{
+   padding-top: 50px;
+     margin-bottom: -30px;
+}*/
+
 .white-section{
     background-color: white;
 }
@@ -172,12 +177,25 @@ p {
 /*press section*/
 #press {
   background-color: #EF8172;
+  /*background-color: #473d56;*/
   padding-bottom: 3%;
 }
 
 .press-logo {
   width: 15%;
   margin: 20px 20px 50px;
+}
+
+.tech-stack {
+  width: 10%;
+}
+.thanks{
+  margin-top: -50px;
+}
+
+.kitty-logo{
+  width: 15%;
+  margin-top: -75px;
 }
 
 /*priceing section*/
