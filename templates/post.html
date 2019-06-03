@@ -85,6 +85,11 @@
     <a class='btn btn-outline-primary btn-sm' href="/k/{{community.community_name}}/post/{{post.id}}/comment/new" role='button'>Create Comment</a>
   </div><br>
 
+  <!-- Send SMS -->
+  <div>
+    <a class='btn btn-outline-primary btn-sm' href="/k/{{community.community_name}}/post/{{post.id}}/send_sms" role='button'>Send SMS</a>
+  </div><br>
+
 
   <!-- Display comments -->
   {% for comment in comments %}

@@ -15,7 +15,16 @@ from forms import (RegistrationForm, LoginForm, CommunityForm,
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
+# ========================================================
+# Download the helper library from https://www.twilio.com/docs/python/install
+from twilio.rest import Client
 
+# Your Account Sid and Auth Token from twilio.com/console
+# DANGER! This is insecure. See http://twil.io/secure
+account_sid = 'ACf3bae2605bab0efbacb4041fec3d4607'
+auth_token = 'a82c75c523f72070f23d4f5140aa5fcd'
+client = Client(account_sid, auth_token)
+# ====================================================
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -45,7 +54,7 @@ def home():
 @app.route('/registration', methods=['GET', 'POST'])
 def register_form():
     """Show form for user signup."""
-    
+
     # Set form to our RegistrationForm() class from forms.py
     form = RegistrationForm()
 
@@ -331,10 +340,15 @@ def update_post(post_id, community_name):
 @login_required
 def delete_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
-    # ratings = PostRatings.query.filter_by(post_id=post_id).all()
+    ratings_query = PostRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
+    comment_rating_query
+
+
+    # Redirect user
     community = Community.query.filter_by(community_name=community_name).first()
     if post.creator != current_user:
         abort(403)
+    
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
@@ -513,6 +527,51 @@ def user_account(username):
 
     return render_template('user_account.html', posts=posts, user=user, 
         votes=votes, comments=comments, communities=communities)
+
+@app.route("/k/<community_name>/post/<int:post_id>/send_sms")
+def send_twilio_sms(community_name, post_id):
+
+    post = Post.query.get_or_404(post_id)
+    if post.image_url != None and post.body != None:
+        message = client.messages \
+                    .create(
+                         body="\n\n Sent from Keddit! \n\n" + \
+                         "Posted by u/" + post.creator.username + "\n\n" +\
+                         "**************" +"\n"+\
+                         "k/" + community_name + "\n" +\
+                         "**************\n" +\
+                         post.title + "\n\n" + post.body + "\n\n" + post.image_url,
+                         from_='+14154668578',
+                         to='+14153100618'
+                     )
+    elif post.body == None and post.image_url == None:
+         message = client.messages \
+                .create(
+                     body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
+                     from_='+14154668578',
+                     to='+14153100618'
+                 )
+    elif post.body != None and post.image_url == None:
+
+            message = client.messages \
+                    .create(
+                         body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
+                         from_='+14154668578',
+                         to='+14153100618'
+                     )
+    elif post.body == None and post.image_url != None:
+            message = client.messages \
+                    .create(
+                        body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
+                        from_='+14154668578',
+                        to='+14153100618'
+                     )
+
+    print(message.sid)
+
+    # Make Ajax call, can do an input form to get the user "number" also
+
+    return jsonify({'message_sid': message.sid})
 
 #____________________________________________________________
 

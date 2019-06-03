@@ -50,10 +50,10 @@
                         </li>
                         {% else %}
                           <li class="nav-item">
-                            <a class="nav-link" href="/registration">Sign-Up</a>
+                            <a class="nav-link" href="/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login">Login</a>
+                            <a class="nav-link" href="#footer">Contact</a>
                         </li>  
                     </ul>
                     {% endif %}
@@ -77,14 +77,10 @@
                     <a href="/registration">
                     <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Sign-Up</button></a>
 
-                    <a href="/login">
+                    <a href="/login" data-toggle="modal" data-target="#LoginModal" data-whatever="@getbootstrap">
                     <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fas fa-adjust"></i> Login</button></a>
                     {% endif %}
                 </div>
-              
-               
-
-
 
                 <div class="col-lg-6">
                     <img class="title-image" src="" alt="">
@@ -96,6 +92,86 @@
         </video>
 
     </section>
+
+    <!-- MODAL FOR LOGIN -->
+    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="LoginModalLabel">Keddit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Div container for entire registration -->
+<div class ="content-section">
+
+  <form action="/login" method="POST">
+    {{ form.hidden_tag() }}
+
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Log In</legend>
+      
+    
+
+      <div class="form-group">
+        {{form.email.label(class="form-control-label")}}
+
+        {% if form.email.errors %}
+          {{form.email(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors%}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{form.email(class="form-control form-control-lg")}}
+        {% endif %}
+      </div>
+
+      <div class="form-group">
+        {{form.password.label(class="form-control-label")}}
+        {% if form.password.errors %}
+          {{form.password(class="form-control form-control-lg is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.password.errors%}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </div>
+        {% else %}
+          {{form.password(class="form-control form-control-lg")}}
+        {% endif %}
+      </div>
+
+      <div class="form-check">
+        {{ form.remember(class="form-check-input")}}
+        {{ form.remember.label(class="form-check-label")}}
+      </div>
+    </fieldset>
+
+    <div class="form-group">
+      {{form.submit(class="btn btn-outline-info")}}
+    </div>
+    <small class="text-muted ml-2">
+        <a href="#">Forgot Password?</a>
+    </small>
+
+  </form>
+
+  <!-- Already have an account? -->
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      Need An Account? <a class="ml-2" href="/registration">Sign Up Now</a>
+    </small>
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>
+</div>
 
 
 

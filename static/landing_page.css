@@ -370,3 +370,16 @@ p {
   /* HOVER ON */
   -webkit-transition: border-radius 2s;
 }
+
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+/*.modal-backdrop
+{
+    opacity:0.5 !important;
+}*/
