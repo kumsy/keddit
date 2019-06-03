@@ -18,11 +18,40 @@
           <!-- Upvotes/Downvotes -->
           <div class="vote-container">
             <div class="arrow-container">
-            <div class="up"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></div>
+            <!-- <div class="up"><i class="upvote fas fa-arrow-alt-circle-up fa-2x"></i></div> -->
+            <div class="up">
+            <svg data-id="{{post.id}}" class="arrowup" version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 227.01 252.74" style="enable-background:new 0 0 227.01 252.74;"
+                xml:space="preserve">
+                <path class="upvote" d="M154.22,127.75c0,0,0,105.26,0,112.38s-6.33,12.23-13.85,12.26c-7.52,0.03-48.26-0.18-55.38,0
+        c-7.12,0.18-12.26-5.54-12.26-13.45c0-7.91,0-110.95,0-110.95s-43.85,0.82-58.15,0s-18.76-15.41-9.89-23.96s99.89-99.89,99.89-99.89
+        c4.55-4.95,13.52-5.21,18.4,0c4.88,5.21,100.19,100.19,100.19,100.19c8.6,9.59-0.07,23.66-9.99,23.66
+        C211.97,128.14,154.22,127.75,154.22,127.75z" />
+              </svg>
+            </div>
+
             <div class="votecount"> {{rating_count}} </div>
-            <div class="down"><a href="/k/{{community.community_name}}/posts/{{post.id}}/downvote"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div>
+
+
+            <!-- <div class="down"><i class="downvote fas fa-arrow-alt-circle-down fa-2x"></i></a></div> -->
+            <div class="down">
+            <svg data-id="{{post.id}}" class="arrowdown" version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 227.01 253.36" style="enable-background:new 0 0 227.01 253.36;"
+                xml:space="preserve">
+                <path  class="downvote" d="M153.61,126.3h58.95c11.47,0.4,18.12,14.56,9.49,23.34c-8.62,8.78-94.95,93.76-99.49,99.49c-4.55,5.74-12.76,5.64-18.4,0
+        s-90.4-90.99-99.2-99.2s-1.68-23.64,9.79-23.64s57.76,0,57.76,0s0.4-103.65,0-111.56c-0.4-7.91,6.33-14.04,14.04-14.04
+        s47.67,0,54.4,0c6.73,0,13.39,6.72,13.35,13.35S153.61,126.3,153.61,126.3z" />
+              </svg>
+            </div>
+
           </div>
         </div>
+
+
+
+
+
+
+
+
        
           <img class="rounded-circle article-img" src="{{ url_for('static', filename='images/' + post.creator.image_file) }}">
           <div class="media-body">

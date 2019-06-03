@@ -139,7 +139,9 @@
   display: flex;
   flex-direction: column;
   margin-top:25px;
-  margin-right: 10px;
+  /*margin-right: 10px;*/
+  padding-right: 10px;
+ 
 
 }
 .arrow-container{
@@ -147,6 +149,7 @@
   flex-direction: column;
   margin-right: 10px;
   margin-top: -20px;
+ 
 }
 
 
@@ -168,7 +171,11 @@
 
 .votecount{
  
- margin-left:10px;
+ margin-left:4px;
+ /*margin: 10px;*/
+ margin-bottom: 2px;
+ font-weight: bold;
+ position: static;
 
 }
 .votecount:hover{
@@ -234,6 +241,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 20px;
 }
 
+
 .article-title {
   /*color: #444444;*/
   color: #211E1E;
@@ -257,6 +265,7 @@ a.article-title:hover {
   height: 65px;
   width: 65px;
   margin-right: 16px;
+  /*margin-left: 5px;*/
 }
 .post-img {
   /*min-height: 50%;
@@ -357,3 +366,56 @@ text-transform: uppercase;
 .subkeddit-user{
   color:grey;
 }
+
+
+
+
+
+
+
+.vote-arrow {
+  height: 24px;
+  width: 24px;
+  background: transparent;
+  /*border: none;*/
+  color: inherit;
+  cursor: pointer;
+  /*padding: initial;*/
+}
+
+.arrowup, .arrowdown {
+  /* display: inline-block; */
+  /* overflow: hidden; */
+  height: 20px;
+  width: 20px;
+  /* font-size: 16px; */
+  /* line-height: 24px; */
+   cursor: pointer; 
+  /* color: rgb(135, 138, 140); */
+  /* border-radius: 2px; */
+}
+
+
+.upvote, .downvote {
+  position: relative;
+}
+
+svg .upvote {
+  fill: gray;
+}
+
+svg .upvote:hover {
+  fill: #FF4500;
+}
+
+svg .downvote {
+  fill: gray;
+}
+
+svg .downvote:hover {
+  fill: #7289da;
+}
+
+
+
+
