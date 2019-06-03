@@ -37,15 +37,15 @@ def home():
     """Homepage."""
 
     form =  LoginForm()
+    signup = RegistrationForm()
 
-    return render_template("landing_page.html", form = form)
+    return render_template("landing_page.html", form = form, signup=signup)
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
 def register_form():
     """Show form for user signup."""
-
-    image_file = url_for('static', filename='images/' + current_user.image_file)
+    
     # Set form to our RegistrationForm() class from forms.py
     form = RegistrationForm()
 

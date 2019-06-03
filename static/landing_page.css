@@ -186,16 +186,54 @@ p {
   margin: 20px 20px 50px;
 }
 
-.tech-stack {
-  width: 10%;
+.tech-container{
+  margin-top: -50px;
+  margin-bottom: 50px;
 }
+
+.tech-stack-python {
+  /*width: 20%;*/
+  max-height:150px;
+  max-width: 150px;
+  margin-right: 5px;
+}
+
+.tech-stack-psql {
+  /*width: 10%;*/
+  max-height:100px;
+  max-width: 100px;
+  padding: 10px;
+}
+
+.tech-stack-flask {
+  /*width: 10%;*/
+  max-height:100px;
+  max-width: 100px;
+  padding:10px;
+}
+
+.tech-stack-jinja {
+  width: 10%;
+  max-height:100px;
+  max-width: 100px;
+  margin-right: :10px;
+}
+
+.tech-stack-js {
+  width: 10%;
+  max-height:100px;
+  max-width: 100px;
+  padding: 10px;
+}
+
 .thanks{
   margin-top: -50px;
 }
 
 .kitty-logo{
   width: 15%;
-  margin-top: -75px;
+  
+  margin-bottom: -100px;
 }
 
 /*priceing section*/

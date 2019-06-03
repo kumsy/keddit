@@ -41,24 +41,51 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#cta">About</a>
                         </li>
+                        {% if current_user.is_authenticated %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#pricing">Sign-Up</a>
+                            <a class="nav-link" href="/home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#cta">Login</a>
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
+                        {% else %}
+                          <li class="nav-item">
+                            <a class="nav-link" href="/registration">Sign-Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>  
                     </ul>
-
+                    {% endif %}
                 </div>
             </nav>
 
             <!-- Title -->
             <div class="row">
                 <div class="col-lg-6">
+                    {% if current_user.is_authenticated %}
+                    <h1 class="big-heading">Beautiful, isn't it?</h1>
+
+                    <a href="/home">
+                    <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Home</button></a>
+
+                    <a href="/logout">
+                    <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fas fa-adjust"></i> Logout</button></a>
+                    {% else %}
                     <h1 class="big-heading">Into the keddit-verse.</h1>
-                    <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Sign Up</button>
-                    <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fas fa-adjust"></i> Login</button>
+
+                    <a href="/registration">
+                    <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Sign-Up</button></a>
+
+                    <a href="/login">
+                    <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fas fa-adjust"></i> Login</button></a>
+                    {% endif %}
                 </div>
+              
+               
+
+
+
                 <div class="col-lg-6">
                     <img class="title-image" src="" alt="">
                 </div>
@@ -206,6 +233,22 @@
     <section class="colored-section" id="cta">
 
         <div class="container-fluid">
+
+
+            <div class="tech-container">
+                <p>Keddit was engineered in:</p>
+               
+            <img class="tech-stack-python" src="static/images/Python.png" alt="hackbright-logo">
+            <img class="tech-stack-psql" src="static/images/psql.png" alt="hackbright-logo">
+            <img class="tech-stack-flask" src="static/images/flask.png" alt="hackbright-logo">
+            <img class="tech-stack-jinja" src="static/images/jinja2.png" alt="hackbright-logo">
+            <img class="tech-stack-js" src="static/images/jslogo.png" alt="hackbright-logo">
+            </div>
+
+
+
+
+
             <p>Created By:</p>
             <img class="testimonial-image" src="static/images/default.jpg" alt="kristen-profile">
             <h3 class="big-heading">Kristen Campbell</h3>
@@ -214,18 +257,9 @@
             <p>She thanks Hackbright and staff, her two mentors Uzi and Mara, friends and family.</p> -->
             <!-- <button type="button" class="btn btn-dark btn-lg download-button"><i class="fab fa-apple"></i> Download</button>
             <button type="button" class="btn btn-light btn-lg download-button"><i class="fab fa-google-play"></i> Download</button> -->
-            <br><p>Keddit was engineered in:</p><br>
 
-            <div class="tech-container">
-               
-            <img class="tech-stack" src="static/images/Python.png" alt="hackbright-logo">
-            <img class="tech-stack" src="static/images/psql.png" alt="hackbright-logo">
-            <img class="tech-stack" src="static/images/flask.png" alt="hackbright-logo">
-            <img class="tech-stack" src="static/images/jinja2.png" alt="hackbright-logo">
-            <img class="tech-stack" src="static/images/jslogo.png" alt="hackbright-logo">
-        </div>
 
-           <!--  <img class="kitty-logo" src="static/images/blackkitty.gif" alt="kitty-logo"> -->
+            <img class="kitty-logo" src="static/images/blackkitty.gif" alt="kitty-logo">
 
         </div>
 
@@ -269,7 +303,7 @@
                 <a class="social" href="https://www.facebook.com/KristenPinCampbell" target="_blank"><i class="facebook fab fa-facebook-square fa-2x"></i></a>
                 <a class="social" href="https://www.reddit.com/user/Kumsy" target="_blank"><i class="reddit fab fa-reddit fa-2x"></i></a>
                 </div><br>
-            <p>© Copyright 2019 Keddit</p>
+            <p>© Keddit • June 2019 • House Hufflepuff</p>
         </div>
 
     </footer>
