@@ -48,7 +48,7 @@ def home():
     form =  LoginForm()
     signup = RegistrationForm()
 
-    return render_template("landing_page.html", form = form, signup=signup)
+    return render_template("homepage.html", form = form, signup=signup)
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
