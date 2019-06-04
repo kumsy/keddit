@@ -345,7 +345,6 @@ def delete_post(post_id, community_name):
 
     comment_query = Comment.query.filter_by(post_id=post_id).delete(synchronize_session=False)
 
-    # comment_rating_query
 
 
     # Redirect user
@@ -421,6 +420,7 @@ def update_comment(post_id, community_name, comment_id):
 def delete_comment(post_id, community_name, comment_id):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
+    comment_rating_query= CommentRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
     comment = Comment.query.get(comment_id)
     if comment.creator != current_user:
         abort(403)
@@ -480,7 +480,7 @@ def downvote(community_name, post_id):
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/upvote")
 @login_required
 def upvote_comment(community_name, post_id, comment_id):
-    comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,upvote=1)
+    comment_rating=CommentRatings(user_id=current_user.id, post_id=post_id, comment_id=comment_id,upvote=1)
     db.session.add(comment_rating)
     db.session.commit()
 
@@ -496,7 +496,7 @@ def upvote_comment(community_name, post_id, comment_id):
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/downvote")
 @login_required
 def downvote_comment(community_name, post_id, comment_id):
-    comment_rating=CommentRatings(user_id=current_user.id,comment_id=comment_id,downvote=1)
+    comment_rating=CommentRatings(user_id=current_user.id, post_id=post_id, comment_id=comment_id,downvote=1)
     db.session.add(comment_rating)
     db.session.commit()
     upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.upvote>=1).count()

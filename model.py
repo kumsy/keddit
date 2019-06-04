@@ -103,6 +103,9 @@ class Post(db.Model):
     image_url = db.Column(db.String(500), nullable=True)
     votecount = db.Column(db.Integer, default=0)
 
+    comments = db.relationship('Comment', backref='post')
+    comment_ratings = db.relationship('CommentRatings', backref='post')
+
     # Author (post.creator) is an User Object
 
     def __repr__(self):
@@ -163,6 +166,8 @@ class CommentRatings(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), 
                                                         nullable=False)
     comment_id = db.Column(db.Integer, db.ForeignKey('comments.id'),
+                                                        nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'),
                                                         nullable=False)
     upvote = db.Column(db.Integer, nullable=True)
     downvote = db.Column(db.Integer, nullable=True)
