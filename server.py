@@ -35,7 +35,7 @@ cloudinary.config(
   api_key = '566847115659738',  
   api_secret = 'l71iJ_LJuwMuNC0AXvKczB5_rJU'  
 )
-print(dir(cloudinary))
+# print(dir(cloudinary))
 
 # ====================================================
 app = Flask(__name__)
@@ -52,6 +52,11 @@ app.jinja_env.undefined = StrictUndefined
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+#==========================
+cloudinary_path = 'https://res.cloudinary.com/kumy/image/upload/v' 
+
 
 # Landing Page route
 @app.route('/')
@@ -278,12 +283,13 @@ def new_post(community_name):
             #Upload Picture to Cloudinary
             cloudinary.uploader.upload("./static/images/" + picture_file)
 
-            url_var = cloudinary.uploader.upload("./static/images/" + picture_file)
+            cloudinary_response = cloudinary.uploader.upload("./static/images/" + picture_file)
             print(url_var)
             print(dir(url_var))
-
+            cloudinary_response.public_id
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
-                        body=form.content.data, image_url=picture_file)
+                        body=form.content.data, image_url=picture_file, cloud_version=cloudinary_response.version,
+                        cloud_public_id=cloudinary_response.public_id, cloud_format= "." + cloudinary_response.format)
 
             db.session.add(post)
             db.session.commit()
