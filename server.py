@@ -16,7 +16,14 @@ from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
 # ========================================================
+# Download the helper library from https://www.twilio.com/docs/python/install
+from twilio.rest import Client
 
+# Your Account Sid and Auth Token from twilio.com/console
+# DANGER! This is insecure. See http://twil.io/secure
+account_sid = 'ACf3bae2605bab0efbacb4041fec3d4607'
+auth_token = 'a82c75c523f72070f23d4f5140aa5fcd'
+client = Client(account_sid, auth_token)
 # ====================================================
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
