@@ -25,6 +25,19 @@ account_sid = 'ACf3bae2605bab0efbacb4041fec3d4607'
 auth_token = 'a82c75c523f72070f23d4f5140aa5fcd'
 client = Client(account_sid, auth_token)
 # ====================================================
+
+# Cloudinary settings using python code. Run before pycloudinary is used.
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+cloudinary.config(
+  cloud_name = 'kumy',  
+  api_key = '566847115659738',  
+  api_secret = 'l71iJ_LJuwMuNC0AXvKczB5_rJU'  
+)
+print(dir(cloudinary))
+
+# ====================================================
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -262,8 +275,16 @@ def new_post(community_name):
         # Put data into our database here
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
+            #Upload Picture to Cloudinary
+            cloudinary.uploader.upload("./static/images/" + picture_file)
+
+            url_var = cloudinary.uploader.upload("./static/images/" + picture_file)
+            print(url_var)
+            print(dir(url_var))
+
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
                         body=form.content.data, image_url=picture_file)
+
             db.session.add(post)
             db.session.commit()
             flash('Your post has been created!', 'success')
