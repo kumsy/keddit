@@ -126,7 +126,7 @@ class PostRatings(db.Model):
     upvote = db.Column(db.Integer, nullable=True)
     downvote = db.Column(db.Integer, nullable=True)
 
-    post = db.relationship('Post', backref='ratings')
+    post = db.relationship('Post', backref='ratings', cascade="delete")
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, post_id={}, upvote={}, downvote={}>\n".format(
@@ -166,6 +166,9 @@ class CommentRatings(db.Model):
                                                         nullable=False)
     upvote = db.Column(db.Integer, nullable=True)
     downvote = db.Column(db.Integer, nullable=True)
+
+    comment = db.relationship('Comment', backref='ratings', cascade="delete")
+
 
     def __repr__(self):
         return "<rating_id={}, user_id={}, comment_id={}, upvote={}, downvote={}\n".format(

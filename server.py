@@ -48,7 +48,7 @@ def home():
     form =  LoginForm()
     signup = RegistrationForm()
 
-    return render_template("homepage.html", form = form, signup=signup)
+    return render_template("landing_page.html", form = form, signup=signup)
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
@@ -341,7 +341,11 @@ def update_post(post_id, community_name):
 def delete_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
     ratings_query = PostRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
-    comment_rating_query
+    comment_rating_query= CommentRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
+
+    comment_query = Comment.query.filter_by(post_id=post_id).delete(synchronize_session=False)
+
+    # comment_rating_query
 
 
     # Redirect user
