@@ -11,7 +11,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
                     Post, PostRatings, Comment, CommentRatings)
 from forms import (RegistrationForm, LoginForm, CommunityForm, 
-                    AccountForm, PostForm, CommentForm)
+                    AccountForm, PostForm, CommentForm, GiphyForm)
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
@@ -319,13 +319,90 @@ def new_post(community_name):
     return render_template('create_post.html', form=form, community=community, 
                                                             legend='New Post')
 
+
+# Create GIPHY
+@app.route("/k/<community_name>/giphy/new", methods=['GET', 'POST'])
+@login_required
+def create_giphy(community_name):
+
+    community = Community.query.filter_by(community_name=community_name).first()
+
+    form = GiphyForm()
+
+    if form.giphy_search.data:
+
+        giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + form.giphy_search.data + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
+        data = giphy_reponse['data'][0]['images']['original']['url']
+        data2 = giphy_reponse['data'][1]['images']['original']['url']
+        data3 = giphy_reponse['data'][2]['images']['original']['url']
+        data4 = giphy_reponse['data'][3]['images']['original']['url']
+        data5 = giphy_reponse['data'][4]['images']['original']['url']
+        print("*****************************************************************")
+        print(giphy_reponse)
+        print(data)
+        print(data2)
+        print(data3)
+        print(data4)
+        print(data5)
+
+        data_list = [data, data2, data3, data4, data5]
+
+
+        # What will my route or return json object look like
+        # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
+        # In the front end, display these urls as images.
+        # Put the giphy url in the Post table instead of the image url
+        # When I choose on the front end the giphy I want, 
+
+        return json.dumps(data_list, sort_keys=True, indent=4)
+
+    return render_template('create_giphy.html', form=form, community=community,
+                                            legend='New Post: Powered by GIPHY')
+
+
+# GIHPY API
+@app.route("/giphy/<query>")
+@login_required
+def giphy(query):
+
+    giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
+    data = giphy_reponse['data'][0]['images']['original']['url']
+    data2 = giphy_reponse['data'][1]['images']['original']['url']
+    data3 = giphy_reponse['data'][2]['images']['original']['url']
+    data4 = giphy_reponse['data'][3]['images']['original']['url']
+    data5 = giphy_reponse['data'][4]['images']['original']['url']
+    print("*****************************************************************")
+    print(giphy_reponse)
+    print(data)
+    print(data2)
+    print(data3)
+    print(data4)
+    print(data5)
+
+    data_list = [data, data2, data3, data4, data5]
+
+
+    # What will my route or return json object look like
+    # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
+    # In the front end, display these urls as images.
+    # Put the giphy url in the Post table instead of the image url
+    # When I choose on the front end the giphy I want, 
+
+    return json.dumps(data_list, sort_keys=True, indent=4)
+
+
+
+
 # VIEW SINGLE POST
 @app.route("/k/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
 
-    cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
-    print(cloudinary_url)
+    if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+        cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+        print(cloudinary_url)
+    else:
+        cloudinary_url = None
 
 
     community = Community.query.filter_by(community_name=community_name).first()
@@ -414,41 +491,6 @@ def create_comment(post_id, community_name):
         flash('Your comment has been created!', 'success')
         return redirect("/k/"+community_name+"/post/"+str(post_id))
     return render_template('create_comment.html', form=form)
-
-# GIHPY API
-@app.route("/giphy/<query>")
-@login_required
-def giphy(query):
-
-    giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
-    data = giphy_reponse['data'][0]['images']['original']['url']
-    data2 = giphy_reponse['data'][1]['images']['original']['url']
-    data3 = giphy_reponse['data'][2]['images']['original']['url']
-    data4 = giphy_reponse['data'][3]['images']['original']['url']
-    data5 = giphy_reponse['data'][4]['images']['original']['url']
-    print("*****************************************************************")
-    print(giphy_reponse)
-    print(data)
-    print(data2)
-    print(data3)
-    print(data4)
-    print(data5)
-
-    data_list = [data, data2, data3, data4, data5]
-
-
-    # What will my route or return json object look like
-    # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
-    # In the front end, display these urls as images.
-    # Put the giphy url in the Post table instead of the image url
-    # When I choose on the front end the giphy I want, 
-
-
-
-    return json.dumps(data_list, sort_keys=True, indent=4)
-
-
-
 
 
 

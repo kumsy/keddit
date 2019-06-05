@@ -4,8 +4,10 @@
   width:100%;
   position:fixed;
   z-index: 999999;
-  background: rgb(255,255,255);
-  background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(91,98,175,1) 36%, rgba(13,38,175,1) 100%);    
+  /*background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 14%, rgba(91,98,175,1) 36%, rgba(13,38,175,1) 100%);    */
+   background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 17%, rgba(255,147,108,1) 51%, rgba(255,69,0,1) 91%); 
 }
 
 .navbar-image{
@@ -416,6 +418,9 @@ svg .downvote:hover {
   fill: #7289da;
 }
 
+.giphybadge{
+ width: 6%;
+}
 
 
 
