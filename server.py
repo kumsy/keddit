@@ -15,6 +15,7 @@ from forms import (RegistrationForm, LoginForm, CommunityForm,
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
+import pprint
 # ========================================================
 # Download the helper library from https://www.twilio.com/docs/python/install
 from twilio.rest import Client
@@ -38,6 +39,14 @@ cloudinary.config(
 # print(dir(cloudinary))
 
 # ====================================================
+# GIPHY API
+
+# python
+import urllib,json
+GIPHY_API_KEY = 'MJ8oCijRkr4DSVxOeJtomQ8zAGDlHeYo'
+
+
+#=====================================================
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
@@ -328,7 +337,7 @@ def post(post_id, community_name):
     downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
     rating_count = upvote - downvote
 
-    print (post.ratings)
+    # print (post.ratings)
 
     #comment upvote and downvotes
     votes = []
@@ -345,8 +354,8 @@ def post(post_id, community_name):
                                         comments_count=comments_count, 
                                         rating_count=rating_count,
                                         upvote_count=upvote,
-                                        downvote_count=downvote,
-                                        votes=votes)
+                                        downvote_count=downvote, votes=votes, 
+                                        cloudinary_image=cloudinary_url)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -405,6 +414,30 @@ def create_comment(post_id, community_name):
         flash('Your comment has been created!', 'success')
         return redirect("/k/"+community_name+"/post/"+str(post_id))
     return render_template('create_comment.html', form=form)
+
+# GIHPY API
+@app.route("/giphy/<query>")
+@login_required
+def giphy(query):
+
+    giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
+    data = giphy_reponse['data'][0]['images']['original']['url']
+    print(data)
+
+    # What will my route or return json object look like
+    # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
+    # In the front end, display these urls as images.
+    # Put the giphy url in the Post table instead of the image url
+    # When I choose on the front end the giphy I want, 
+
+
+
+    return json.dumps(data, sort_keys=True, indent=4)
+
+
+
+
+
 
 # VIEW SINGLE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>", methods=['GET', 'POST'])
@@ -484,6 +517,21 @@ def upvote(community_name, post_id):
     upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
 
     vote_count = upvote_count - downvote_count
+
+
+    """ Upvote steps (single)
+    check if downvote exists, if it exists, delete it
+
+    Check if a row in post ratings exists for the current user post id and upvote via .count and seeing if it's greater than zero,
+    and if it's greater than zero, don't do anything and return the jsonfiy vote count, etc.
+
+    if false:
+
+        do line 499 - 507 (put user upvotes in our db, etc)
+
+
+
+    """
 
     return jsonify({'vote_count': vote_count, 'post_id': post_id})
 
