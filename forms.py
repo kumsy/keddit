@@ -77,6 +77,7 @@ class GiphyForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()], render_kw={"placeholder": "Title"})
     # content = TextAreaField('Content', validators=[DataRequired()])
     content = TextAreaField('Content', render_kw={"placeholder": "Text (Optional)"})
+    giphy_url = StringField('GIF Link')
     
     giphy_search = StringField('GIF Search', render_kw={"placeholder": "GIF (Optional)"})
     submit = SubmitField('Post')

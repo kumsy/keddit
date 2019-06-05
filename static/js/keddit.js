@@ -280,3 +280,38 @@ function downvoteCommentList(evt) {
 $(".down_comment_list").on('click', downvoteCommentList);
 
 
+
+/*********************************************
+// GIPHY SEARCH
+***********************************************/
+function showGiphy(evt) {
+    evt.preventDefault();
+
+    console.log('showGiphy')
+
+    // Get values for post_id and community to use in our url
+    
+    let community_name = $("#community_name").val();
+    let giphy_query = $('#giphyQuery').val();
+    let url = "/giphy/" + giphy_query;
+
+    // Debug
+    console.log(url);
+    console.log(community_name);
+
+
+    $.get(url, function(data){
+        // Debug (JSON.stringify)
+        var response = JSON.stringify(data);
+        console.log(response);
+
+        // console.log(data['vote_count']);
+
+        // let $votecount = $(".votecount");
+        // $votecount.html(data['vote_count']);
+  });
+
+}
+
+$("#giphySearch").on('click', showGiphy);
+
