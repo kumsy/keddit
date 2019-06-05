@@ -55,7 +55,7 @@ def load_user(user_id):
 
 
 #==========================
-cloudinary_path = 'https://res.cloudinary.com/kumy/image/upload/v' 
+cloudinary_prefix = 'https://res.cloudinary.com/kumy/image/upload/v' 
 
 
 # Landing Page route
@@ -284,12 +284,13 @@ def new_post(community_name):
             cloudinary.uploader.upload("./static/images/" + picture_file)
 
             cloudinary_response = cloudinary.uploader.upload("./static/images/" + picture_file)
-            print(url_var)
-            print(dir(url_var))
-            cloudinary_response.public_id
+            print(cloudinary_response)
+            print(dir(cloudinary_response))
+            print(cloudinary_response['public_id'])
+            #cloudinary_response.public_idj example to get items
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
-                        body=form.content.data, image_url=picture_file, cloud_version=cloudinary_response.version,
-                        cloud_public_id=cloudinary_response.public_id, cloud_format= "." + cloudinary_response.format)
+                        body=form.content.data, image_url=picture_file, cloud_version=cloudinary_response['version'],
+                        cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'])
 
             db.session.add(post)
             db.session.commit()
@@ -313,6 +314,11 @@ def new_post(community_name):
 @app.route("/k/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
+
+    cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+    print(cloudinary_url)
+
+
     community = Community.query.filter_by(community_name=community_name).first()
 
     comments = Comment.query.filter_by(post_id=post_id).all()
