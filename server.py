@@ -422,7 +422,20 @@ def giphy(query):
 
     giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
     data = giphy_reponse['data'][0]['images']['original']['url']
+    data2 = giphy_reponse['data'][1]['images']['original']['url']
+    data3 = giphy_reponse['data'][2]['images']['original']['url']
+    data4 = giphy_reponse['data'][3]['images']['original']['url']
+    data5 = giphy_reponse['data'][4]['images']['original']['url']
+    print("*****************************************************************")
+    print(giphy_reponse)
     print(data)
+    print(data2)
+    print(data3)
+    print(data4)
+    print(data5)
+
+    data_list = [data, data2, data3, data4, data5]
+
 
     # What will my route or return json object look like
     # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
@@ -432,7 +445,7 @@ def giphy(query):
 
 
 
-    return json.dumps(data, sort_keys=True, indent=4)
+    return json.dumps(data_list, sort_keys=True, indent=4)
 
 
 
