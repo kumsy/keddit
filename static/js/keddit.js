@@ -299,7 +299,7 @@ function handleGifClick(evt){
 
     // select the post form, use jquery's append to add
     // and <img src="${gifSrc}
-    $('form').append("<img id='giphySearchImage'  class='clickableGif' src=${gifSrc} >")
+    $('form').append(`<img id='giphySearchImage'  class='clickableGif' src=${gifSrc} >`)
 }
 /*********************************************
 // GIPHY SEARCH
