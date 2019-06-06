@@ -14,7 +14,7 @@
         <!-- Title -->
         <fieldset class="form-group">
 
-            <legend class="border-bottom mb-4">{{ legend }}</legend>
+            <legend class="border-bottom mb-4">{{ legend }} <img src="/static/images/giphybadgewhite.png"></legend>
 
             <div class="form-group">
                 {{ form.title.label(class="form-control-label") }}
@@ -53,7 +53,9 @@
        
   <input type="text" id="giphyQuery" name="giphy_query">
         <br><img class="giphybadge" src="/static/images/giphybadge.gif">
-        <button id="giphySearch">Search</button>
+        <button id="giphySearch">Search <img src="/static/images/giphybadgewhite.png"></button>
+        <ul id="giphy_results">
+        </ul>
    
     
     </form>

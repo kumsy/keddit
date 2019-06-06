@@ -302,14 +302,22 @@ function showGiphy(evt) {
 
     $.get(url, function(data){
         // Debug (JSON.stringify)
-        var response = JSON.stringify(data);
+        var response = JSON.parse(data);
         console.log(response);
 
         // console.log(data['vote_count']);
 
         // let $votecount = $(".votecount");
         // $votecount.html(data['vote_count']);
+
+        let $giphyresults = $("#giphy_results");
+        $giphyresults.append("<img id='theImg' src=data[0][giphy_results]");
+
   });
+    // take the urls that come back from server
+    // wrap them in img tags
+    //insert into our page using jQuery 
+    // append items to ul
 
 }
 
