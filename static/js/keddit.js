@@ -279,8 +279,26 @@ function downvoteCommentList(evt) {
 }
 $(".down_comment_list").on('click', downvoteCommentList);
 
+/*********************************************
+// HANDLE GIF CLICK
+***********************************************/
 
+function handleGifClick(evt){
+    alert('Gif click happened');
+    // First: Figure out what gif was clicked on; the target of this evt
+    let gifElement = evt.target;
+    // Get the src attrb for that gif
+    debugger;
 
+    let gifSrc = gifElement.src;
+    // select the form input from the post above
+    let formInput = $(".bucket");
+
+    // set the value attrb from the input tag from above into the form input
+
+    // select the post form, use jquery's append to add
+    // and <img src="${gifSrc}
+}
 /*********************************************
 // GIPHY SEARCH
 ***********************************************/
@@ -313,9 +331,11 @@ function showGiphy(evt) {
         let giphyresults = $("#giphy_search_results");
         for (let each of response) {
             console.log(each);
-            giphyresults.append(`<li><img id='giphySearchImage' src={each}</li>`);
+            giphyresults.append(`<li>   <img id='giphySearchImage'  class="clickableGif" src=${each} >  </li>`);
             // giphyresults.append("<li><img id='giphySearchImage' src='"+response[each].images.original.url+"'</li>");
         }
+
+        $(".clickableGif").on('click', handleGifClick)
 
   });
     // take the urls that come back from server

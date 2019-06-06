@@ -378,7 +378,7 @@ def create_giphy(community_name):
 @login_required
 def giphy(query):
 
-    giphy_prefix = 'https://i.giphy.com/media/'
+    # giphy_prefix = 'https://i.giphy.com/media/'
     giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
     data = giphy_reponse['data'][0]['images']['original']['url']
     data2 = giphy_reponse['data'][1]['images']['original']['url']
@@ -394,23 +394,23 @@ def giphy(query):
     # print(data5)
 
     # Creating the giphy url with only the image results directly
-    data_id = giphy_reponse['data'][0]['id']
-    giphy_url1 = giphy_prefix + data_id + "/giphy.webp"
-    # print(giphy_url)
-    data_id = giphy_reponse['data'][1]['id']
-    giphy_url2 = giphy_prefix + data_id + "/giphy.webp"
+    # data_id = giphy_reponse['data'][0]['id']
+    # giphy_url1 = giphy_prefix + data_id + "/giphy.webp"
+    # # print(giphy_url)
+    # data_id = giphy_reponse['data'][1]['id']
+    # giphy_url2 = giphy_prefix + data_id + "/giphy.webp"
 
-    data_id = giphy_reponse['data'][2]['id']
-    giphy_url3 = giphy_prefix + data_id + "/giphy.webp"
+    # data_id = giphy_reponse['data'][2]['id']
+    # giphy_url3 = giphy_prefix + data_id + "/giphy.webp"
 
-    data_id = giphy_reponse['data'][3]['id']
-    giphy_url4 = giphy_prefix + data_id + "/giphy.webp"
+    # data_id = giphy_reponse['data'][3]['id']
+    # giphy_url4 = giphy_prefix + data_id + "/giphy.webp"
 
-    data_id = giphy_reponse['data'][4]['id']
-    giphy_url5 = giphy_prefix + data_id + "/giphy.webp"
+    # data_id = giphy_reponse['data'][4]['id']
+    # giphy_url5 = giphy_prefix + data_id + "/giphy.webp"
 
-    # data_list = [data, data2, data3, data4, data5]
-    data_list = [giphy_url1, giphy_url2, giphy_url3, giphy_url4, giphy_url5]
+    data_list = [data, data2, data3, data4, data5]
+    # data_list = [giphy_url1, giphy_url2, giphy_url3, giphy_url4, giphy_url5]
 
 
     # What will my route or return json object look like
