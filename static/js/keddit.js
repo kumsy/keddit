@@ -310,10 +310,11 @@ function showGiphy(evt) {
         // let $votecount = $(".votecount");
         // $votecount.html(data['vote_count']);
 
-        let giphyresults = $("#giphy_results");
+        let giphyresults = $("#giphy_search_results");
         for (let each of response) {
-            console.log(each)
-            giphyresults.append(`<li><img id='theImg' src={each}</li>`);
+            console.log(each);
+            giphyresults.append(`<li><img id='giphySearchImage' src={each}</li>`);
+            // giphyresults.append("<li><img id='giphySearchImage' src='"+response[each].images.original.url+"'</li>");
         }
 
   });
