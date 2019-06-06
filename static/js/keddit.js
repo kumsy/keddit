@@ -288,16 +288,18 @@ function handleGifClick(evt){
     // First: Figure out what gif was clicked on; the target of this evt
     let gifElement = evt.target;
     // Get the src attrb for that gif
-    debugger;
+    // debugger;
 
     let gifSrc = gifElement.src;
     // select the form input from the post above
     let formInput = $(".bucket");
 
     // set the value attrb from the input tag from above into the form input
+    formInput.val(gifSrc);
 
     // select the post form, use jquery's append to add
     // and <img src="${gifSrc}
+    $('form').append("<img id='giphySearchImage'  class='clickableGif' src=${gifSrc} >")
 }
 /*********************************************
 // GIPHY SEARCH
