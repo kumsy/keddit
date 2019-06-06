@@ -299,7 +299,7 @@ function handleGifClick(evt){
 
     // select the post form, use jquery's append to add
     // and <img src="${gifSrc}
-    $('form').append(`<img id='giphySearchImage'  class='clickableGif' src=${gifSrc} >`)
+    $('#gifPreview').html(`<img id='giphySearchImage'  class='clickableGif' src=${gifSrc} >`)
 }
 /*********************************************
 // GIPHY SEARCH
@@ -330,10 +330,15 @@ function showGiphy(evt) {
         // let $votecount = $(".votecount");
         // $votecount.html(data['vote_count']);
 
-        let giphyresults = $("#giphy_search_results");
+        let i = 0;
         for (let each of response) {
             console.log(each);
-            giphyresults.append(`<li>   <img id='giphySearchImage'  class="clickableGif" src=${each} >  </li>`);
+
+            let id = `#giphy_result_${i}`;
+
+            let li = $(id)
+                li.html(`<li>   <img id='giphySearchImage'  class="clickableGif" src=${each} >  </li>`);
+            i++;
             // giphyresults.append("<li><img id='giphySearchImage' src='"+response[each].images.original.url+"'</li>");
         }
 
