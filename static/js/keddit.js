@@ -310,8 +310,11 @@ function showGiphy(evt) {
         // let $votecount = $(".votecount");
         // $votecount.html(data['vote_count']);
 
-        let $giphyresults = $("#giphy_results");
-        $giphyresults.append("<img id='theImg' src=data[0][giphy_results]");
+        let giphyresults = $("#giphy_results");
+        for (let each of response) {
+            console.log(each)
+            giphyresults.append(`<li><img id='theImg' src={each}</li>`);
+        }
 
   });
     // take the urls that come back from server
