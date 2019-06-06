@@ -290,7 +290,7 @@ def new_post(community_name):
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
             #Upload Picture to Cloudinary
-            cloudinary.uploader.upload("./static/images/" + picture_file)
+            # cloudinary.uploader.upload("./static/images/" + picture_file)
 
             cloudinary_response = cloudinary.uploader.upload("./static/images/" + picture_file)
             print(cloudinary_response)
@@ -329,45 +329,39 @@ def create_giphy(community_name):
 
     form = GiphyForm()
 
-    if form.giphy_search.data:
+    if form.validate_on_submit():
+        if form.giphy_url.data:
+            #Upload Picture to Cloudinary
+            # cloudinary.uploader.upload(form.giphy_url.data)
 
-        # data_list = {}
+            cloudinary_response = cloudinary.uploader.upload(form.giphy_url.data)
+            print(cloudinary_response)
+            print(dir(cloudinary_response))
+            print(cloudinary_response['public_id'])
+            #cloudinary_response.public_idj example to get items
+            post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
+                        body=form.content.data, image_url=form.giphy_url.data, cloud_version=cloudinary_response['version'],
+                        cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'])
 
-        giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + form.giphy_search.data + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
-        data = giphy_reponse['data'][0]['images']['original']['url']
-        data2 = giphy_reponse['data'][1]['images']['original']['url']
-        data3 = giphy_reponse['data'][2]['images']['original']['url']
-        data4 = giphy_reponse['data'][3]['images']['original']['url']
-        data5 = giphy_reponse['data'][4]['images']['original']['url']
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
+            return redirect('/k/'+community_name)
 
-        # data_list = {
+        else:
+            post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
+                        body=form.content.data)
+            db.session.add(post)
+            db.session.commit()
 
-        #     'result': giphy_reponse['data'][0]['images']['original']['webp'],
-        #     'result_2': giphy_reponse['data'][1]['images']['original']['webp'],
-        #     'result_3': giphy_reponse['data'][2]['images']['original']['webp'],
-        #     'result_4': giphy_reponse['data'][3]['images']['original']['webp'],
-        #     'result_5': giphy_reponse['data'][4]['images']['original']['webp'],
-
-        # }
-        print("*****************************************************************")
-        print(giphy_reponse)
-        print(data)
-        print(data2)
-        print(data3)
-        print(data4)
-        print(data5)
-
-        data_list = [data, data2, data3, data4, data5]
+            flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
+            return redirect('/k/'+community_name)
 
 
-        # What will my route or return json object look like
-        # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
-        # In the front end, display these urls as images.
-        # Put the giphy url in the Post table instead of the image url
-        # When I choose on the front end the giphy I want, 
 
-        # return json.dumps(data_list, sort_keys=True, indent=4)
-        return jsonify({'giphy_results': data_list})
+        # return jsonify({'giphy_results': data_list})
 
     return render_template('create_giphy.html', form=form, community=community,
                                             legend='New Post')
@@ -377,7 +371,9 @@ def create_giphy(community_name):
 @app.route("/giphy/<query>")
 @login_required
 def giphy(query):
-
+    print(query)
+    query = urllib.parse.quote(query)
+    print(query)
     giphy_prefix = 'https://i.giphy.com/media/'
     giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
     data = giphy_reponse['data'][0]['images']['original']['url']

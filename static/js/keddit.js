@@ -308,6 +308,7 @@ function showGiphy(evt) {
     evt.preventDefault();
 
     console.log('showGiphy')
+    $("#giphyResults").show();
 
     // Get values for post_id and community to use in our url
     
@@ -351,6 +352,7 @@ function showGiphy(evt) {
     // append items to ul
 
 }
+$("#giphyResults").hide();
 
 $("#giphySearch").on('click', showGiphy);
 

@@ -417,10 +417,26 @@ svg .downvote {
 svg .downvote:hover {
   fill: #7289da;
 }
-
+/*===============================
+  GIPHY
+===============================*/
 .giphybadge{
  width: 6%;
 }
+.giphySearchBox{
+  width: 300px;
+  border: 15px solid pink;
+  padding: 50px;
+  margin: 20px;
+}
+#giphyResults{
+  width: 300px;
+  border: 15px solid pink;
+  padding: 50px;
+  margin: 20px;
+}
+
+
 
 
 
