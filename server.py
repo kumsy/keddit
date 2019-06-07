@@ -183,6 +183,7 @@ def frontpage():
     votes = []
     comments = []
     communities= []
+    cloudinary_image =[]
     # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
@@ -194,13 +195,11 @@ def frontpage():
         communities.append(post.community.community_name)
 
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-            cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
-            print(cloudinary_url)
-        else:
-            cloudinary_url = None
+           cloudinary_image.append(post.cloudinary_url)
+        print(cloudinary_image)
 
     return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
-                            communities=communities, cloudinary_image=cloudinary_url)
+                            communities=communities, cloudinary_image=cloudinary_image)
 
 # Create Community route
 @app.route('/community/new', methods=['GET', 'POST'])
@@ -269,13 +268,10 @@ def view_community(community_name):
 
         #cloud the prefixes and other things then add together then append
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-            
-            cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
-            cloudinary_image.append(cloudinary_url)
+        
+            cloudinary_image.append(post.cloudinary_url)
             print(cloudinary_image)
-        else:
-            cloudinary_image.append(None)
-            cloudinary_url = None
+
     print(comments, "**********************")
 
         
