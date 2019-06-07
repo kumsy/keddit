@@ -193,8 +193,14 @@ def frontpage():
         comments.append(comments_count)
         communities.append(post.community.community_name)
 
+        if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+            cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+            print(cloudinary_url)
+        else:
+            cloudinary_url = None
+
     return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
-                            communities=communities)
+                            communities=communities, cloudinary_image=cloudinary_url)
 
 # Create Community route
 @app.route('/community/new', methods=['GET', 'POST'])
@@ -239,9 +245,19 @@ def view_community(community_name):
     # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     # comments_count = Comment.query.filter_by(post_id=posts.id).count()
+
+    
+
+    # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+    #     cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+    #     print(cloudinary_url)
+    # else:
+    #     cloudinary_url = None
+
     
     votes = []
     comments = []
+    cloudinary_image=[]
     # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
@@ -250,11 +266,19 @@ def view_community(community_name):
         votes.append(upvote - downvote)
         comments_count = Comment.query.filter_by(post_id=post.id).count()
         comments.append(comments_count)
+
+        if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+            cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+            cloudinary_image.append(cloudinary_url)
+            print(cloudinary_url)
+        else:
+            cloudinary_image.append(None)
     print(comments, "**********************")
 
     
     return render_template('community.html', community=community, posts=posts, 
-                    members_count=members_count, votes = votes, comments=comments)
+                    members_count=members_count, votes = votes, comments=comments,
+                    cloudinary_image=cloudinary_url)
 
 # Join Communities
 @app.route("/k/<community_name>/join")
