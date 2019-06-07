@@ -269,7 +269,7 @@ def view_community(community_name):
 
         #cloud the prefixes and other things then add together then append
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-            Post.query.filter_by(cloud_version).first()
+            
             cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
             cloudinary_image.append(cloudinary_url)
             print(cloudinary_image)
@@ -282,7 +282,7 @@ def view_community(community_name):
 
     return render_template('community.html', community=community, posts=posts, 
                         members_count=members_count, votes = votes, comments=comments,
-                        cloudinary_image=cloudinary_url)
+                        cloudinary_image=cloudinary_image)
 
 # Join Communities
 @app.route("/k/<community_name>/join")
@@ -324,10 +324,14 @@ def new_post(community_name):
             print(cloudinary_response)
             print(dir(cloudinary_response))
             print(cloudinary_response['public_id'])
+            cloudinary_url = cloudinary_prefix + str(cloudinary_response['version']) + "/" + str(cloudinary_response['public_id']) + "." + str(cloudinary_response['format']) 
+            print('Sassy' * 100)
+            print(cloudinary_url)
             #cloudinary_response.public_idj example to get items
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
                         body=form.content.data, image_url=picture_file, cloud_version=cloudinary_response['version'],
-                        cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'])
+                        cloud_public_id=cloudinary_response['public_id'], cloud_format= cloudinary_response['format'],
+                        cloudinary_url=cloudinary_url)
 
             db.session.add(post)
             db.session.commit()
@@ -367,9 +371,15 @@ def create_giphy(community_name):
             print(dir(cloudinary_response))
             print(cloudinary_response['public_id'])
             #cloudinary_response.public_idj example to get items
+
+            cloudinary_url = cloudinary_prefix + str(cloudinary_response['version']) + "/" + str(cloudinary_response['public_id']) + "." + str(cloudinary_response['format'])
+            print('Sassy' * 100)
+            print(cloudinary_url)
+
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
                         body=form.content.data, image_url=form.giphy_url.data, cloud_version=cloudinary_response['version'],
-                        cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'])
+                        cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'],
+                        cloudinary_url=cloudinary_url)
 
             db.session.add(post)
             db.session.commit()

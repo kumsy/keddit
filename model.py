@@ -105,6 +105,7 @@ class Post(db.Model):
     cloud_version = db.Column(db.String(300), nullable=True)
     cloud_public_id = db.Column(db.String(300), nullable=True)
     cloud_format = db.Column(db.String(10), nullable=True)
+    cloudinary_url = db.Column(db.String(500), nullable=True)
 
     comments = db.relationship('Comment', backref='post')
     comment_ratings = db.relationship('CommentRatings', backref='post')
