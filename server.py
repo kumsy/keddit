@@ -269,17 +269,20 @@ def view_community(community_name):
 
         #cloud the prefixes and other things then add together then append
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+            Post.query.filter_by(cloud_version).first()
             cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
             cloudinary_image.append(cloudinary_url)
-            print(cloudinary_url)
+            print(cloudinary_image)
         else:
             cloudinary_image.append(None)
+            cloudinary_url = None
     print(comments, "**********************")
 
-    
+        
+
     return render_template('community.html', community=community, posts=posts, 
-                    members_count=members_count, votes = votes, comments=comments,
-                    cloudinary_image=cloudinary_url)
+                        members_count=members_count, votes = votes, comments=comments,
+                        cloudinary_image=cloudinary_url)
 
 # Join Communities
 @app.route("/k/<community_name>/join")
