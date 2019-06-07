@@ -267,6 +267,7 @@ def view_community(community_name):
         comments_count = Comment.query.filter_by(post_id=post.id).count()
         comments.append(comments_count)
 
+        #cloud the prefixes and other things then add together then append
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
             cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
             cloudinary_image.append(cloudinary_url)
