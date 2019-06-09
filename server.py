@@ -74,6 +74,7 @@ def home():
 
     form =  LoginForm()
     signup = RegistrationForm()
+   
 
     return render_template("landing_page.html", form = form, signup=signup)
 
@@ -183,7 +184,7 @@ def frontpage():
     votes = []
     comments = []
     communities= []
-    cloudinary_image =[]
+    # cloudinary_image =[]
     # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
@@ -194,16 +195,16 @@ def frontpage():
         comments.append(comments_count)
         communities.append(post.community.community_name)
 
-        if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+        # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
           
         # if post.cloudinary_url != None:
-            cloudinary_image.append(post.cloudinary_url)
+            # cloudinary_image.append(post.cloudinary_url)
 
             # print("I NEED A GOOD BOYFRIEND" * 100)
             # print(cloudinary_image)
 
     return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
-                            communities=communities, cloudinary_image=cloudinary_image)
+                            communities=communities)
 
 # Create Community route
 @app.route('/community/new', methods=['GET', 'POST'])
@@ -752,24 +753,51 @@ def send_twilio_sms(community_name, post_id):
     elif post.body == None and post.image_url == None:
          message = client.messages \
                 .create(
-                     body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
-                     from_='+14154668578',
-                     to='+14153100618'
+                     # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
+                     # from_='+14154668578',
+                     # to='+14153100618'
+
+                      body="\n\n Sent from Keddit! \n\n" + \
+                         "Posted by u/" + post.creator.username + "\n\n" +\
+                         "**************" +"\n"+\
+                         "k/" + community_name + "\n" +\
+                         "**************\n" +\
+                         post.title 
+                         from_='+14154668578',
+                         to='+14153100618'
                  )
     elif post.body != None and post.image_url == None:
 
             message = client.messages \
                     .create(
-                         body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
+                         # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
+                         # from_='+14154668578',
+                         # to='+14153100618'
+
+                          body="\n\n Sent from Keddit! \n\n" + \
+                         "Posted by u/" + post.creator.username + "\n\n" +\
+                         "**************" +"\n"+\
+                         "k/" + community_name + "\n" +\
+                         "**************\n" +\
+                         post.title + "\n\n" + post.body
                          from_='+14154668578',
                          to='+14153100618'
                      )
     elif post.body == None and post.image_url != None:
             message = client.messages \
                     .create(
-                        body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
-                        from_='+14154668578',
-                        to='+14153100618'
+                        # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
+                        # from_='+14154668578',
+                        # to='+14153100618'
+
+                         body="\n\n Sent from Keddit! \n\n" + \
+                         "Posted by u/" + post.creator.username + "\n\n" +\
+                         "**************" +"\n"+\
+                         "k/" + community_name + "\n" +\
+                         "**************\n" +\
+                         post.title + "\n\n" + post.image_url,
+                         from_='+14154668578',
+                         to='+14153100618'
                      )
 
     print(message.sid)

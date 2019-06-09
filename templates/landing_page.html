@@ -64,7 +64,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     {% if current_user.is_authenticated %}
-                    <h1 class="big-heading">Beautiful, isn't it?</h1>
+                    <h1 class="big-heading">Welcome back, {{current_user.username}}.</h1>
 
                     <a href="/home">
                     <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Home</button></a>
@@ -72,7 +72,7 @@
                     <a href="/logout">
                     <button type="button" class="btn btn-outline-light btn-lg download-button"><i class="fas fa-adjust"></i> Logout</button></a>
                     {% else %}
-                    <h1 class="big-heading">Into the keddit-verse.</h1>
+                    <h1 class="big-heading">Welcome</h1>
 
                     <a href="/registration">
                     <button type="button" class="btn btn-dark btn-lg download-button"><i class="fas fa-rocket"></i> Sign-Up</button></a>
