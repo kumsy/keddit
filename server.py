@@ -195,8 +195,12 @@ def frontpage():
         communities.append(post.community.community_name)
 
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-           cloudinary_image.append(post.cloudinary_url)
-        print(cloudinary_image)
+          
+        # if post.cloudinary_url != None:
+            cloudinary_image.append(post.cloudinary_url)
+
+            # print("I NEED A GOOD BOYFRIEND" * 100)
+            # print(cloudinary_image)
 
     return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
                             communities=communities, cloudinary_image=cloudinary_image)
