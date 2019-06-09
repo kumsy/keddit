@@ -19,6 +19,14 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(255,39,225,1) 5
     /*padding:2px;*/
     margin-left: 10px;
 }
+
+.sidebar-image{
+    /*width: 4.5rem;*/
+    width: 5rem;
+    border-radius: 50%;
+    /*padding:2px;*/
+    margin-left: 10px;
+}
 .navbar{
     padding:0;
 }
@@ -30,7 +38,7 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(255,39,225,1) 5
 
 .navbar-nav{
 
-  margin-right: 400px;
+  margin-right: 130px;
 }
 
 
@@ -445,5 +453,59 @@ svg .downvote:hover {
   flex-direction: column;
 }
 
+
+
+/* ----------------------test css for serch box */
+._3jiriKeNer8y0-1r6oWIFM {
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: initial;
+  box-sizing: border-box;
+  height: 36px;
+  position: relative;
+  width: 72px;
+}
+
+._2dlTXDaX9JuL0bekTwhV18 {
+  fill: rgb(26, 26, 27);
+  flex-grow: 1;
+  margin-left: 16px;
+  margin-right: 16px;
+  width: auto;
+}
+
+.hbthxQ {
+  position: absolute;
+  top: 50% left: 0px;
+  height: 18px;
+  margin-left: 16px;
+  margin-top: 5px;
+}
+
+.jaPcsi {
+  fill: rgb(135, 138, 140);
+  width: 18px;
+  height: 18px;
+}
+
+.eelwnH {
+  -webkit-appearance: none;
+  background-color: rgb(246, 247, 248);
+  box-shadow: none;
+  color: rgb(28, 28, 28);
+  display: block;
+  height: 33px;
+  width: 100%;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(237, 239, 241);
+  border-image: initial;
+  outline: none;
+  padding: 0 16px 0 40px;
+  font-size:14px;
+}
 
 
