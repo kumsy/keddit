@@ -430,19 +430,19 @@ def giphy(query):
 
     # Creating the giphy url with only the image results directly
     data_id = giphy_reponse['data'][0]['id']
-    giphy_url1 = giphy_prefix + data_id + "/giphy.webp"
+    giphy_url1 = giphy_prefix + data_id + "/giphy.gif"
     # print(giphy_url)
     data_id = giphy_reponse['data'][1]['id']
-    giphy_url2 = giphy_prefix + data_id + "/giphy.webp"
+    giphy_url2 = giphy_prefix + data_id + "/giphy.gif"
 
     data_id = giphy_reponse['data'][2]['id']
-    giphy_url3 = giphy_prefix + data_id + "/giphy.webp"
+    giphy_url3 = giphy_prefix + data_id + "/giphy.gif"
 
     data_id = giphy_reponse['data'][3]['id']
-    giphy_url4 = giphy_prefix + data_id + "/giphy.webp"
+    giphy_url4 = giphy_prefix + data_id + "/giphy.gif"
 
     data_id = giphy_reponse['data'][4]['id']
-    giphy_url5 = giphy_prefix + data_id + "/giphy.webp"
+    giphy_url5 = giphy_prefix + data_id + "/giphy.gif"
 
     # data_list = [data, data2, data3, data4, data5]
     data_list = [giphy_url1, giphy_url2, giphy_url3, giphy_url4, giphy_url5]
@@ -746,7 +746,8 @@ def send_twilio_sms(community_name, post_id):
                          "**************" +"\n"+\
                          "k/" + community_name + "\n" +\
                          "**************\n" +\
-                         post.title + "\n\n" + post.body + "\n\n" + post.image_url,
+                         post.title + "\n\n" + post.body + "\n\n",
+                         media_url=post.cloudinary_url,
                          from_='+14154668578',
                          to='+14153100618'
                      )
@@ -762,7 +763,7 @@ def send_twilio_sms(community_name, post_id):
                          "**************" +"\n"+\
                          "k/" + community_name + "\n" +\
                          "**************\n" +\
-                         post.title 
+                         post.title ,
                          from_='+14154668578',
                          to='+14153100618'
                  )
@@ -779,7 +780,7 @@ def send_twilio_sms(community_name, post_id):
                          "**************" +"\n"+\
                          "k/" + community_name + "\n" +\
                          "**************\n" +\
-                         post.title + "\n\n" + post.body
+                         post.title + "\n\n" + post.body,
                          from_='+14154668578',
                          to='+14153100618'
                      )
@@ -795,7 +796,8 @@ def send_twilio_sms(community_name, post_id):
                          "**************" +"\n"+\
                          "k/" + community_name + "\n" +\
                          "**************\n" +\
-                         post.title + "\n\n" + post.image_url,
+                         post.title + "\n\n",
+                         media_url= post.cloudinary_url,
                          from_='+14154668578',
                          to='+14153100618'
                      )
