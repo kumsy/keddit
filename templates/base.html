@@ -21,13 +21,13 @@
       <a class="navbar-brand" href="/">
         <img class="navbar-image" src="/static/images/reddit-logo.png" alt="Keddit Logo"></a>
 
-        <button type="button" class="btn btn-light btn-sm mr-2"><i class="fas fa-globe-americas"></i>  Home</button>
+        <a href="/home"><button type="button" class="btn btn-light btn-sm mr-2"><i class="fas fa-globe-americas"></i>  Home</button></a>
 
-        <button type="button" class="btn btn-light btn-sm"><i class="fas fa-chart-line"></i>  Popular</button>
+        <a href="/home"><button type="button" class="btn btn-light btn-sm mr-2"><i class="fas fa-chart-line"></i>  Popular</button></a>
 
-         <!--test code for serch bar -->
+         <!--Search Bar -->
 
-        <div class="_3jiriKeNer8y0-1r6oWIFM _2dlTXDaX9JuL0bekTwhV18  dxyly8-3 evryCQ" id="SearchDropdown">
+        <div class="_3jiriKeNer8y0-1r6oWIFM _2dlTXDaX9JuL0bekTwhV18  dxyly8-3 evryCQ" id="SearchDropdown" >
           <label class="dxyly8-1 hbthxQ" for="header-search-bar">
             <svg class="dxyly8-2 jaPcsi" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M15.59,13.91l2.78,2.69a1.25,1.25,0,1,1-1.74,1.8l-2.82-2.73a8,8,0,1,1,1.78-1.76ZM14.64,9.2A5.45,5.45,0,1,0,9.2,14.64,5.45,5.45,0,0,0,14.64,9.2Z"></path></svg>
           </label>
@@ -66,15 +66,27 @@
             <!-- If not logged in, show ... -->
             {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="/home">Home</a>
+              <a class="nav-link" href="/home"><i class="fas fa-chart-line fa-2x"></i></a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fas fa-chart-bar fa-2x"></i></a>
+
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fas fa-toggle-off fa-2x"></i></a>
+            </li>
+
+              <li class="nav-item">
+              <a class="nav-link" href="/login"> <button type="button" class="btn btn-outline-primary btn-sm" style="width: 120px;">LOG IN</button></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/registration">Sign Up</a>
+              <a class="nav-link" href="/registration"><button type="button" class="btn btn-primary btn-sm" style="width:120px;">SIGN UP</button></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Log In <i class="login fas fa-door-open"></i></a>
+             </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fas fa-user-astronaut fa-2x"></i></a>
             </li>
 
           
