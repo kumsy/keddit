@@ -2,18 +2,35 @@
 <!-- community_name is the object we got in our route -->
 {% block style %}
 <style media="screen">
-  .body.{{community.community_name}}{
-    background-image: url(/static/images/{{community.community_name}}.jpg)
+  .hero-image.{{community.community_name}}{
+    background-image: url("/static/images/{{community.community_name}}.jpg");
   }
   div.loading_pic{
     background-image: url(/static/images/{{community.community_name}}.gif);
   }
 </style>
 {% endblock%}
-{% block community %}{{community.community_name}}{% endblock%}
+
+{% block community %}
+{{community.community_name}}
+{% endblock%}
 
   {% block title%}
-  <div class="community_title">
+
+<div class="hero-image {{community.community_name}}">
+
+  <div class="hero-text">
+    <h1>k/ {{ community.community_name }}</h1>
+    <p><small class="members_count">{{ members_count }} members</small></p>
+    {% if current_user.is_authenticated %}
+    <a class='btn btn-primary' href="/k/{{ community.community_name }}/join" role='button'>Join</a>
+    {% endif %}
+  </div>
+</div>
+
+
+
+  <!-- <div class="community_title">
      <div class="community-name">
     <h1 class="community_name"> k/ {{ community.community_name }}</h1>
     <div class="loading_pic">
@@ -23,21 +40,13 @@
      <small class="members_count">{{ members_count }} members</small>
   </div>
   <br>
-  <div>
-    {% if current_user.is_authenticated %}
-    <!-- Join Community -->
-    <a class='btn btn-primary' href="/k/{{ community.community_name }}/join" role='button'>Join</a>
-  </div><br>
-  {% endif %}
+  <div> -->
     
     <!-- Create a Post -->
     <a class='btn btn-primary' href="/k/{{ community.community_name }}/post/new" role='button'>Create Post</a>
 
      <a class='btn btn-primary' href="/k/{{ community.community_name }}/giphy/new" role='button'>GIF <i class="far fa-image"></i></a>
   </div><br>
-  
- 
-
   
   {% endblock %}
 

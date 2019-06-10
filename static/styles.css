@@ -246,7 +246,7 @@ body {
   /*margin-top: 5rem;*/
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center center;
   box-sizing: border-box;
   height: 100%;
@@ -578,4 +578,33 @@ svg .downvote:hover {
   top: 0;
   bottom: 0;
   /* transform: translateX(calc((100% - 100vw)/2)); */
+}
+
+
+
+/* The hero image */
+.hero-image {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/images/{{community.community_name}}.jpg");*/
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display:flex;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  margin-top: 130px;
 }
