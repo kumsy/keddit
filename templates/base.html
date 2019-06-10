@@ -53,20 +53,31 @@
             <!-- If user is logged in -->
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/home">Front Page</a>
+              <a class="nav-link" href="/home"><i class="fas fa-chart-line fa-2x"></i></a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fas fa-chart-bar fa-2x"></i></a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-link" href="/communities"><i class="fas fa-layer-group fa-2x"></i></a>
+            </li>
+
+              <li class="nav-item">
+              <a class="nav-link" href="/home"><i class="fas fa-toggle-off fa-2x"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/account"><button type="button" class="btn btn-outline-primary btn-sm" style="width: 120px;">{{ current_user.username }}</button></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="{{url_for('new_community')}}">Create Community</a>
+              <a class="nav-link" href="/logout"><button type="button" class="btn btn-primary btn-sm" style="width:120px;">LOG OUT</button></a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/account">{{ current_user.username }}</a>
+              <a class="nav-link" href="/home"><i class="fas fa-user-astronaut fa-2x"></i></a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout <i class="logout fas fa-moon"></i></a>
-            </li>
             <!-- If not logged in, show ... -->
             {% else %}
             <li class="nav-item">
