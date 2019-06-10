@@ -16,15 +16,19 @@ from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
 import pprint
+import json 
+with open('config/config.json', 'r') as f:
+    config = json.load(f)
 # ========================================================
 # Download the helper library from https://www.twilio.com/docs/python/install
 from twilio.rest import Client
 
 # Your Account Sid and Auth Token from twilio.com/console
 # DANGER! This is insecure. See http://twil.io/secure
-account_sid = 'ACf3bae2605bab0efbacb4041fec3d4607'
-auth_token = 'a82c75c523f72070f23d4f5140aa5fcd'
-client = Client(account_sid, auth_token)
+TWILIO_ACCOUNT_SID = config['twilio']['account_sid']
+TWILIO_AUTH_TOKEN = config['twilio']['auth_token']
+twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+print(TWILIO_ACCOUNT_SID)
 # ====================================================
 
 # Cloudinary settings using python code. Run before pycloudinary is used.
@@ -32,9 +36,9 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 cloudinary.config(
-  cloud_name = 'kumy',  
-  api_key = '566847115659738',  
-  api_secret = 'l71iJ_LJuwMuNC0AXvKczB5_rJU'  
+  name = config['cloudinary']['name'],
+  api_key = config['cloudinary']['api_key'],  
+  api_secret = config['cloudinary']['api_secret']  
 )
 # print(dir(cloudinary))
 
@@ -43,7 +47,7 @@ cloudinary.config(
 
 # python
 import urllib,json
-GIPHY_API_KEY = 'MJ8oCijRkr4DSVxOeJtomQ8zAGDlHeYo'
+GIPHY_API_KEY = config['giphy']['api_key']
 
 
 #=====================================================
@@ -739,7 +743,7 @@ def send_twilio_sms(community_name, post_id):
 
     post = Post.query.get_or_404(post_id)
     if post.image_url != None and post.body != None:
-        message = client.messages \
+        message = twilio_client.messages \
                     .create(
                          body="\n\n Sent from Keddit! \n\n" + \
                          "Posted by u/" + post.creator.username + "\n\n" +\
@@ -752,7 +756,7 @@ def send_twilio_sms(community_name, post_id):
                          to='+14153100618'
                      )
     elif post.body == None and post.image_url == None:
-         message = client.messages \
+         message = twilio_client.messages \
                 .create(
                      # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
                      # from_='+14154668578',
@@ -769,7 +773,7 @@ def send_twilio_sms(community_name, post_id):
                  )
     elif post.body != None and post.image_url == None:
 
-            message = client.messages \
+            message = twilio_client.messages \
                     .create(
                          # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
                          # from_='+14154668578',
@@ -785,7 +789,7 @@ def send_twilio_sms(community_name, post_id):
                          to='+14153100618'
                      )
     elif post.body == None and post.image_url != None:
-            message = client.messages \
+            message = twilio_client.messages \
                     .create(
                         # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
                         # from_='+14154668578',
