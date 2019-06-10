@@ -388,6 +388,15 @@ text-transform: uppercase;
   }
 
 .community_title{
+ 
+  font-family: 'Open Sans', sans-serif;
+  background-color: #fafafa;;
+  position: relative;
+  border-radius: 10px;
+  width: 120%;
+  height: 50%;
+  text-align: center;
+  padding-top: 7px;
   
 }
 
@@ -569,6 +578,7 @@ svg .downvote:hover {
   border-bottom: 1px solid #3b5998;
   text-transform: uppercase;
   letter-spacing: 10px;
+
 }
 
 .background_video {
@@ -596,6 +606,7 @@ svg .downvote:hover {
   background-size: cover;
   position: relative;
   display:flex;
+  border-radius: 10px;
 }
 
 /* Place text in the middle of the image */
