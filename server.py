@@ -36,7 +36,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 cloudinary.config(
-  name = config['cloudinary']['name'],
+  cloud_name = config['cloudinary']['name'],
   api_key = config['cloudinary']['api_key'],  
   api_secret = config['cloudinary']['api_secret']  
 )

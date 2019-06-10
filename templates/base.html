@@ -16,7 +16,18 @@
     <link rel="icon" href="/static/images/favicon.ico">
 
 </head>
-<body>
+
+{% block style %}
+
+{% endblock%}
+
+
+
+<body class="body normal {% block community %}{% endblock %}">
+  {% block video %}
+  {% endblock %}
+  {% block loading_pic %}
+  {% endblock %}
 
 <section id='navbar_header'>
   <div class="container-fluid">

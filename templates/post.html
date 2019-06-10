@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 
+{% block style %}
+<style media="screen">
+  .body.{{community.community_name}}{
+    background-image: url(/static/images/{{community.community_name}}.jpg)
+  }
+</style>
+{% endblock%}
+{% block community %}{{community.community_name}}{% endblock%}
+
 {% block title %}
 <a href="/k/{{community.community_name}}"><h1>k/{{ community.community_name }}</h1></a>
 {% endblock %}

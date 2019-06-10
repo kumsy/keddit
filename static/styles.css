@@ -229,11 +229,13 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(255,39,225,1) 5
 
 .members_count{
   color:white;
+  display:block;
 }
 /*=================================================*/
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 
@@ -242,6 +244,12 @@ body {
   background: #fafafa;
   color: #333333;
   /*margin-top: 5rem;*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+  background-position: center center;
+  box-sizing: border-box;
+  height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -534,3 +542,40 @@ svg .downvote:hover {
 }
 
 
+.community-name {
+  display: flex;
+  max-height: 85px;
+}
+
+.loading_pic {
+  /* background-image: url(/static/images/gameofthrones.gif); */
+  /*height: 100px;*/
+  width: 20%;
+  margin-left: 100px;
+  /* position: absolute; */
+  /* bottom: 45px; */
+  /* right: 200px; */
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: 100% 100%;
+  background-position: center center;
+  box-sizing: border-box;
+}
+
+.community_name {
+  font-family: "Trebuchet MS", sans-serif;
+  font-size: 4em;
+  letter-spacing: -2px;
+  border-bottom: 1px solid #3b5998;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+.background_video {
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  /* transform: translateX(calc((100% - 100vw)/2)); */
+}
