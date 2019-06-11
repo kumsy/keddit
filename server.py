@@ -468,14 +468,9 @@ def giphy(query):
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
 
-    if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-        cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
-        print(cloudinary_url)
-    else:
-        cloudinary_url = None
-
 
     community = Community.query.filter_by(community_name=community_name).first()
+   
 
     comments = Comment.query.filter_by(post_id=post_id).all()
     comments_count = Comment.query.filter_by(post_id=post_id).count()
@@ -501,8 +496,7 @@ def post(post_id, community_name):
                                         comments_count=comments_count, 
                                         rating_count=rating_count,
                                         upvote_count=upvote,
-                                        downvote_count=downvote, votes=votes, 
-                                        cloudinary_image=cloudinary_url)
+                                        downvote_count=downvote, votes=votes)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])

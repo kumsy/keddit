@@ -390,6 +390,7 @@ text-transform: uppercase;
 .community_title{
  
   font-family: 'Open Sans', sans-serif;
+
   background-color: #fafafa;;
   position: relative;
   border-radius: 10px;
@@ -608,11 +609,13 @@ svg .downvote:hover {
 
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
+  /*background-position: inherit;*/
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
   display:flex;
   border-radius: 10px;
+
 }
 
 /* Place text in the middle of the image */
