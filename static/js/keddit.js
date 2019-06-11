@@ -54,6 +54,7 @@ function showUpvote(evt) {
 
         let $votecount = $(".votecount");
         $votecount.html(data['vote_count']);
+        $(".upvote").css('color','#FF4500');
   });
 
 }
