@@ -82,6 +82,7 @@ function showDownvote(evt) {
         console.log(data['vote_count']);
 
         $(".votecount").html(data.vote_count);
+         $(".downvote").css('color','#7289da');
   });
 
 }
@@ -111,6 +112,7 @@ function upvoteComment(evt) {
         console.log(response);
         console.log(data.vote_count_comment);
         $(".votecount_comment").html(data.vote_count_comment);
+        $(".upvote").css('color','#FF4500');
   });
 
 }
@@ -140,6 +142,8 @@ function downvoteComment(evt) {
         console.log(response);
         console.log(data.vote_count_comment);
         $(".votecount_comment").html(data.vote_count_comment);
+        $(".downvote").css('color','#7289da');
+
   });
 
 }
@@ -172,6 +176,7 @@ function upvotePostList(evt) {
         let postID = (data.post_id)
 
         $(".votecount#votecount" + postID).html(data.vote_count);
+        $(".upvote#upvote" + postID).css('color','#FF4500');
   });
 
 }
@@ -204,6 +209,7 @@ function downvotePostList(evt) {
         let postID = (data.post_id);
 
         $(".votecount#votecount" + postID).html(data.vote_count);
+        $(".downvote#downvote" + postID).css('color','#7289da');
   });
 
 }

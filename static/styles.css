@@ -456,6 +456,22 @@ svg .upvote {
 svg .upvote:hover {
   fill: #FF4500;
 }
+.post_comment_up {
+  color: gray;
+}
+
+.post_comment_up:hover {
+  color: #FF4500;
+}
+.post_comment_down {
+  color: gray;
+}
+
+.post_comment_down:hover {
+  color: #7289da;
+}
+
+
 
 svg .downvote {
   fill: gray;
