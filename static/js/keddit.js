@@ -217,7 +217,7 @@ $(".down_post_list").on('click', downvotePostList);
 
 
 /*********************************************
-// Show downvote from the community PAGE HTML
+// Show upvote comments from the post PAGE HTML
 ***********************************************/
 function upvoteCommentList(evt) {
     evt.preventDefault();
@@ -244,6 +244,7 @@ function upvoteCommentList(evt) {
         let commentID = (data.comment_id);
 
         $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment);
+        $(".post_comment_up#upvote" + commentID).css('color','#FF4500');
         
 
   });
