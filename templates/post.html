@@ -128,7 +128,7 @@
 
     <div class="votecount_comment" id="votecount_comment{{comment.id}}"> {{votes[loop.index0]}} </div>
 
-    <div class="down_comment_list"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i data-id="{{comment.id}}" class="post_comment_down  fas fa-arrow-alt-down fa-lg"></i></a></div>
+    <div class="down_comment_list"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i data-id="{{comment.id}}" id="downvote{{comment.id}}" class="post_comment_down  fas fa-arrow-alt-down fa-lg"></i></a></div>
   </div>
 
       <img class="rounded-circle article-img_comment" src="{{ url_for('static', filename='images/' + comment.creator.image_file) }}">
