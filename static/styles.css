@@ -239,8 +239,10 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(255,39,225,1) 5
 }
 
 .members_count{
-  color:white;
+  color:black;
   display:block;
+  background-color: white;
+  font-family: 'Varela Round';
 }
 /*=================================================*/
 
@@ -369,7 +371,7 @@ a.article-title:hover {
 
 .community_name{
 
-font-family: "Trebuchet MS", sans-serif;
+font-family: 'Varela Round', sans-serif;
 font-size: 4em;
 letter-spacing: -2px;
 border-bottom: 1px solid #3b5998;
@@ -385,7 +387,7 @@ text-transform: uppercase;
 
 .community_list{
 
-font-family: "Trebuchet MS", sans-serif;
+font-family: 'Varela Round', sans-serif;
 font-size: 2em;
 letter-spacing: -2px;
 /*border-bottom: 2px solid black;*/
@@ -401,7 +403,7 @@ text-transform: uppercase;
 
 .community_title{
  
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Varela Round', sans-serif;
 
   background-color: #fafafa;;
   position: relative;
@@ -659,10 +661,13 @@ svg .downvote:hover {
   /*background-size: cover;*/
   position: relative;
   display:flex;
-  border-radius: 50px;
+  border-radius: 25px;
   width: 50%;
   /*margin-top: -60px;*/
   margin-left: 450px;
+  /*padding-right: 50px;*/
+  /*padding-left: 50px;*/
+  padding-top: 10px;
 
 }
 
@@ -685,7 +690,7 @@ svg .downvote:hover {
   width: 12%;
   text-align: center;
   border-radius: 10%;
-  font-family: Open Sans;
+  font-family: 'Varela Round';
 }
 
 .community_image{
@@ -693,4 +698,9 @@ svg .downvote:hover {
   margin-left: -15px;
   margin-right: -15px;
   margin-bottom: -90px;
+}
+
+.landing_image{
+  display: flex;
+
 }

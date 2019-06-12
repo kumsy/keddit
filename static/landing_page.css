@@ -233,7 +233,7 @@ p {
 .kitty-logo{
   width: 15%;
   
-  margin-bottom: -100px;
+  margin-bottom: -95px;
 }
 
 /*priceing section*/
@@ -383,3 +383,9 @@ p {
 {
     opacity:0.5 !important;
 }*/
+
+.press-logo2{
+  width: 10%;
+  margin-bottom: -20px;
+  margin-top: 10px;
+}
