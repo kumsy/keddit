@@ -2,16 +2,21 @@
 
 
 {% block title %}
-<h3>Front Page</h3>
+<div class="hero-image  mb-4">
+  <img class="hero-image" src="/static/images/reddit_kristen.jpg">
 
+  <div class="hero-text">
+    <h1 class="community_title">Welcome!</h1>
+    <p><small class="members_count">Hello</small></p>
     {% if current_user.is_authenticated %}
-      <h4> Welcome, {{ current_user.username }}.</h4>
+    <h4> Welcome, {{ current_user.username }}.</h4>
     {% endif %}
-  <br>
-
-   <a class='btn btn-primary' href="/communities" role='button'>View Communities</a>
-  </div><br>
+  </div>
+</div>
 {% endblock %}
+
+
+
 
 
 {% block content %}
