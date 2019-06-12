@@ -477,6 +477,7 @@ def post(post_id, community_name):
 
 
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
    
 
     comments = Comment.query.filter_by(post_id=post_id).all()
@@ -503,7 +504,8 @@ def post(post_id, community_name):
                                         comments_count=comments_count, 
                                         rating_count=rating_count,
                                         upvote_count=upvote,
-                                        downvote_count=downvote, votes=votes)
+                                        downvote_count=downvote, votes=votes,
+                                        members_count=members_count)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])

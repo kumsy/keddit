@@ -2,8 +2,11 @@
 
 {% block style %}
 <style media="screen">
-  .body.{{community.community_name}}{
+  .hero-image.{{community.community_name}}{
     background-image: url(/static/images/{{community.community_name}}.jpg)
+  }
+   div.loading_pic{
+    background-image: url(/static/images/{{community.community_name}}.gif);
   }
 
 </style>
@@ -11,11 +14,11 @@
 {% block community %}{{community.community_name}}{% endblock%}
 
 {% block title %}
-<div class="hero-image {{community.community_name}}">
+<div class="hero-image {{community.community_name}} mb-4">
 
   <div class="hero-text">
     <h1 class="community_title">k/ {{ community.community_name }}</h1>
-    
+    <p><small class="members_count">{{ members_count }} members</small></p>
     {% if current_user.is_authenticated %}
     <a class='btn btn-primary' href="/k/{{ community.community_name }}/join" role='button'>Join</a>
     {% endif %}
