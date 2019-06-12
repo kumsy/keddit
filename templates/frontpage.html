@@ -1,18 +1,29 @@
 {% extends 'base.html' %}
 
+{% block style %}
+<!-- <style media="screen">
+  .hero-image{
+    background-image: url("/static/images/reddit_kristen.jpg");
+  }
+  /*div.loading_pic{
+    background-image: url(/static/images/.gif);
+  }*/
+</style> -->
+{% endblock%}
 
 {% block title %}
 <div class="hero-image  mb-4">
-  <img class="hero-image" src="/static/images/reddit_kristen.jpg">
+  <img class="hero-image2 container-fluid" src="/static/images/reddit_kristen2.jpg">
 
-  <div class="hero-text">
+<!--   <div class="hero-text">
     <h1 class="community_title">Welcome!</h1>
     <p><small class="members_count">Hello</small></p>
     {% if current_user.is_authenticated %}
     <h4> Welcome, {{ current_user.username }}.</h4>
     {% endif %}
-  </div>
+  </div> -->
 </div>
+
 {% endblock %}
 
 

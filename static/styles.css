@@ -607,7 +607,7 @@ svg .downvote:hover {
 }
 
 .community_name {
-  font-family: "Trebuchet MS", sans-serif;
+  font-family: 'Varela Round', sans-serif;
   font-size: 4em;
   letter-spacing: -2px;
   border-bottom: 1px solid #3b5998;
@@ -645,6 +645,26 @@ svg .downvote:hover {
   border-radius: 10px;
 
 }
+.hero-image2 {
+  /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/static/images/{{community.community_name}}.jpg");*/
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  /*background-position: inherit;*/
+  background-repeat: no-repeat;
+  /*background-size: cover;*/
+  position: relative;
+  display:flex;
+  border-radius: 50px;
+  width: 50%;
+  /*margin-top: -60px;*/
+  margin-left: 450px;
+
+}
 
 /* Place text in the middle of the image */
 .hero-text {
@@ -655,6 +675,7 @@ svg .downvote:hover {
   transform: translate(-50%, -50%);
   color: white;
   margin-top: 130px;
+  font-family: 'Varela Round', sans-serif;
 }
 
 .comment_title{
