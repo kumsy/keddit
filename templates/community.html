@@ -91,7 +91,7 @@
         <p class="article-content">{{ post.body }}</p>
         <!-- Put picture here -->
         {% if post.image_url %}
-        <img class="post-img" src="{{ cloudinary_image[loop.index0] }}">
+        <img class="post-img" src="{{ post.cloudinary_url}}">
         {% endif %}
       
          <p><small class="text-muted"><i class="comments fas fa-comment-alt"></i> {{comments[loop.index0]}} Comments</small>

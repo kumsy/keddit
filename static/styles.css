@@ -669,4 +669,7 @@ svg .downvote:hover {
 
 .community_image{
   padding-top:57px;
+  margin-left: -15px;
+  margin-right: -15px;
+  margin-bottom: -90px;
 }
