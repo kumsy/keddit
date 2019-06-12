@@ -243,7 +243,7 @@ function upvoteCommentList(evt) {
 
         let commentID = (data.comment_id);
 
-        $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment);
+        $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment + ' points');
         $(".post_comment_up#upvote" + commentID).css('color','#FF4500');
         
 
@@ -281,7 +281,7 @@ function downvoteCommentList(evt) {
 
         let commentID = (data.comment_id)
 
-        $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment);
+        $(".votecount_comment#votecount_comment" + commentID).html(data.vote_count_comment + ' points');
         $(".post_comment_down#downvote" + commentID).css('color','#7289da');
   });
 

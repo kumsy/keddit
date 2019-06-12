@@ -11,7 +11,16 @@
 {% block community %}{{community.community_name}}{% endblock%}
 
 {% block title %}
-<a href="/k/{{community.community_name}}"><h1>k/{{ community.community_name }}</h1></a>
+<div class="hero-image {{community.community_name}}">
+
+  <div class="hero-text">
+    <h1 class="community_title">k/ {{ community.community_name }}</h1>
+    
+    {% if current_user.is_authenticated %}
+    <a class='btn btn-primary' href="/k/{{ community.community_name }}/join" role='button'>Join</a>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}
 
 
@@ -105,14 +114,16 @@
     
 
 <!-- Create Post Button -->
-  <div>
+<!--   <div>
     <a class='btn btn-outline-primary btn-sm' href="/k/{{community.community_name}}/post/{{post.id}}/comment/new" role='button'>Create Comment</a>
-  </div><br>
+  </div><br> -->
+
+  <div class="comment_title">Comments</div>
 
   <!-- Send SMS -->
-  <div>
+<!--   <div>
     <a class='btn btn-outline-primary btn-sm' href="/k/{{community.community_name}}/post/{{post.id}}/send_sms" role='button'>Send SMS</a>
-  </div><br>
+  </div><br> -->
 
 
   <!-- Display comments -->
@@ -123,19 +134,22 @@
     <article class="media content-section">
 
       <!-- Upvotes/Downvotes -->
-  <div class="vote-container">
+  <div class="vote-container2">
     <div class="up_comment_list"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/upvote"><i data-id="{{comment.id}}" id="upvote{{comment.id}}"class="post_comment_up fas fa-arrow-alt-up fa-lg"></i></a></div>
 
-    <div class="votecount_comment" id="votecount_comment{{comment.id}}"> {{votes[loop.index0]}} </div>
-
+   <!--  <div class="votecount_comment" id="votecount_comment{{comment.id}}"> {{votes[loop.index0]}} </div>
+ -->
     <div class="down_comment_list"><a href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}/downvote"><i data-id="{{comment.id}}" id="downvote{{comment.id}}" class="post_comment_down  fas fa-arrow-alt-down fa-lg"></i></a></div>
   </div>
 
       <img class="rounded-circle article-img_comment" src="{{ url_for('static', filename='images/' + comment.creator.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}">{{ comment.creator.username }}</a>
-          <small class="text-muted">{{ comment.date.strftime('%Y-%m-%d') }}</small>
+          <a class="mr-1" href="/k/{{community.community_name}}/post/{{post.id}}/comment/{{comment.id}}">{{ comment.creator.username }}</a>
+
+            <small class="votecount_comment mr-1" style="color:gray" id="votecount_comment{{comment.id}}" class="text-muted">{{votes[loop.index0]}} points</small>
+
+          <small class="text-muted">· {{ comment.date.strftime('%Y-%m-%d') }}</small>
         </div>      
         <p class="article-content">{{ comment.body }}</p>
       </div>
