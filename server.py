@@ -823,7 +823,8 @@ def send_twilio_sms(community_name, post_id):
 
     # Make Ajax call, can do an input form to get the user "number" also
 
-    return jsonify({'message_sid': message.sid})
+    # return jsonify({'message_sid': message.sid})
+    return redirect('/home')
 
 #____________________________________________________________
 

@@ -293,7 +293,7 @@ $(".down_comment_list").on('click', downvoteCommentList);
 ***********************************************/
 
 function handleGifClick(evt){
-    alert('Gif click happened');
+    alert("You've selected a GIF.");
     // First: Figure out what gif was clicked on; the target of this evt
     let gifElement = evt.target;
     // Get the src attrb for that gif
@@ -364,4 +364,5 @@ function showGiphy(evt) {
 $("#giphyResults").hide();
 
 $("#giphySearch").on('click', showGiphy);
+
 
