@@ -43,13 +43,13 @@
             <!-- Upvote Arrow -->
           <div class="vote-container"> 
             <div class="arrow-container">
-            <div class="up_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" class="upvote fas fa-arrow-alt-up fa-lg"></i></a></div>
+            <div class="up_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/upvote"><i data-id ="{{post.id}}" id="upvote{{post.id}}"class="upvote fas fa-arrow-alt-up fa-lg"></i></a></div>
 
             <!-- Display Votes -->
             <div class="votecount" id="votecount{{post.id}}"> {{votes[loop.index0]}} </div>
 
             <!-- Downvote Arrow -->
-            <div class="down_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}"class="downvote  fas fa-arrow-alt-down fa-lg"></i></a></div>
+            <div class="down_post_list"><a href="/k/{{communities[loop.index0]}}/posts/{{post.id}}/downvote"><i data-id="{{post.id}}" id="downvote{{post.id}}"class="downvote  fas fa-arrow-alt-down fa-lg"></i></a></div>
           </div>
       </div>
 
