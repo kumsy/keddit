@@ -385,7 +385,9 @@ p {
 }*/
 
 .press-logo2{
-  width: 10%;
+  /*width: 50%;*/
   margin-bottom: -20px;
   margin-top: 10px;
+  height: 5rem;
+  /*position: absolute;*/
 }
