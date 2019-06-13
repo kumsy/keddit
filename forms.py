@@ -83,3 +83,8 @@ class GiphyForm(FlaskForm):
     submit = SubmitField('Post')
     search = SubmitField('Search')
 
+class SendTextForm(FlaskForm):
+    number= StringField('Receipent', render_kw={'placeholder':"415-310-0618"})
+    submit = SubmitField('Send')
+
+

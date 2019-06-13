@@ -11,7 +11,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import (connect_to_db, db, User, Community, CommunityMembers, 
                     Post, PostRatings, Comment, CommentRatings)
 from forms import (RegistrationForm, LoginForm, CommunityForm, 
-                    AccountForm, PostForm, CommentForm, GiphyForm)
+                    AccountForm, PostForm, CommentForm, GiphyForm, SendTextForm)
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
@@ -467,7 +467,8 @@ def giphy(query):
 @app.route("/k/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
-    
+    form = SendTextForm()
+
 
     # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
     #     cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + "." + post.cloud_format
@@ -505,7 +506,8 @@ def post(post_id, community_name):
                                         rating_count=rating_count,
                                         upvote_count=upvote,
                                         downvote_count=downvote, votes=votes,
-                                        members_count=members_count)
+                                        members_count=members_count,
+                                        form=form)
 
 # UPDATE POST
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
@@ -741,76 +743,81 @@ def user_account(username):
     return render_template('user_account.html', posts=posts, user=user, 
         votes=votes, comments=comments, communities=communities)
 
-@app.route("/k/<community_name>/post/<int:post_id>/send_sms")
+@app.route("/k/<community_name>/post/<int:post_id>/send_sms", methods=['GET', 'POST'])
 def send_twilio_sms(community_name, post_id):
 
-    post = Post.query.get_or_404(post_id)
-    if post.image_url != None and post.body != None:
-        flash('Your post has been shared!', 'success')
-        message = twilio_client.messages \
-                    .create(
-                         body="\n\n Sent from Keddit! \n\n" + \
-                         "Posted by u/" + post.creator.username + "\n\n" +\
-                         "**************" +"\n"+\
-                         "k/" + community_name + "\n" +\
-                         "**************\n" +\
-                         post.title + "\n\n" + post.body,
-                         media_url=post.cloudinary_url,
-                         from_='+14154668578',
-                         to='+14153100618'
-                     )
-    elif post.body == None and post.image_url == None:
-         flash('Your post has been shared!', 'success')
-         message = twilio_client.messages \
-                .create(
-                     # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
-                     # from_='+14154668578',
-                     # to='+14153100618'
+    form = SendTextForm()
 
-                      body="\n\n Sent from Keddit! \n\n" + \
-                         "Posted by u/" + post.creator.username + "\n\n" +\
-                         "**************" +"\n"+\
-                         "k/" + community_name + "\n" +\
-                         "**************\n" +\
-                         post.title ,
-                         from_='+14154668578',
-                         to='+14153100618'
-                 )
-    elif post.body != None and post.image_url == None:
+    if form.validate_on_submit():
+        
+
+        post = Post.query.get_or_404(post_id)
+        if post.image_url != None and post.body != None:
             flash('Your post has been shared!', 'success')
             message = twilio_client.messages \
+                        .create(
+                             body="\n\n Sent from Keddit! \n\n" + \
+                             "Posted by u/" + post.creator.username + "\n\n" +\
+                             "**************" +"\n"+\
+                             "k/" + community_name + "\n" +\
+                             "**************\n" +\
+                             post.title + "\n\n" + post.body,
+                             media_url=post.cloudinary_url,
+                             from_='+14154668578',
+                             to='+14153100618'
+                         )
+        elif post.body == None and post.image_url == None:
+             flash('Your post has been shared!', 'success')
+             message = twilio_client.messages \
                     .create(
-                         # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
+                         # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title,
                          # from_='+14154668578',
                          # to='+14153100618'
 
                           body="\n\n Sent from Keddit! \n\n" + \
-                         "Posted by u/" + post.creator.username + "\n\n" +\
-                         "**************" +"\n"+\
-                         "k/" + community_name + "\n" +\
-                         "**************\n" +\
-                         post.title + "\n\n" + post.body,
-                         from_='+14154668578',
-                         to='+14153100618'
+                             "Posted by u/" + post.creator.username + "\n\n" +\
+                             "**************" +"\n"+\
+                             "k/" + community_name + "\n" +\
+                             "**************\n" +\
+                             post.title ,
+                             from_='+14154668578',
+                             to='+14153100618'
                      )
-    elif post.body == None and post.image_url != None:
-            flash('Your post has been shared!', 'success')
-            message = twilio_client.messages \
-                    .create(
-                        # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
-                        # from_='+14154668578',
-                        # to='+14153100618'
+        elif post.body != None and post.image_url == None:
+                flash('Your post has been shared!', 'success')
+                message = twilio_client.messages \
+                        .create(
+                             # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.body,
+                             # from_='+14154668578',
+                             # to='+14153100618'
 
-                         body="\n\n Sent from Keddit! \n\n" + \
-                         "Posted by u/" + post.creator.username + "\n\n" +\
-                         "**************" +"\n"+\
-                         "k/" + community_name + "\n" +\
-                         "**************\n" +\
-                         post.title,
-                         media_url= post.cloudinary_url,
-                         from_='+14154668578',
-                         to='+14153100618'
-                     )
+                              body="\n\n Sent from Keddit! \n\n" + \
+                             "Posted by u/" + post.creator.username + "\n\n" +\
+                             "**************" +"\n"+\
+                             "k/" + community_name + "\n" +\
+                             "**************\n" +\
+                             post.title + "\n\n" + post.body,
+                             from_='+14154668578',
+                             to='+14153100618'
+                         )
+        elif post.body == None and post.image_url != None:
+                flash('Your post has been shared!', 'success')
+                message = twilio_client.messages \
+                        .create(
+                            # body="\n\n Sent from Keddit k/" + community_name + " posted by user u/" + post.creator.username + "\n\n" + post.title + "\n*********"+ "\n\n" + post.image_url,
+                            # from_='+14154668578',
+                            # to='+14153100618'
+
+                             body="\n\n Sent from Keddit! \n\n" + \
+                             "Posted by u/" + post.creator.username + "\n\n" +\
+                             "**************" +"\n"+\
+                             "k/" + community_name + "\n" +\
+                             "**************\n" +\
+                             post.title,
+                             media_url= post.cloudinary_url,
+                             from_='+14154668578',
+                             to='+14153100618'
+                         )
 
     print(message.sid)
 
