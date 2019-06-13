@@ -87,10 +87,12 @@
 
   {% for community in communities %}
   <div>
-        <ul>
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-light">
           <a class= "community_list" href= "/k/{{ community.community_name }}"> {{ community.community_name }}
           </a>
-          
+          </li>
+
         </ul>
     </div>
   {% endfor %}

@@ -399,6 +399,7 @@ text-transform: uppercase;
 }
 .community_list:hover{
   letter-spacing: 10px;
+  color:#FF4500 ;
   
   -webkit-transition: letter-spacing 2s;
   
