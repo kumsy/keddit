@@ -512,10 +512,12 @@ svg .downvote:hover {
   margin: 20px;
 }
 #giphyResults{
-  width: 300px;
+  /*width: 300px;*/
+  /*display: inline-flex;*/
   border: 15px solid pink;
-  padding: 50px;
-  margin: 20px;
+  /*padding: 50px;*/
+  margin-top: 30px;
+  margin-left: -30px;
 }
 
 .ad{
@@ -709,4 +711,10 @@ svg .downvote:hover {
 .landing_image{
   display: flex;
 
+}
+
+.result_items{
+  display:inline-flex;
+  
+  padding: 10px;
 }

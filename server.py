@@ -316,6 +316,7 @@ def join_community(community_name):
 def new_post(community_name):
 
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
 
     form = PostForm()
     if form.validate_on_submit():
@@ -354,7 +355,7 @@ def new_post(community_name):
             # How to route user back to the community's page efficiently?
             return redirect('/k/'+community_name)
     return render_template('create_post.html', form=form, community=community, 
-                                                            legend='New Post')
+                                legend='New Post', members_count=members_count)
 
 
 # Create GIPHY
@@ -363,6 +364,7 @@ def new_post(community_name):
 def create_giphy(community_name):
 
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
 
     form = GiphyForm()
 
@@ -407,7 +409,7 @@ def create_giphy(community_name):
         # return jsonify({'giphy_results': data_list})
 
     return render_template('create_giphy.html', form=form, community=community,
-                                            legend='New Post')
+                                            legend='New Post', members_count=members_count)
 
 
 # GIHPY API
@@ -470,13 +472,6 @@ def post(post_id, community_name):
     form = SendTextForm()
 
 
-    # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
-    #     cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + "." + post.cloud_format
-    #     print(cloudinary_url)
-    # else:
-    #     cloudinary_url = None
-
-
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
    
@@ -515,6 +510,7 @@ def post(post_id, community_name):
 def update_post(post_id, community_name):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     if post.creator != current_user:
         abort(403)
     form = PostForm()
@@ -528,7 +524,7 @@ def update_post(post_id, community_name):
         form.title.data=post.title
         form.content.data=post.body
     return render_template('create_post.html', form=form, post=post,community=community, 
-                                                        legend='Update Post')
+                                     legend='Update Post', members_count=members_count)
 # DELETE POST
 @app.route("/k/<community_name>/post/<int:post_id>/delete", methods=['POST'])
 @login_required
@@ -557,6 +553,8 @@ def delete_post(post_id, community_name):
                                                         methods=['GET','POST'])
 @login_required
 def create_comment(post_id, community_name):
+    community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     form = CommentForm()
     if form.validate_on_submit():
         comment = Comment(user_id=current_user.id, post_id=post_id,
@@ -565,7 +563,8 @@ def create_comment(post_id, community_name):
         db.session.commit()
         flash('Your comment has been created!', 'success')
         return redirect("/k/"+community_name+"/post/"+str(post_id))
-    return render_template('create_comment.html', form=form)
+    return render_template('create_comment.html', form=form, members_count=members_count,
+                                community=community)
 
 
 
@@ -574,6 +573,8 @@ def create_comment(post_id, community_name):
 def comment(post_id, community_name, comment_id):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
+    
     comment = Comment.query.get(comment_id)
 
 
@@ -584,7 +585,8 @@ def comment(post_id, community_name, comment_id):
 
 
     return render_template('comment.html', post=post, community=community, 
-                                    comment=comment, rating_count=rating_count)
+                                    comment=comment, rating_count=rating_count,
+                                    members_count=members_count)
 
 
 
@@ -596,6 +598,7 @@ def comment(post_id, community_name, comment_id):
 def update_comment(post_id, community_name, comment_id):
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
+    members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     comment = Comment.query.get(comment_id)
     if comment.creator != current_user:
         abort(403)
@@ -608,7 +611,7 @@ def update_comment(post_id, community_name, comment_id):
     elif request.method == 'GET':    
         form.content.data=comment.body
     return render_template('create_comment.html', form=form, post=post,community=community, 
-                                                        legend='Update Post')
+                                legend='Update Post', members_count=members_count)
 # DELETE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/delete",
                                                     methods=['POST'])
