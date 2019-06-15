@@ -1,4 +1,5 @@
-Rough Draft [IN-PROGRESS]
+:construction: Rough Draft [IN-PROGRESS] :construction:
+
 
 ![Keddit Logo](https://res.cloudinary.com/kumy/image/upload/v1560583111/keddit_press_logo_z7euhq.svg)
 
