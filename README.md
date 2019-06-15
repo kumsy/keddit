@@ -4,12 +4,12 @@ Rough Draft [IN-PROGRESS]
 
 Keddit is a community-driven social media site, inspired by Reddit with Twilio functionally. 
 
-Users will be able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote. 
+Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote. 
 
 Features:
 
-CLOUDINARY - Images and GIFs from posts are automatically uploaded to my cloud server via cloudinary
+CLOUDINARY - Images and GIFs from posts are automatically uploaded to a cloud server.
 
-GIPHY API - Users can search for their favorites GIFs powered by GIPHY
+GIPHY API - Users can search for their favorites GIFs powered by GIPHY.
 
 TWILIO API - Users can share posts and send the contents via SMS and MMS.
