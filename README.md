@@ -1,4 +1,4 @@
-#Rough Draft [IN-PROGRESS]
+Rough Draft [IN-PROGRESS]
 
 ![Keddit Logo](https://res.cloudinary.com/kumy/image/upload/v1560583111/keddit_press_logo_z7euhq.svg)
 
