@@ -8,7 +8,9 @@ Users will be able to create an account, upload their custom profile picture, cr
 
 Features:
 Cloud storage: Images and GIFs from posts are automatically uploaded to my cloud server via cloudinary
+
 GIPHY API: Users can search for their favorites GIFs powered by GIPHY
+
 TWILIO API: Users can share posts and send the contents via SMS and MMS.
 
 [README In-Progress]
