@@ -720,5 +720,12 @@ svg .downvote:hover {
 }
 
 .exp_bar{
-  
+  width: 60%;
+}
+
+.user_level{
+  width: 10%;
+  margin-left: 400px;
+  margin-top: 12px;
+  position: absolute;
 }
