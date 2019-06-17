@@ -226,6 +226,11 @@ background: linear-gradient(90deg, rgba(255,255,255,1) 15%, rgba(255,39,225,1) 5
 .votecount_comment{
  
  margin-left:4px;
+  /*margin: 10px;*/
+ margin-bottom: 2px;
+ font-weight: bold;
+ position: static;
+ font-size: 14px;
 
 }
 .votecount_comment:hover{
@@ -742,4 +747,8 @@ svg .downvote:hover {
 .list-group-item:hover{
   border-color: #F087CD;
   border-width: 3px;
+}
+
+.media:hover{
+  border-color: #F087CD ;
 }
