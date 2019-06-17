@@ -229,7 +229,7 @@ def new_community():
             db.session.add(community)
             db.session.commit()
             flash('Your community has been created!', 'success')
-            return redirect(url_for('frontpage'))
+            return redirect(url_for('community_list'))
 
 
     return render_template('create_community.html', form=form)
@@ -827,7 +827,7 @@ def send_twilio_sms(community_name, post_id):
     # Make Ajax call, can do an input form to get the user "number" also
 
     # return jsonify({'message_sid': message.sid})
-    return redirect('/home')
+    return redirect('/k/'+community_name+'/post/'+str(post_id))
 
 #____________________________________________________________
 
