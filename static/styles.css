@@ -729,3 +729,12 @@ svg .downvote:hover {
   margin-top: 12px;
   position: absolute;
 }
+
+.background_video {
+  min-width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  /* transform: translateX(calc((100% - 100vw)/2)); */
+}
