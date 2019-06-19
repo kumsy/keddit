@@ -71,8 +71,8 @@
 
               {% if post.creator == current_user %}
               <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="/k/{{community.community_name}}/post/{{post.id}}/update">Update</a>
-                <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" style="border-radius: 24px;" href="/k/{{community.community_name}}/post/{{post.id}}/update">Update</a>
+                <button type="button" style="border-radius: 24px;" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
               </div>
               {% endif %}
             </div>
