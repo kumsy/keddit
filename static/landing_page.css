@@ -371,6 +371,25 @@ p {
   -webkit-transition: border-radius 2s;
 }
 
+.twitch{
+  padding: 10px;
+  border-radius: 5px;
+  color: #8c6dc5;
+  
+
+  /* HOVER OFF */
+  -webkit-transition: padding 2s;
+  
+}
+.twitch:hover{
+  padding-top: 20px;
+  border-radius: 15px;
+  color:#6441a5;
+
+  /* HOVER ON */
+  -webkit-transition: border-radius 2s;
+}
+
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
