@@ -1,10 +1,15 @@
-:construction: Detailed README.md in-progress :construction:
-
-Please reference my demo video currently at:
-[Keddit Demo](https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt)
-
 <p align="center">
   <img src="static/images/keddit_logo_image_dark.svg" width="350" title="Keddit">
+</p>
+
+<p align="center">
+  :construction: Detailed README.md in-progress :construction:
+</p>
+
+<p align="center">
+  Please reference my demo video currently at:
+  <a href="https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt">Keddit Demo</a>
+
 </p>
 
 Keddit is a community-driven social media site, inspired by Reddit with Twilio functionally. 
