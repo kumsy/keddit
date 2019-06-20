@@ -4,7 +4,7 @@ Please reference my demo video currently at:
 [Keddit Demo](https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt)
 
 
-![Keddit Logo](https://res.cloudinary.com/kumy/image/upload/v1560583111/keddit_press_logo_z7euhq.svg)
+![Keddit Logo](static/images/keddit_logo_image_dark.svg)
 
 Keddit is a community-driven social media site, inspired by Reddit with Twilio functionally. 
 
