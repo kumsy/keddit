@@ -1,4 +1,7 @@
-:construction: Rough Draft [IN-PROGRESS] :construction:
+:construction: Detailed README.md in-progress :construction:
+
+Please refer to my demo video currently at:
+[Keddit Demo](https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt)
 
 
 ![Keddit Logo](https://res.cloudinary.com/kumy/image/upload/v1560583111/keddit_press_logo_z7euhq.svg)
