@@ -1,6 +1,6 @@
 :construction: Detailed README.md in-progress :construction:
 
-Please refer to my demo video currently at:
+Please reference my demo video currently at:
 [Keddit Demo](https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt)
 
 
