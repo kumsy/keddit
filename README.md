@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="static/images/keddit_logo_image_dark.svg" width="350" title="Keddit">
+  <img src="static/images/keddit_logo_image_dark.svg" width="550" title="Keddit">
 </p>
 
 <p align="center">
