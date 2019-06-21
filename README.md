@@ -93,4 +93,4 @@ Coming soon
 <p align="center">
   <img src="static/images/kristen_snoo.PNG">
 </p>
-<p align="center">Kristen Campbell is a Software Engineer in San Francisco, CA.</p>
+<p align="center"><b>Kristen Campbell</b> is a Software Engineer in San Francisco, CA.</p>
