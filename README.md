@@ -12,7 +12,11 @@
 
 
 <p align="center">
-  <sub>The Force is strong with this one: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a></sub>
+  <sub>The Force is strong with this one</sub>
+</p>
+
+<p align="center">
+  <sub>Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a></sub>
 </p>
 
 ----
