@@ -43,19 +43,19 @@ Content
 ## API:
 
 <p>
-  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
+  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">&nbsp;
   Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.
 </p>
 
 
 <p>
-  <img src="static/images/giphybadge.gif" width="40" title="GIPHY">
+  <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;
   Giphy - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
 
 <p>
-  <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">
+  <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">&nbsp;
   Twilio - Users can share posts and send the contents via SMS and MMS.
 </p>
 
@@ -66,11 +66,11 @@ Content
 
 ## Tech Stack:
 <p>
-  <img class="tech-stack-python" src="static/images/Python.png" width="100">
+  <img class="tech-stack-python" src="static/images/Python.png" width="120">
   <img class="tech-stack-psql" src="static/images/psql.png" width="60">
   <img class="tech-stack-flask" src="static/images/flask.png" width="45">
   <img class="tech-stack-jinja" src="static/images/jinja2.png" width="55">
   <img class="tech-stack-js" src="static/images/jslogo.png" width="60">
-  </p>
+</p>
   
   ----
