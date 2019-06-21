@@ -42,9 +42,9 @@ Content
 
 ## API:
 
-<img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"> 
+<img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png" width="60" title="Cloudinary">
 <p>
-width="60" title="Cloudinary"> Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.</p>
+  Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.</p>
 
 <img src="static/images/giphybadge.gif" width="40" title="GIPHY">
 <p>
