@@ -45,10 +45,10 @@ Coming soon
 ## Getting started:
 Coming soon
 
-##### Requirements
+##### Requirements:
 Coming soon
 
-##### Installation::
+##### Installation:
 Coming soon
 
 ---
