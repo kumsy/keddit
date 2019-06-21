@@ -12,7 +12,8 @@
 </p>
 
 <p align="center">
-  <a href="#whats-keddit"> Description</a> <b>|</b> 
+  <a href="#whats-keddit"> About</a> <b>|</b> 
+  <a href="#features"> Features</a> <b>|</b> 
 </p>
 
 
