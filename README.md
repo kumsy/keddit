@@ -12,9 +12,8 @@
 </p>
 
 <p align="center">
-  [Features](#Description)</a>
+  <a href="#description"> Description</a>
 </p>
-
 
 
 <p align="center">
