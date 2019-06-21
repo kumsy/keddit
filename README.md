@@ -41,16 +41,20 @@ Keddit is a community-driven social media site built from the ground-up, inspire
 Content
 
 ## API:
-<p>
-<img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png" width="60" title="Cloudinary"> Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.</p>
 
+<img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png" 
 <p>
+width="60" title="Cloudinary"> Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.</p>
+
 <img src="static/images/giphybadge.gif" width="40" title="GIPHY">
+<p>
+
  Giphy - Users can search for their favorites GIFs powered by GIPHY.
  </p>
 
+  <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">
 <p>
-  <img src="static/images/twilio-vector-logo.png" width="40" title="GIPHY">
+
  Twilio - Users can share posts and send the contents via SMS and MMS.
   </p>
 
