@@ -17,6 +17,8 @@
 
 ___________________________________
 
+# What's Keddit?
+
 Keddit is a community-driven social media site, inspired by Reddit :heart:. 
 
 Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote. 
