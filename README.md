@@ -42,21 +42,22 @@ Content
 
 ## API:
 
-<img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png" width="60" title="Cloudinary">
 <p>
-  Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.</p>
+  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
+  Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.
+</p>
 
-<img src="static/images/giphybadge.gif" width="40" title="GIPHY">
+
 <p>
+  <img src="static/images/giphybadge.gif" width="40" title="GIPHY">
+  Giphy - Users can search for their favorites GIFs powered by GIPHY.
+</p>
 
- Giphy - Users can search for their favorites GIFs powered by GIPHY.
- </p>
 
+<p>
   <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">
-<p>
-
- Twilio - Users can share posts and send the contents via SMS and MMS.
-  </p>
+  Twilio - Users can share posts and send the contents via SMS and MMS.
+</p>
 
 
 
