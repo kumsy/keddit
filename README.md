@@ -12,7 +12,7 @@
 
 
 <p align="center">
-  Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a>
+  <sub>The Force is strong with this one: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a></sub>
 </p>
 
 ----
