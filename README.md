@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <sub><a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a></sub>
+  <sub><a href="https://www.linkedin.com/in/kristencampbell"><b>Kristen Campbell</b></a></sub>
 </p>
 
 ----
