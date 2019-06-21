@@ -55,7 +55,7 @@ Content
 
 
 <p>&nbsp;
-  <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">&nbsp;
+  <img src="static/images/twilio-vector-logo.png" width="50" title="Twilio">&nbsp;
   Twilio - Users can share posts and send the contents via SMS and MMS.
 </p>
 
