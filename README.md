@@ -18,7 +18,7 @@
 ----
 
 ```html
-  Detailed README.md currently in-progress
+Detailed README.md currently in-progress
 ```
 ```html
 Please reference my demo video currently at: 
