@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-  <a href="#features"> Features</a> <b>|</b> 
-  <a href="#getting-started"> Install</a> <b>|</b>
-  <a href="#tech-stack"> Stack</a> <b>|</b> 
-  <a href="#api"> API</a> <b>|</b> 
-  <a href="#about"> About</a>
+  <a href="#features"> <b>Features</b></a> <b>|</b> 
+  <a href="#getting-started"> <b>Install</b></a> <b>|</b>
+  <a href="#tech-stack"> <b>Stack</b></a> <b>|</b> 
+  <a href="#api"> <b>API</b></a> <b>|</b> 
+  <a href="#about"> <b>About</b></a>
 </p>
 
 
