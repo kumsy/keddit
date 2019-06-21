@@ -7,7 +7,7 @@
   <a href="#features"> <b>Features</b></a> <b>|</b> 
   <a href="#getting-started"> <b>Docs</b></a> <b>|</b>
   <a href="#tech-stack"> <b>Stack</b></a> <b>|</b> 
-  <a href="#api"> <b>API</b></a> <b>|</b> 
+  <a href="#api"> <b>API</b></a> 
 </p>
 
 
