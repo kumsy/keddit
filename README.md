@@ -5,6 +5,7 @@
 <p align="center">
   <a href="#whats-keddit"> About</a> <b>|</b> 
   <a href="#features"> Features</a> <b>|</b> 
+  <a href="#getting-started"> Docs</a> <b>|</b>
   <a href="#tech-stack"> Tech Stack</a> <b>|</b> 
   <a href="#api"> API</a> <b>|</b> 
 </p>
