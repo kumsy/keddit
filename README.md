@@ -12,7 +12,7 @@
 
 
 <p align="center">
-  Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a>
+  Developed by: <a href="https://www.linkedin.com/in/kristencampbell" target="_blank">Kristen Campbell</a>
 </p>
 
 ----
