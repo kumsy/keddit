@@ -14,12 +14,14 @@
 <p align="center">
   <a href="#whats-keddit"> About</a> <b>|</b> 
   <a href="#features"> Features</a> <b>|</b> 
+  <a href="#tech-stack"> Tech Stack</a> <b>|</b> 
 </p>
 
 
 <p align="center">
   Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a>
 </p>
+
 
 ___________________________________
 
@@ -36,3 +38,15 @@ CLOUDINARY - Images and GIFs from posts are automatically uploaded to a cloud se
 GIPHY API - Users can search for their favorites GIFs powered by GIPHY.
 
 TWILIO API - Users can share posts and send the contents via SMS and MMS.
+
+
+
+
+## Tech Stack:
+<p align="center">
+  <img class="tech-stack-python" src="static/images/Python.png" width="100">
+  <img class="tech-stack-psql" src="static/images/psql.png" width="60">
+  <img class="tech-stack-flask" src="static/images/flask.png" width="45">
+  <img class="tech-stack-jinja" src="static/images/jinja2.png" width="55">
+  <img class="tech-stack-js" src="static/images/jslogo.png" width="60">
+</p>
