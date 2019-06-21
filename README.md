@@ -5,7 +5,7 @@
 <p align="center">
   <a href="#about"> <b>About</b></a><b>|</b> 
   <a href="#features"> <b>Features</b></a> <b>|</b> 
-  <a href="#getting-started"> <b>Install</b></a> <b>|</b>
+  <a href="#getting-started"> <b>Docs</b></a> <b>|</b>
   <a href="#tech-stack"> <b>Stack</b></a> <b>|</b> 
   <a href="#api"> <b>API</b></a> <b>|</b> 
 </p>
