@@ -30,7 +30,9 @@ ___________________________________
 
 ## What's Keddit?
 
-Keddit is a community-driven social media site, inspired by Reddit :heart: Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's main front page often referred to as 'k/ popular'.
+Keddit is a community-driven social media site, inspired by Reddit. Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's main front page often referred to as 'k/ popular'.
+
+![#ff4500](https://placehold.it/15/ff4500/000000?text=+) `#ff4500`
 
 ---
 
