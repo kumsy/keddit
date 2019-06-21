@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="#whats-keddit"> About</a> <b>|</b> 
+  <a href="#about"> About</a> <b>|</b> 
   <a href="#features"> Features</a> <b>|</b> 
   <a href="#getting-started"> Docs</a> <b>|</b>
   <a href="#tech-stack"> Stack</a> <b>|</b> 
@@ -88,7 +88,7 @@ Coming soon
 </p>
   
   ----
-
+## About:
 
 <p align="center">
   <img src="static/images/kristen_snoo.PNG">
