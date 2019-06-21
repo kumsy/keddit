@@ -13,6 +13,8 @@
   Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a>
 </p>
 
+----
+
 ```html
   Detailed README.md in-progress
 ```
