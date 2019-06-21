@@ -3,15 +3,6 @@
 </p>
 
 <p align="center">
-  Detailed README.md in-progress
-</p>
-
-<p align="center">
-  Please reference my demo video currently at:
-  <a href="https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt">Keddit Demo</a>
-</p>
-
-<p align="center">
   <a href="#whats-keddit"> About</a> <b>|</b> 
   <a href="#features"> Features</a> <b>|</b> 
   <a href="#tech-stack"> Tech Stack</a> <b>|</b> 
@@ -21,6 +12,15 @@
 <p align="center">
   Developed by: <a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a>
 </p>
+
+```html
+  Detailed README.md in-progress
+```
+```html
+  Please reference my demo video currently at:
+```
+
+<a href="https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt">Keddit Demo</a>
 
 
 ___________________________________
