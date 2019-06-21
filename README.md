@@ -38,7 +38,20 @@ Keddit is a community-driven social media site built from the ground-up, inspire
 
 ## Features:
 
-Content
+Coming soon
+
+---
+
+## Getting started:
+Coming soon
+
+##### Requirements
+Coming soon
+
+##### Installation::
+Coming soon
+
+---
 
 ## API:
 
@@ -74,3 +87,8 @@ Content
 </p>
   
   ----
+
+
+<p align="center">
+  <img src="static/images/kristen_snoo.PNG">
+</p>
