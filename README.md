@@ -46,10 +46,13 @@ Content
 
 <p>
 <img src="static/images/giphybadge.gif" width="40" title="GIPHY">
-Giphy - Users can search for their favorites GIFs powered by GIPHY.
-  </p>
+ Giphy - Users can search for their favorites GIFs powered by GIPHY.
+ </p>
 
-TWILIO API - Users can share posts and send the contents via SMS and MMS.
+<p>
+  <img src="static/images/twilio-vector-logo.png" width="40" title="GIPHY">
+ Twilio - Users can share posts and send the contents via SMS and MMS.
+  </p>
 
 
 
