@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <a href="#about"> <b>About</b></a> <b>|</b> 
+  <a href="#engineer"> <b>About</b></a> <b>|</b> 
   <a href="#features"> <b>Features</b></a> <b>|</b> 
   <a href="#getting-started"> <b>Docs</b></a> <b>|</b>
   <a href="#tech-stack"> <b>Stack</b></a> <b>|</b> 
@@ -88,7 +88,7 @@ Coming soon
 </p>
   
   ----
-## About:
+## Engineer:
 
 <p align="center">
   <img src="static/images/kristen_snoo.PNG">
