@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  :construction: Detailed README.md in-progress :construction:
+  Detailed README.md in-progress
 </p>
 
 <p align="center">
