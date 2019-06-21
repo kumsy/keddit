@@ -48,13 +48,13 @@ Content
 </p>
 
 
-<p>
+<p>&nbsp;
   <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;&nbsp;
   Giphy - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
 
-<p>
+<p>&nbsp;
   <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">&nbsp;
   Twilio - Users can share posts and send the contents via SMS and MMS.
 </p>
