@@ -17,13 +17,9 @@
 
 ___________________________________
 
-# What's Keddit?
+## What's Keddit?
 
-Keddit is a community-driven social media site, inspired by Reddit :heart:. 
-
-Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote. 
-
-Keddit is a community-driven social media website. Registered users may customize their username, email, and profile picture. Members submit content to the site such as text posts, images, and GIFs which are then voted up or down by other members on Keddit. Posts are organized by subject via user-created communities called "subkeddits" in which a collect of posts are displayed relating to it's community subject. If a post has enough up-votes, it may be featured on Keddit's main front page often referred to as "k/ popular".
+Keddit is a community-driven social media site, inspired by Reddit :heart:. Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's main front page often referred to as 'k/ popular'.
 
 Features:
 
