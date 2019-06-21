@@ -43,13 +43,13 @@ Content
 ## API:
 
 <p>
-  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">&nbsp;
+  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
   Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.
 </p>
 
 
 <p>
-  <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;
+  <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;&nbsp;
   Giphy - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
