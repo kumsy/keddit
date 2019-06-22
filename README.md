@@ -188,6 +188,6 @@ Coming soon
 
 
 <p align="center">
-  <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi">
-  <img class="press-logo" src="static/images/twilio-logo.png" width="150" title="Thank you Mara">
+  <img class="press-logo" src="static/images/reddit-logo.png" width="150" title="Thank you Uzi">
+  <img class="press-logo" src="static/images/twilio-logo-1.png" width="150" title="Thank you Mara">
 </p>
