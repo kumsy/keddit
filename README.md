@@ -70,19 +70,19 @@ git clone https://github.com/Kumsy/Keddit.git
 
 ## APIs
 
-<p>
+* <p>
   <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
   <b>Cloudinary</b> - Images and GIFs from posts are automatically uploaded to a cloud server.
 </p>
 
 
-<p>&nbsp;
+* <p>&nbsp;
   <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;&nbsp;
   <b>Giphy</b> - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
 
-<p>&nbsp;
+* <p>&nbsp;
   <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">&nbsp;
   <b>Twilio</b> - Users can share posts and send the contents via SMS and MMS.
 </p>
