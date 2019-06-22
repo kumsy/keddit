@@ -45,18 +45,18 @@ Users are able to create an account, upload their custom profile picture, create
 
 ## Features:
 
-Coming soon
+<i>Coming soon</i>
 
 ---
 
 ## Getting started:
-Coming soon
+<em>Coming soon</em>
 
 ##### Requirements:
-Coming soon
+<i>Coming soon</i>
 
 ##### Installation:
-Coming soon
+<i>Coming soon</i>
 
 ---
 
