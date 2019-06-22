@@ -121,7 +121,7 @@ touch config.json
       }
 }
 ```
-<sub>:bulb:&nbsp; <b>Note</b> - Twilio Number and Register Number format example: +14151234</sub>
+<sub>:bulb:&nbsp; <b>Note</b> - Twilio Number and Register Number format example: +14151235555</sub>
 
 
 
