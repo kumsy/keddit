@@ -63,9 +63,23 @@ Giphy's API provides registered users with the option to use GIFs in their messa
 
 #### Installation
 
-###### Clone Keddit's Repository:
+###### Clone Keddit's repository in a project directory:
 ```
 git clone https://github.com/Kumsy/Keddit.git
+```
+
+###### Set up an virtual environment:
+
+* ###### Mac
+```
+virtualenv env
+source env/bin/activate
+```
+
+* ###### Windows
+```
+virtualenv env --always-copy
+source env/bin/activate
 ```
 
 ---
