@@ -149,7 +149,7 @@ Coming Soon
 <p align="center"><b>Kristen Campbell</b> is a Software Engineer in San Francisco, CA.</p>
 
 <sub>
-<p align="center">Keep in touch with her!</p>
+<p align="center">Keep in touch with her! She's so friendly!</p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/kristencampbell"> LinkedIn</a>&nbsp;
