@@ -192,7 +192,7 @@ Coming soon
 <p align="center">
   <a href="https://drive.google.com/open?id=1ArXoKknxXs7fZFJ693JjsQadhB-jKc0j">
     <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi"></a>&nbsp;&nbsp;
-  <a href="https://drive.google.com/open?id=1_dnhRYlCGm8qc0JhU80eik3PY6Mrkiop">
+  <a href="https://drive.google.com/open?id=1B2Dx0yoaT1LWANajDM2ZVd26aavKsCgE">
   <img class="press-logo" src="static/images/twilio-logo-1.png" width="100" title="Thank you Mara"></a>
 </p>
 
