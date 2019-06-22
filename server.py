@@ -766,8 +766,8 @@ def send_twilio_sms(community_name, post_id):
                              "**************\n" +\
                              post.title + "\n\n" + post.body,
                              media_url=post.cloudinary_url,
-                             from_='+14154668578',
-                             to='+14153100618'
+                             from_=config['twilio']['twilio_number'],
+                             to=config['twilio']['register_number']
                          )
         elif post.body == None and post.image_url == None:
              flash('Your post has been shared!', 'success')
@@ -783,8 +783,8 @@ def send_twilio_sms(community_name, post_id):
                              "k/" + community_name + "\n" +\
                              "**************\n" +\
                              post.title ,
-                             from_='+14154668578',
-                             to='+14153100618'
+                             from_=config['twilio']['twilio_number'],
+                             to=config['twilio']['register_number']
                      )
         elif post.body != None and post.image_url == None:
                 flash('Your post has been shared!', 'success')
@@ -800,8 +800,8 @@ def send_twilio_sms(community_name, post_id):
                              "k/" + community_name + "\n" +\
                              "**************\n" +\
                              post.title + "\n\n" + post.body,
-                             from_='+14154668578',
-                             to='+14153100618'
+                             from_=config['twilio']['twilio_number'],
+                             to=config['twilio']['register_number']
                          )
         elif post.body == None and post.image_url != None:
                 flash('Your post has been shared!', 'success')
@@ -818,8 +818,8 @@ def send_twilio_sms(community_name, post_id):
                              "**************\n" +\
                              post.title,
                              media_url= post.cloudinary_url,
-                             from_='+14154668578',
-                             to='+14153100618'
+                             from_=config['twilio']['twilio_number'],
+                             to=config['twilio']['register_number']
                          )
 
     print(message.sid)
@@ -834,7 +834,7 @@ def send_twilio_sms(community_name, post_id):
 if __name__ == "__main__":
     # We have to set debug=True here, since it has to be True at the point
     # that we invoke the DebugToolbarExtension
-    app.debug = True
+    app.debug = False
 
     connect_to_db(app)
     login_manager.init_app(app)
