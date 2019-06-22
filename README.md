@@ -68,7 +68,7 @@ Users are able to create an account, upload their custom profile picture, create
   * Javascript communicates with Python's backend to allow for asynchronous voting.
 
 ###### Cloud Hosting
-  * Autonomous hosting and servicing provided through Cloudinary's API.
+  * Autonomous multimedia hosting and servicing provided through Cloudinary's API.
   
 ###### Post Sharing via SMS/MMS
   * A share button feature using Twilio's API allows for users to share posts via SMS/MMS.
