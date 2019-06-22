@@ -7,7 +7,7 @@
   <a href="#features"> <b>Features</b></a> <b>|</b> 
   <a href="#getting-started"> <b>Docs</b></a> <b>|</b>
   <a href="#tech-stack"> <b>Stack</b></a> <b>|</b> 
-  <a href="#api"> <b>API</b></a> 
+  <a href="#apis"> <b>API</b></a> 
 </p>
 
 
@@ -60,7 +60,7 @@ Users are able to create an account, upload their custom profile picture, create
 
 ---
 
-## API:
+## APIs:
 
 <p>
   <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
