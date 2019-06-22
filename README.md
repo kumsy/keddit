@@ -127,32 +127,6 @@ Coming soon
 
 ---
 
-## APIs
-
-<p>
-  <a href="https://cloudinary.com">
-  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary"></a>
-  <b>Cloudinary</b> - Images and GIFs from posts are automatically uploaded to a cloud server.
-</p>
-
-
-<p>&nbsp;
-   <a href="https://developers.giphy.com/">
-     <img src="static/images/giphybadge.gif" width="40" title="Giphy"></a>&nbsp;&nbsp;
-  <b>Giphy</b> - Users can search for their favorites GIFs powered by GIPHY.
-</p>
-
-
-<p>&nbsp;
-  <a href="https://www.twilio.com/">
-    <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio"></a>&nbsp;
-  <b>Twilio</b> - Users can share posts and send the contents via SMS and MMS.
-</p>
-
-
-
-
-
 
 ## Tech Stack
 <p>
@@ -167,6 +141,31 @@ Coming soon
   <a href="https://www.javascript.com/">
     <img class="tech-stack-js" src="static/images/jslogo.png" width="60"></a>&nbsp;
 </p>
+
+--------------
+
+## APIs
+
+<p>
+  <a href="https://cloudinary.com">
+  <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="35" title="Cloudinary"></a>
+  <b>Cloudinary</b> - Images and GIFs from posts are automatically uploaded to a cloud server.
+</p>
+
+
+<p>&nbsp;
+   <a href="https://developers.giphy.com/">
+     <img src="static/images/giphybadge.gif" width="20" title="Giphy"></a>&nbsp;&nbsp;
+  <b>Giphy</b> - Users can search for their favorites GIFs powered by GIPHY.
+</p>
+
+
+<p>&nbsp;
+  <a href="https://www.twilio.com/">
+    <img src="static/images/twilio-vector-logo.png" width="25" title="Twilio"></a>&nbsp;
+  <b>Twilio</b> - Users can share posts and send the contents via SMS and MMS.
+</p>
+
   
   ----
 ## Author
