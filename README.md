@@ -93,7 +93,7 @@ pip3 install flask-bcrypt
 ```
 
 ### Configuration
-<sub>:bulb:&nbsp; We will now use your API keys to configure our server.</sub>
+<sub>:key:&nbsp; We will now use your API keys to configure our server.</sub>
 
 <sub>
 Coming soon
