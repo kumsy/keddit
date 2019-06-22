@@ -51,17 +51,20 @@ Users are able to create an account, upload their custom profile picture, create
 
 ## Getting started
 
+##### Requirements
+In order to get started, you will need to setup personal API Keys. 
+
+Please setup developer accounts at:
+* [Twilio](https://www.twilio.com)
+* [Cloudinary](https://cloudinary.com)
+* [Giphy](https://developers.giphy.com/)
+
+##### Installation
+
 ###### Clone Keddit's Repository:
 ```
 git clone https://github.com/Kumsy/Keddit.git
 ```
-
-
-##### Requirements
-<i>Coming soon</i>
-
-##### Installation
-<i>Coming soon</i>
 
 ---
 
