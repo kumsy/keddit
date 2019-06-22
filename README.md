@@ -68,7 +68,7 @@ Giphy's API provides registered users with the option to use GIFs in their messa
 git clone https://github.com/Kumsy/Keddit.git
 ```
 
-###### Set up an virtual environment:
+###### Set up a virtual environment:
 
 * ###### Mac
 ```
