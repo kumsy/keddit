@@ -158,11 +158,16 @@ touch config.json
 
 ## Tech Stack
 <p>
-  <img class="tech-stack-python" src="static/images/Python.png" width="120">&nbsp;
-  <img class="tech-stack-psql" src="static/images/psql.png" width="60">&nbsp;&nbsp;&nbsp;
-  <img class="tech-stack-flask" src="static/images/flask.png" width="45">&nbsp;&nbsp;&nbsp;
-  <img class="tech-stack-jinja" src="static/images/jinja2.png" width="55">&nbsp;
-  <img class="tech-stack-js" src="static/images/jslogo.png" width="60">&nbsp;
+  <a href="https://www.python.org/">
+    <img class="tech-stack-python" src="static/images/Python.png" width="120"></a>&nbsp;
+   <a href="https://www.postgresql.org/">
+     <img class="tech-stack-psql" src="static/images/psql.png" width="60"></a>&nbsp;&nbsp;&nbsp;
+  <a href="http://flask.pocoo.org/">
+    <img class="tech-stack-flask" src="static/images/flask.png" width="45"></a>&nbsp;&nbsp;&nbsp;
+  <a href="http://jinja.pocoo.org/docs/2.10/">
+    <img class="tech-stack-jinja" src="static/images/jinja2.png" width="55"></a>&nbsp;
+  <a href="https://www.javascript.com/">
+    <img class="tech-stack-js" src="static/images/jslogo.png" width="60"></a>&nbsp;
 </p>
   
   ----
