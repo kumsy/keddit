@@ -39,7 +39,7 @@ ___________________________________
 
 Keddit is a full-stack community-driven social media site built from the ground-up, inspired by &nbsp; <a href="https://www.reddit.com"><img src="static/images/reddit-logo.png" width="90" title="Reddit"></a>
 
-Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's main front page often referred to as 'k/ popular'.
+Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's front page often referred to as 'k/ popular'.
 
 ---
 
