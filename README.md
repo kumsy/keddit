@@ -190,7 +190,9 @@ Coming soon
 <p align="center"><sub>Special Thanks:</sub></p>
 
 <p align="center">
-  <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi">&nbsp;&nbsp;
-  <img class="press-logo" src="static/images/twilio-logo-1.png" width="100" title="Thank you Mara">
+  <a href="https://drive.google.com/open?id=1ArXoKknxXs7fZFJ693JjsQadhB-jKc0j">
+    <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi"></a>&nbsp;&nbsp;
+  <a href="https://drive.google.com/open?id=1_dnhRYlCGm8qc0JhU80eik3PY6Mrkiop">
+  <img class="press-logo" src="static/images/twilio-logo-1.png" width="100" title="Thank you Mara"></a>
 </p>
 
