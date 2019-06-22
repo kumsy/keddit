@@ -50,7 +50,12 @@ Users are able to create an account, upload their custom profile picture, create
 ---
 
 ## Getting started:
-<em>Coming soon</em>
+
+Clone repository:
+```
+git clone https://github.com/Kumsy/Keddit.git
+```
+
 
 ##### Requirements:
 <i>Coming soon</i>
