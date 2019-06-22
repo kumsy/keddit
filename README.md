@@ -175,7 +175,7 @@ Coming soon
     <img src="static/images/kristen_snoo.PNG">
   </a>
 </p>
-<p align="center"><a href="https://www.linkedin.com/in/kristencampbell"><b>Kristen Campbell</b></a> is a Software Engineer in San Francisco, CA.</p>
+<p align="center"><a href="https://www.linkedin.com/in/kristencampbell">Kristen Campbell</a> is a Software Engineer in San Francisco, CA.</p>
 
 
 <sub>
