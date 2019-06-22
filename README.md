@@ -177,19 +177,20 @@ Coming soon
 </p>
 <p align="center"><b>Kristen Campbell</b> is a Software Engineer in San Francisco, CA.</p>
 
-<p align="center"><sub>Special Thanks:</sub></p>
-
-<p align="center">
-  <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi">&nbsp;&nbsp;
-  <img class="press-logo" src="static/images/twilio-logo-1.png" width="100" title="Thank you Mara">
-</p>
 
 <sub>
-<p align="center">Keep in touch with her! She's so friendly!</p>
+<p align="center">Keep in touch with Kristen! She's so friendly!</p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/kristencampbell"> LinkedIn</a>&nbsp;
   <a href="https://twitter.com/kumykums"> Twitter</a>&nbsp;
   <a href="https://www.twitch.tv/kumy"> Twitch</a>&nbsp;
 </p></sub>
+
+<p align="center"><sub>Special Thanks:</sub></p>
+
+<p align="center">
+  <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi">&nbsp;&nbsp;
+  <img class="press-logo" src="static/images/twilio-logo-1.png" width="100" title="Thank you Mara">
+</p>
 
