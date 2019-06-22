@@ -90,7 +90,12 @@ pip3 install -r requirements.txt
 pip3 install flask-bcrypt
 ```
 
-
+##### Configuration
+```
+mkdir config
+cd config
+touch config.json
+```
 
 
 
