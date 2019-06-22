@@ -68,7 +68,7 @@ def load_user(user_id):
 
 
 #==========================
-cloudinary_prefix = 'https://res.cloudinary.com/kumy/image/upload/v' 
+cloudinary_prefix = 'https://res.cloudinary.com/' + config["cloudinary"]["name"] + '/image/upload/v' 
 
 
 # Landing Page route
