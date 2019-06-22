@@ -166,7 +166,9 @@ touch config.json
 ## Author
 
 <p align="center">
+  <a href="https://www.github.com/Kumsy/Keddit"#Author>
   <img src="static/images/kristen_snoo.PNG">
+  </a>
 </p>
 <p align="center"><b>Kristen Campbell</b> is a Software Engineer in San Francisco, CA.</p>
 
