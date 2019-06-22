@@ -68,9 +68,10 @@ Users are able to create an account, upload their custom profile picture, create
   * Javascript communicates with Python's backend to allow for asynchronous voting.
 
 ###### Cloud Hosting
-  * Hosting and Servicing provided through Cloudinary's API.
-
-Giphy's API provides registered users with the option to use GIFs in their messages, while Cloudinary's API automatically uploads, stores, and services all posts containing multimedia content to and from it's cloud server. With Twilio's API, users may share posts via SMS & MMS.
+  * Autonomous hosting and servicing provided through Cloudinary's API.
+  
+###### Post Sharing via SMS/MMS
+  * A share button feature using Twilio's API allows for users to share posts via SMS/MMS.
 
 ---
 
