@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/Kumsy/Keddit">
+  <a href="https://www.github.com/Kumsy/Keddit">
   <img src="static/images/keddit_logo_image_dark.png" width="550" title="Keddit">
   </a>
 </p>
