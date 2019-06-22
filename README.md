@@ -51,7 +51,7 @@ Users are able to create an account, upload their custom profile picture, create
 
 ## Getting started:
 
-Clone repository:
+###### Clone Keddit's Repository:
 ```
 git clone https://github.com/Kumsy/Keddit.git
 ```
