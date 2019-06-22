@@ -93,39 +93,13 @@ pip3 install flask-bcrypt
 ```
 
 ### Configuration
-<sub>We will now use your API keys to configure our server.</sub>
-###### From within our project directory:
-```
-mkdir config
-cd config
-touch config.json
-```
-###### Config.json:
+<sub>:bulb:&nbsp; We will now use your API keys to configure our server.</sub>
 
-```
-{
-  "twilio":{
-      "account_sid": "YOUR TWILIO ACCOUNT SID HERE",
-      "auth_token": "YOUR TWILIO AUTH TOKEN HERE",
-      "twilio_number": "YOUR TWILIO NUMBER HERE",
-      "register_number": "NUMBER YOU SIGNED UP WITH HERE"
-      },
-  "cloudinary":{
-      "name": "YOUR CLOUD NAME HERE",
-      "api_key":"YOUR CLOUDINARY API KEY HERE",
-      "api_secret": "YOUR CLOUDINARY API SECRET KEY HERE"
-      },
-  "giphy":{
-      "api_key": "YOUR GIPHY API KEY HERE"
-      },
-  "secret_key":{
-      "keddit": "CREATE A RANDOM SECRET KEY HERE"
-      }
-}
-```
-<sub>:bulb:&nbsp; <b>Note</b> - Twilio Number and Register Number format example: +14151235555</sub>
+<sub>
+Coming soon
+</sub>
 
-
+#####
 
 ---
 
