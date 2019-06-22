@@ -51,7 +51,7 @@ Giphy's API provides registered users with the option to use GIFs in their messa
 
 ## Getting started
 
-#### Requirements
+### Requirements
 ###### In order to get started, you will need to setup personal API Keys. Please setup developer accounts at:
 
 * [Twilio](https://www.twilio.com)
@@ -61,7 +61,7 @@ Giphy's API provides registered users with the option to use GIFs in their messa
 ###### Download and install PostgreSQL
 * [PostgreSQL](https://www.postgresql.org/)
 
-#### Installation
+### Installation
 
 ###### Clone Keddit's repository in a project directory:
 ```
@@ -81,7 +81,10 @@ source env/bin/activate
 virtualenv env --always-copy
 source env/bin/activate
 ```
-
+###### Install dependencies:
+```
+pip3 install -r requirements.txt
+```
 ---
 
 ## APIs
