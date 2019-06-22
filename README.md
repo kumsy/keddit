@@ -52,14 +52,13 @@ Giphy's API provides registered users with the option to use GIFs in their messa
 ## Getting started
 
 #### Requirements
-###### In order to get started, you will need to setup personal API Keys. 
+###### In order to get started, you will need to setup personal API Keys. Please setup developer accounts at:
 
-Please setup developer accounts at:
 * [Twilio](https://www.twilio.com)
 * [Cloudinary](https://cloudinary.com)
 * [Giphy](https://developers.giphy.com/)
 
-Download and install PostgreSQL
+###### Download and install PostgreSQL
 * [PostgreSQL](https://www.postgresql.org/)
 
 #### Installation
