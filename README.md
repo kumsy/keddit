@@ -106,7 +106,7 @@ touch config.json
       "account_sid": "YOUR TWILIO ACCOUNT SID HERE",
       "auth_token": "YOUR TWILIO AUTH TOKEN HERE",
       "twilio_number": "YOUR TWILIO NUMBER HERE",
-      "register_number": "YOUR TWILIO REGISTRATION NUMBER HERE"
+      "register_number": "NUMBER YOU SIGNED UP WITH HERE"
       },
   "cloudinary":{
       "name": "YOUR CLOUD NAME HERE",
