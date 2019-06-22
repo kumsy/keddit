@@ -182,9 +182,9 @@ Coming soon
 <p align="center">Keep in touch with Kristen! She's so friendly!</p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/kristencampbell"> LinkedIn</a>&nbsp;
-  <a href="https://twitter.com/kumykums"> Twitter</a>&nbsp;
-  <a href="https://www.twitch.tv/kumy"> Twitch</a>&nbsp;
+  <a href="https://www.linkedin.com/in/kristencampbell"> <b>LinkedIn</b></a>&nbsp;
+  <a href="https://twitter.com/kumykums"> <b>Twitter</b></a>&nbsp;
+  <a href="https://www.twitch.tv/kumy"> <b>Twitch</b></a>&nbsp;
 </p></sub>
 
 <p align="center"><sub>Special Thanks:</sub></p>
