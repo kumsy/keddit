@@ -64,19 +64,19 @@ Users are able to create an account, upload their custom profile picture, create
 
 <p>
   <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
-  Cloudinary - Images and GIFs from posts are automatically uploaded to a cloud server.
+  <b>Cloudinary</b> - Images and GIFs from posts are automatically uploaded to a cloud server.
 </p>
 
 
 <p>&nbsp;
   <img src="static/images/giphybadge.gif" width="40" title="GIPHY">&nbsp;&nbsp;
-  Giphy - Users can search for their favorites GIFs powered by GIPHY.
+  <b>Giphy</b> - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
 
 <p>&nbsp;
   <img src="static/images/twilio-vector-logo.png" width="40" title="Twilio">&nbsp;
-  Twilio - Users can share posts and send the contents via SMS and MMS.
+  <b>Twilio</b> - Users can share posts and send the contents via SMS and MMS.
 </p>
 
 
