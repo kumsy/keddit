@@ -85,7 +85,7 @@ source env/bin/activate
 ```
 pip3 install -r requirements.txt
 ```
-<sub>:bulb:&nbsp; Note - Depending on system set-up, you may need to install bcrypt separately:</sub>
+<sub>:bulb:&nbsp; <b>Note</b> - Depending on system set-up, you may need to install bcrypt separately:</sub>
 ```
 pip3 install flask-bcrypt
 ```
