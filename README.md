@@ -43,13 +43,13 @@ Users are able to create an account, upload their custom profile picture, create
 
 ---
 
-## Features:
+## Features
 
 <i>Coming soon</i>
 
 ---
 
-## Getting started:
+## Getting started
 
 ###### Clone Keddit's Repository:
 ```
@@ -57,15 +57,15 @@ git clone https://github.com/Kumsy/Keddit.git
 ```
 
 
-##### Requirements:
+##### Requirements
 <i>Coming soon</i>
 
-##### Installation:
+##### Installation
 <i>Coming soon</i>
 
 ---
 
-## APIs:
+## APIs
 
 <p>
   <img src="https://res.cloudinary.com/cloudinary/image/upload/c_scale,w_200/v1/logo/for_white_bg/cloudinary_icon_for_white_bg.png"       width="60" title="Cloudinary">
@@ -89,7 +89,7 @@ git clone https://github.com/Kumsy/Keddit.git
 
 
 
-## Tech Stack:
+## Tech Stack
 <p>
   <img class="tech-stack-python" src="static/images/Python.png" width="120">&nbsp;
   <img class="tech-stack-psql" src="static/images/psql.png" width="60">&nbsp;&nbsp;&nbsp;
@@ -99,7 +99,7 @@ git clone https://github.com/Kumsy/Keddit.git
 </p>
   
   ----
-## Author:
+## Author
 
 <p align="center">
   <img src="static/images/kristen_snoo.PNG">
