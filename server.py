@@ -56,7 +56,7 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
 # Required to use Flask sessions and the debug toolbar
-app.secret_key = "ABC123"
+app.secret_key = config["secret_key"]["keddit"]
 
 # Raises an error in Jinja2 for to debug
 app.jinja_env.undefined = StrictUndefined
