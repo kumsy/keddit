@@ -90,11 +90,17 @@ pip3 install -r requirements.txt
 pip3 install flask-bcrypt
 ```
 
-##### Configuration
+### Configuration
+<sub>:key:&nbsp; We will now use your API keys to configure our server.</sub>
+###### From within our project directory:
 ```
 mkdir config
 cd config
 touch config.json
+```
+###### Config.json:
+```
+Coming Soon
 ```
 
 
