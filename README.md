@@ -48,16 +48,16 @@ Users are able to create an account, upload their custom profile picture, create
 <i>Coming soon</i>
 
 ###### Account Security
-  * <sub> Password hashing via Bcrypt</sub>
-  * <sub> Adds a layer of security from database breaches.</sub>
+  * Password hashing via Bcrypt
+  * Adds a layer of security from database breaches.
 
 ###### Account Customization
-  * <sub> Upload custom profile pictures</sub>
-  * <sub> Edit username and email addresses</sub>
+  * Upload custom profile pictures
+  * Edit username and email addresses
   
 ###### Create Communities
-  * <sub>Also known as 'subkeddits'</sub>
-  * <sub>Holds collection of posts relating to it's subject title.</sub>
+  * Also known as 'subkeddits'
+  * Holds collection of posts relating to it's subject title.
   
 ###### Create Posts and Comments
   * Upload local files through Python's Imaging Libray
