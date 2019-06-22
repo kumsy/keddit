@@ -185,3 +185,9 @@ Coming soon
   <a href="https://twitter.com/kumykums"> Twitter</a>&nbsp;
   <a href="https://www.twitch.tv/kumy"> Twitch</a>&nbsp;
 </p></sub>
+
+
+<p align="center">
+  <img class="press-logo" src="static/images/reddit-logo.png" width="100" title="Thank you Uzi">
+  <img class="press-logo" src="static/images/twilio-logo.png" width="150" title="Thank you Mara">
+</p>
