@@ -39,7 +39,7 @@ Keddit is a full-stack community-driven social media site built from the ground-
 
 Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's main front page often referred to as 'k/ popular'.
 
-Giphy's API provides registered users with the option to use GIFs in their messages, while Cloudinary'a API automatically uploads, stores, and services all posts containing multimedia content to and from it's cloud server. With Twilio's API, users may share posts via SMS & MMS.
+Giphy's API provides registered users with the option to use GIFs in their messages, while Cloudinary's API automatically uploads, stores, and services all posts containing multimedia content to and from it's cloud server. With Twilio's API, users may share posts via SMS & MMS.
 
 
 
