@@ -140,7 +140,7 @@ touch config.json
 
 <p>&nbsp;
    <a href="https://developers.giphy.com/">
-     <img src="static/images/giphybadge.gif" width="40" title="GIPHY"></a>&nbsp;&nbsp;
+     <img src="static/images/giphybadge.gif" width="40" title="Giphy"></a>&nbsp;&nbsp;
   <b>Giphy</b> - Users can search for their favorites GIFs powered by GIPHY.
 </p>
 
