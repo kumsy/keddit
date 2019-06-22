@@ -45,7 +45,7 @@ Users are able to create an account, upload their custom profile picture, create
 
 ## Features
 
-<i>Coming soon</i>
+<sub>Coming soon</sub>
 
 ###### Account Security
   * Password hashing via Bcrypt
