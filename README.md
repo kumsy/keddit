@@ -47,6 +47,29 @@ Users are able to create an account, upload their custom profile picture, create
 
 <i>Coming soon</i>
 
+###### Account Security
+  * <sub> Password hashing via Bcrypt</sub>
+  * <sub> Adds a layer of security from database breaches.</sub>
+
+###### Account Customization
+  * <sub> Upload custom profile pictures</sub>
+  * <sub> Edit username and email addresses</sub>
+  
+###### Create Communities
+  * <sub>Also known as 'subkeddits'</sub>
+  * <sub>Holds collection of posts relating to it's subject title.</sub>
+  
+###### Create Posts and Comments
+  * Upload local files through Python's Imaging Libray
+  * Giphy's API provides registered users with the option to use GIFs with their messages.
+  
+###### Upvotes and Downvotes
+  * Registered users may vote on posts and comments
+  * Javascript communicates with Python's backend to allow for asynchronous voting.
+
+###### Cloud Hosting
+  * Hosting and Servicing provided through Cloudinary's API.
+
 Giphy's API provides registered users with the option to use GIFs in their messages, while Cloudinary's API automatically uploads, stores, and services all posts containing multimedia content to and from it's cloud server. With Twilio's API, users may share posts via SMS & MMS.
 
 ---
