@@ -147,11 +147,12 @@ Coming Soon
   <img src="static/images/kristen_snoo.PNG">
 </p>
 <p align="center"><b>Kristen Campbell</b> is a Software Engineer in San Francisco, CA.</p>
-  
+
+<sub>
 <p align="center">Keep in touch with her!</p>
 
 <p align="center">
   <a href="https://www.linkedin.com/in/kristencampbell"> LinkedIn</a>&nbsp;
   <a href="https://twitter.com/kumykums"> Twitter</a>&nbsp;
   <a href="https://www.twitch.tv/kumy"> Twitch</a>&nbsp;
-</p>
+</p></sub>
