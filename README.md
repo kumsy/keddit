@@ -45,8 +45,6 @@ Users are able to create an account, upload their custom profile picture, create
 
 ## Features
 
-<sub>Coming soon</sub>
-
 ###### Account Security
   * Password hashing via Bcrypt
   * Adds a layer of security from database breaches.
@@ -72,6 +70,8 @@ Users are able to create an account, upload their custom profile picture, create
   
 ###### Post Sharing via SMS/MMS
   * A share button feature using Twilio's API allows for users to share posts via SMS/MMS.
+  
+<sub>and more coming soon!</sub>
 
 ---
 
