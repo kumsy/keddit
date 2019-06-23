@@ -183,6 +183,7 @@ Coming soon
 
 <p align="center">
   <a href="https://www.linkedin.com/in/kristencampbell"> LinkedIn</a>&nbsp;
+  <a href="https://www.reddit.com/user/kumsy"> Reddit</a>&nbsp;
   <a href="https://twitter.com/kumykums"> Twitter</a>&nbsp;
   <a href="https://www.twitch.tv/kumy"> Twitch</a>&nbsp;
 </p></sub>
