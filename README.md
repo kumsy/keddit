@@ -129,6 +129,28 @@ Coming soon
 
 
 ## Tech Stack
+
+#### Backend: 
+```python
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy 
+
+db = PostgreSQL
+print("Python")
+```
+#### Frontend: 
+```javascript
+console.log("JavaScript, JQuery, Ajax")
+```
+```html
+<html>
+  <body>
+    Bootstrap, CSS, and {% jinja2 %} 
+  </body>  
+</html>
+```
+
+
 <p>
   <a href="https://www.python.org/">
     <img class="tech-stack-python" src="static/images/Python.png" width="120"></a>&nbsp;
