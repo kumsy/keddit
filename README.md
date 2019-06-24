@@ -143,9 +143,9 @@ print("Python")
 console.log("JavaScript, JQuery, Ajax")
 ```
 ```html
-<body>
+{% block frontend %}
   Bootstrap, CSS, HTML, and {% Jinja2 %} 
-</body>  
+{% endblock %} 
 
 ```
 
