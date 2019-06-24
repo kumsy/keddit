@@ -143,11 +143,10 @@ print("Python")
 console.log("JavaScript, JQuery, Ajax")
 ```
 ```html
-<html>
-  <body>
-    Bootstrap, CSS, and {% jinja2 %} 
-  </body>  
-</html>
+<body>
+  Bootstrap, CSS, HTML, and {% Jinja2 %} 
+</body>  
+
 ```
 
 
