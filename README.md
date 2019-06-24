@@ -144,9 +144,7 @@ console.log("JavaScript, JQuery, Ajax")
 ```
 ```html
 {% block content %}
-
   Bootstrap, CSS, HTML, and {% Jinja2 %} 
-
 {% endblock %} 
 
 ```
