@@ -62,7 +62,7 @@ Users are able to create an account, upload their custom profile picture, create
   </p>
   
   <p align = "center">
-  <sub>:bulb:&nbsp; <b>Note</b> - null example hashing.</sub></p>
+  <sub>:bulb:&nbsp; <b>Note</b> - Example</sub></p>
 
 ###### Account Customization
   * Upload custom profile pictures
