@@ -46,6 +46,7 @@ Users are able to create an account, upload their custom profile picture, create
   <img src="static/images/readme_title.gif" width="550" title="Keddit">
   </a>
 </p>
+
 ---
 
 ## Features
