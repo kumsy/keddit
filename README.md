@@ -60,6 +60,8 @@ Users are able to create an account, upload their custom profile picture, create
     <img src="static/images/account_security.gif" width="500" title="Keddit">
     </a>
   </p>
+  
+  <sub>:bulb:&nbsp; <b>Note</b> - passwords above are null from examples only.</sub>
 
 ###### Account Customization
   * Upload custom profile pictures
