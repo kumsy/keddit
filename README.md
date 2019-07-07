@@ -54,14 +54,33 @@ Users are able to create an account, upload their custom profile picture, create
 ###### Account Security
   * Password hashing via Bcrypt
   * Adds a layer of security from database breaches.
+  
+  <p align="center">
+    <a href="https://www.github.com/Kumsy/Keddit">
+    <img src="static/images/account_security.gif" width="500" title="Keddit">
+    </a>
+  </p>
 
 ###### Account Customization
   * Upload custom profile pictures
   * Edit username and email addresses
   
+   <p align="center">
+    <a href="https://www.github.com/Kumsy/Keddit">
+    <img src="static/images/custom_account.gif" width="550" title="Keddit">
+    </a>
+  </p>
+  
 ###### Create Communities
   * Also known as 'subkeddits'
   * Holds collection of posts relating to it's subject title.
+  
+  <p align="center">
+    <a href="https://www.github.com/Kumsy/Keddit">
+    <img src="static/images/community_showcase.gif" width="430" title="Keddit">
+      <img src="static/images/community_showcase_2.gif" width="430" title="Keddit">
+    </a>
+  </p>
   
 ###### Create Posts and Comments
   * Upload local files through Python's Imaging Libray
