@@ -55,9 +55,6 @@ Users are able to create an account, upload their custom profile picture, create
   * Password hashing via Bcrypt
   * Adds a layer of security from database breaches.
   
-  <p align = "center">
-  <sub>:bulb:&nbsp; <b>Note</b> - Null Examples:</sub></p>
-  
   <p align="center">
     <a href="https://www.github.com/Kumsy/Keddit">
     <img src="static/images/account_security.gif" width="500" title="Keddit">
