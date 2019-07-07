@@ -41,6 +41,11 @@ Keddit is a full-stack community-driven social media site built from the ground-
 
 Users are able to create an account, upload their custom profile picture, create communities, post topics, comment, share posts, and vote on posts and comments. Posts may be up-voted or down-voted by other registered members on Keddit. If a post from any community has enough up-votes, it may be featured on Keddit's front page often referred to as 'k/ popular'.
 
+<p align="center">
+  <a href="https://www.github.com/Kumsy/Keddit">
+  <img src="static/images/readme_title.gif" width="550" title="Keddit">
+  </a>
+</p>
 ---
 
 ## Features
