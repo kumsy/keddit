@@ -61,7 +61,8 @@ Users are able to create an account, upload their custom profile picture, create
     </a>
   </p>
   
-  <sub>:bulb:&nbsp; <b>Note</b> - passwords above are null from examples only.</sub>
+  <p align = "center">
+  <sub>:bulb:&nbsp; <b>Note</b> - null example hashing.</sub></p>
 
 ###### Account Customization
   * Upload custom profile pictures
