@@ -56,7 +56,7 @@ Users are able to create an account, upload their custom profile picture, create
   * Adds a layer of security from database breaches.
   
   <p align = "center">
-  <sub>:bulb:&nbsp; <b>Note</b> - Example</sub></p>
+  <sub>:bulb:&nbsp; <b>Note</b> - Null Examples:</sub></p>
   
   <p align="center">
     <a href="https://www.github.com/Kumsy/Keddit">
