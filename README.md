@@ -14,7 +14,7 @@
 
 
 <p align="center">
-  <sub>The Force is strong with this one:</sub>
+  <sub>The Force is strong with this padawan:</sub>
 </p>
 
 <p align="center">
