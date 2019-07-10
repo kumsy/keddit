@@ -53,7 +53,7 @@ Users are able to create an account, upload their custom profile picture, create
 
 ###### Account Security
   * Password hashing via Bcrypt
-  * Adds a layer of security from database breaches.
+  * Adds a layer of security.
   
   <p align="center">
     <a href="https://www.github.com/Kumsy/Keddit">
