@@ -89,6 +89,12 @@ Users are able to create an account, upload their custom profile picture, create
 ###### Upvotes and Downvotes
   * Registered users may vote on posts and comments
   * Javascript communicates with Python's backend to allow for asynchronous voting.
+  
+  <p align="center">
+    <a href="https://www.github.com/Kumsy/Keddit">
+    <img src="https://media.giphy.com/media/kE3e9wSgZkvIXxYJeb/giphy.gif" width="550" title="Keddit">
+    </a>
+  </p>
 
 ###### Cloud Hosting
   * Autonomous multimedia hosting and servicing provided through Cloudinary's API.
