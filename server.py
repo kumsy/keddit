@@ -1,6 +1,12 @@
-"""keddit! The second to the frontpage of the internet."""
-import os
-import secrets
+''' 
+Developer: Kristen Campbell
+Project: Keddit
+'''
+
+# ***********
+# * Modules *
+# ***********
+import os, secrets, pprint, json, urllib
 from jinja2 import StrictUndefined
 
 from flask import (Flask, render_template, request, flash, redirect, 
@@ -15,81 +21,79 @@ from forms import (RegistrationForm, LoginForm, CommunityForm,
 from flask_bcrypt import Bcrypt
 from flask_login import (LoginManager, login_user, logout_user, 
                         login_required, current_user)
-import pprint
-import json 
+
+# *************
+# * API Setup *
+# *************
+
+# Read user config file
 with open('config/config.json', 'r') as f:
     config = json.load(f)
-# ========================================================
-# Download the helper library from https://www.twilio.com/docs/python/install
-from twilio.rest import Client
 
-# Your Account Sid and Auth Token from twilio.com/console
-# DANGER! This is insecure. See http://twil.io/secure
+# Twilio API
+from twilio.rest import Client
 TWILIO_ACCOUNT_SID = config['twilio']['account_sid']
 TWILIO_AUTH_TOKEN = config['twilio']['auth_token']
 twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
-print(TWILIO_ACCOUNT_SID)
-# ====================================================
 
-# Cloudinary settings using python code. Run before pycloudinary is used.
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+# Cloudinary API
+import cloudinary, cloudinary.uploader, cloudinary.api
 cloudinary.config(
   cloud_name = config['cloudinary']['name'],
   api_key = config['cloudinary']['api_key'],  
   api_secret = config['cloudinary']['api_secret']  
 )
-# print(dir(cloudinary))
+cloudinary_prefix = 'https://res.cloudinary.com/' + config["cloudinary"]["name"] + '/image/upload/v' 
 
-# ====================================================
-# GIPHY API
-
-# python
-import urllib,json
+# Giphy API
 GIPHY_API_KEY = config['giphy']['api_key']
 
 
-#=====================================================
+# ****************
+# * Server Setup *
+# ****************
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
-# Required to use Flask sessions and the debug toolbar
+# Flask Sessions and Debug Toolbar
 app.secret_key = config["secret_key"]["keddit"]
 
-# Raises an error in Jinja2 for to debug
+# Jinja2 Debug Error notification
 app.jinja_env.undefined = StrictUndefined
 
-# Handle User Logins
+# User Login Management
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 
-#==========================
-cloudinary_prefix = 'https://res.cloudinary.com/' + config["cloudinary"]["name"] + '/image/upload/v' 
+# ************************
+#                        *
+#          Keddit        *
+#                        *
+# ************************
 
-
-# Landing Page route
 @app.route('/')
 def home():
-    """Homepage."""
-
+    """Keddit's Landing Page.
+    
+    Application overview of Keddit. Users may register and/or login.
+    """
     form =  LoginForm()
     signup = RegistrationForm()
-   
-
     return render_template("landing_page.html", form = form, signup=signup)
 
 # Registration Page Route
 @app.route('/registration', methods=['GET', 'POST'])
 def register_form():
-    """Show form for user signup."""
+    """Registration form where users may sign-up for an account.
+    
+    Users submit a unqiue custom username and password.
+    """
 
     # Set form to our RegistrationForm() class from forms.py
     form = RegistrationForm()
-
     # When form submitted, add user to our database from our model.py classes
     if form.validate_on_submit():
         # Convert username to lower and remove spaces
@@ -832,8 +836,6 @@ def send_twilio_sms(community_name, post_id):
 #____________________________________________________________
 
 if __name__ == "__main__":
-    # We have to set debug=True here, since it has to be True at the point
-    # that we invoke the DebugToolbarExtension
     app.debug = False
 
     connect_to_db(app)
