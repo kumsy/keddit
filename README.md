@@ -30,7 +30,7 @@ Detailed README.md currently in-progress
 Please reference my demo video currently at: 
 ```
 
-* <a href="https://drive.google.com/open?id=1aR5mOqMz8OF7ECEa648PfNAlZBOfBZjt">Keddit Demo</a>
+* <a href="https://www.youtube.com/watch?v=K2fb1hRjsGk">Keddit Demo</a>
 
 
 ___________________________________
