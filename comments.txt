@@ -1,3 +1,8 @@
+'''
+server.py import.
+Code with comments for future reference.
+'''
+
 import os, secrets, pprint, json, urllib
 from jinja2 import StrictUndefined
 
@@ -90,14 +95,13 @@ def register_form():
         db.session.commit()
         flash(f'Account created for {form.username.data}! Please log in.', 'success')
         return redirect('/login')
+    
     return render_template("registration.html", form=form)
 
-
+# Login route
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    """User login route."""
-
-    # LoginForm from forms.py
+    """Show login form."""
     form = LoginForm()
 
     # When user submits login. Query for email data, validate, and check password.
@@ -105,30 +109,29 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         # Validation Check before logging in
         if user and bcrypt.check_password_hash(user.password, form.password.data):
+
             login_user(user, remember=form.remember.data)
             flash("You are now logged in!", 'success')
-            # Redirect to Front Page after logging in
+
+          # Redirect to Front Page after logging in
             return redirect("/home") 
         else:
             flash('Login Unsucessful. Please check email and password.',
                                                                     'danger')
+
     return render_template("login.html", form=form)
 
-
+# Logout route
 @app.route('/logout')
 def logout():
-    """Log out route."""
-
+    """Log out."""
     image_file = url_for('static', filename='images/' + current_user.image_file)
     logout_user()
     flash("Logged Out. Hope to see you again!", 'success')
     return redirect("/")
 
-
+# User Profile picture
 def save_picture(form_picture):
-    '''
-    Function that saves a user's profile picture.
-    '''
     # Hash filename to not error with other similar file names
     random_hex = secrets.token_hex(8)
     # Get extenstion of picture being uploaded
@@ -137,17 +140,14 @@ def save_picture(form_picture):
     picture_path = os.path.join(app.root_path, 'static/images', picture_fn)
     
     form_picture.save(picture_path)
+
     return picture_fn
 
-
+# User Account route page
 @app.route('/account', methods=['GET', 'POST'])
 @login_required
 def account():
-    '''
-    User's account page route
-    '''
     form = AccountForm()
-
     if form.validate_on_submit():
         # Update user picture
         if form.picture.data:
@@ -167,22 +167,20 @@ def account():
     return render_template('account.html', image_file=image_file, 
                                                             form=form)
 
-
+# ******************************
+# Keddit's main frontpage route
+# ******************************
 @app.route('/home')
 def frontpage():
-    '''
-    Main page route (Home, Frontpage). Displays top popular comments from
-    all communities (Subkeddits) with votes.
-    '''
-    # Posts from all communities in db
+
     posts = Post.query.order_by(desc(Post.votecount)).all()
+    # community = Community.query.filter_by(id=Post.community_id).all()
 
     votes = []
     comments = []
     communities= []
-
-    # For each post in Posts(Post query above), get the upvotes and downvotes... 
-    # ...for each post_id
+    # cloudinary_image =[]
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
         upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
@@ -192,23 +190,25 @@ def frontpage():
         comments.append(comments_count)
         communities.append(post.community.community_name)
 
+        # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+          
+        # if post.cloudinary_url != None:
+            # cloudinary_image.append(post.cloudinary_url)
+            # print(cloudinary_image)
+
     return render_template('frontpage.html', posts=posts, votes=votes, comments=comments,
                             communities=communities)
 
-
+# Create Community route
 @app.route('/community/new', methods=['GET', 'POST'])
 @login_required
 def new_community():
-    '''
-    Create a new community subkeddit route.
-    '''
-    # from forms.py
     form = CommunityForm()
 
     if form.validate_on_submit():
+
         name = (form.community_name.data).lower()
         name = name.replace(" ", "")
-
         # Check if Commmunity name exists. Redirect if it does. Otherwise, process.
         if Community.query.filter_by(community_name=name).first():
             flash('Community name taken. Please try again.', 'danger')
@@ -219,35 +219,43 @@ def new_community():
             db.session.commit()
             flash('Your community has been created!', 'success')
             return redirect(url_for('community_list'))
-    return render_template('create_community.html', form=form)
 
+
+    return render_template('create_community.html', form=form)
 
 @app.route("/communities")
 def community_list():
-    """Community list route which displays all subkeddits on Keddit."""
+    """Show list of communities"""
+
     communities = Community.query.order_by('community_name').all()
     return render_template("community_list.html", communities=communities)
 
-
+# Display communitys with posts
 @app.route("/k/<community_name>")
 def view_community(community_name):
-    '''
-    Community subkeddit view route. Displays the subkeddit's main page where 
-    the collection of highest voted content posts are displayed at the top.
-    '''
 
     # Object community
     community = Community.query.filter_by(community_name=community_name).first()
-    # Get all posts for the community in descending order
+    # Get all posts for the community
+    # posts = Post.query.filter_by(community_id=community.id).all() # from community object
     posts = Post.query.filter_by(community_id=community.id).order_by(Post.date.desc()).all()
-    # Total member count
+    # Get total number of members in the community
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
+    # comments_count = Comment.query.filter_by(post_id=posts.id).count()
 
+    
+
+    # if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
+    #     cloudinary_url = cloudinary_prefix + post.cloud_version + "/" + post.cloud_public_id + post.cloud_format
+    #     print(cloudinary_url)
+    # else:
+    #     cloudinary_url = None
+
+    
     votes = []
     comments = []
     cloudinary_image=[]
-    # For each post in Posts(Post query above), get the upvotes and downvotes... 
-    # ...for each post_id
+    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for post in posts:
         upvote = PostRatings.query.filter(PostRatings.post_id==post.id, PostRatings.upvote>=1).count()
@@ -260,22 +268,25 @@ def view_community(community_name):
         if post.cloud_version != None and post.cloud_version != None and post.cloud_public_id != None and post.cloud_format != None:
         
             cloudinary_image.append(post.cloudinary_url)
+            print(cloudinary_image)
+
+    print(comments, "**********************")
+
+        
 
     return render_template('community.html', community=community, posts=posts, 
                         members_count=members_count, votes = votes, comments=comments,
                         cloudinary_image=cloudinary_image)
 
-
+# Join Communities
 @app.route("/k/<community_name>/join")
 @login_required
 def join_community(community_name):
-    '''Community join route. Allows users to join a community subkeddit.'''
+    '''Users can join communities'''
 
-    # Query objects
     community = Community.query.filter_by(community_name=community_name).first()
     member = CommunityMembers.query.filter(CommunityMembers.user_id==current_user.id, CommunityMembers.community_id==community.id).first()
-
-    # Add member to subkeddit if they do not currently belong
+    print(member)
     if member == None:
        new_member = CommunityMembers(user_id=current_user.id, community_id=community.id)
        db.session.add(new_member)
@@ -287,30 +298,31 @@ def join_community(community_name):
         return redirect('/k/'+community_name)
 
 
+
+# CREATE A NEW POST
 @app.route("/k/<community_name>/post/new", methods=['GET', 'POST'])
 @login_required
 def new_post(community_name):
-    '''
-    Create new post route. Allows users to create a new post in it's specific
-    community. Registered user login required.
-    '''
-    # Queries
+
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
 
     form = PostForm()
     if form.validate_on_submit():
-        # If a picture is uploaded:
+        # Put data into our database here
         if form.picture.data:
             picture_file = save_picture(form.picture.data)
-            # Upload Picture to Cloudinary
+            #Upload Picture to Cloudinary
+            # cloudinary.uploader.upload("./static/images/" + picture_file)
+
             cloudinary_response = cloudinary.uploader.upload("./static/images/" + picture_file)
-            # Performing debug print statement to see options:
-            # print(dir(cloudinary_response))
-            # Create picture's cloudinary url
-            # Cloudinary_response.public_id example to get items
+            print(cloudinary_response)
+            print(dir(cloudinary_response))
+            print(cloudinary_response['public_id'])
             cloudinary_url = cloudinary_prefix + str(cloudinary_response['version']) + "/" + str(cloudinary_response['public_id']) + "." + str(cloudinary_response['format']) 
-    
+            print('Sassy' * 100)
+            print(cloudinary_url)
+            #cloudinary_response.public_idj example to get items
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
                         body=form.content.data, image_url=picture_file, cloud_version=cloudinary_response['version'],
                         cloud_public_id=cloudinary_response['public_id'], cloud_format= cloudinary_response['format'],
@@ -327,34 +339,39 @@ def new_post(community_name):
                         body=form.content.data)
             db.session.add(post)
             db.session.commit()
+
             flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
             return redirect('/k/'+community_name)
     return render_template('create_post.html', form=form, community=community, 
                                 legend='New Post', members_count=members_count)
 
 
+# Create GIPHY
 @app.route("/k/<community_name>/giphy/new", methods=['GET', 'POST'])
 @login_required
 def create_giphy(community_name):
-    '''
-    Create GIPHY post route. Allows users to use Giphy's API to create posts
-    with gif images.
-    '''
 
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
 
     form = GiphyForm()
+
     if form.validate_on_submit():
         if form.giphy_url.data:
-            # Upload Picture to Cloudinary
+            #Upload Picture to Cloudinary
+            # cloudinary.uploader.upload(form.giphy_url.data)
+
             cloudinary_response = cloudinary.uploader.upload(form.giphy_url.data)
-            # Performing debug print statement to see options:
-            # print(dir(cloudinary_response))
-            # Create picture's cloudinary url
-            # Cloudinary_response.public_id example to get items
+            print(cloudinary_response)
+            print(dir(cloudinary_response))
+            print(cloudinary_response['public_id'])
+            #cloudinary_response.public_idj example to get items
+
             cloudinary_url = cloudinary_prefix + str(cloudinary_response['version']) + "/" + str(cloudinary_response['public_id']) + "." + str(cloudinary_response['format'])
-            
+            print('Sassy' * 100)
+            print(cloudinary_url)
+
             post = Post(user_id=current_user.id, community_id=community.id, title=form.title.data,
                         body=form.content.data, image_url=form.giphy_url.data, cloud_version=cloudinary_response['version'],
                         cloud_public_id=cloudinary_response['public_id'], cloud_format= "." + cloudinary_response['format'],
@@ -363,6 +380,7 @@ def create_giphy(community_name):
             db.session.add(post)
             db.session.commit()
             flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
             return redirect('/k/'+community_name)
 
         else:
@@ -372,7 +390,13 @@ def create_giphy(community_name):
             db.session.commit()
 
             flash('Your post has been created!', 'success')
+            # How to route user back to the community's page efficiently?
             return redirect('/k/'+community_name)
+
+
+
+        # return jsonify({'giphy_results': data_list})
+
     return render_template('create_giphy.html', form=form, community=community,
                                             legend='New Post', members_count=members_count)
 
@@ -381,24 +405,28 @@ def create_giphy(community_name):
 @app.route("/giphy/<query>")
 @login_required
 def giphy(query):
-    '''
-    Searches Giphy's API for gif's based on user search input. Returns a json.
-    '''
+    print(query)
     query = urllib.parse.quote(query)
+    print(query)
     giphy_prefix = 'https://i.giphy.com/media/'
     giphy_reponse = json.loads(urllib.request.urlopen("http://api.giphy.com/v1/gifs/search?q=" + query + "&api_key=" + GIPHY_API_KEY + "&limit=5").read())
-    # Grab the first 5 gif images
     data = giphy_reponse['data'][0]['images']['original']['url']
     data2 = giphy_reponse['data'][1]['images']['original']['url']
     data3 = giphy_reponse['data'][2]['images']['original']['url']
     data4 = giphy_reponse['data'][3]['images']['original']['url']
     data5 = giphy_reponse['data'][4]['images']['original']['url']
-
+    print("*****************************************************************")
+    # print(giphy_reponse)
+    # print(data)
+    # print(data2)
+    # print(data3)
+    # print(data4)
+    # print(data5)
 
     # Creating the giphy url with only the image results directly
     data_id = giphy_reponse['data'][0]['id']
     giphy_url1 = giphy_prefix + data_id + "/giphy.gif"
-   
+    # print(giphy_url)
     data_id = giphy_reponse['data'][1]['id']
     giphy_url2 = giphy_prefix + data_id + "/giphy.gif"
 
@@ -412,7 +440,14 @@ def giphy(query):
     giphy_url5 = giphy_prefix + data_id + "/giphy.gif"
 
     # data_list = [data, data2, data3, data4, data5]
-    data_list = [giphy_url1, giphy_url2, giphy_url3, giphy_url4, giphy_url5] 
+    data_list = [giphy_url1, giphy_url2, giphy_url3, giphy_url4, giphy_url5]
+
+
+    # What will my route or return json object look like
+    # In a GIPHY object, we need an array of original url's. Element of 5 items and return it's urls.
+    # In the front end, display these urls as images.
+    # Put the giphy url in the Post table instead of the image url
+    # When I choose on the front end the giphy I want, 
 
     return json.dumps(data_list, sort_keys=True, indent=4)
 
@@ -779,6 +814,7 @@ def send_twilio_sms(community_name, post_id):
     print(message.sid)
 
     # Make Ajax call, can do an input form to get the user "number" also
+
     # return jsonify({'message_sid': message.sid})
     return redirect('/k/'+community_name+'/post/'+str(post_id))
 
