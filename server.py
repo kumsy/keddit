@@ -15,7 +15,7 @@ from flask_login import (LoginManager, login_user, logout_user,
                         login_required, current_user)
 
 # API SET UP
-# User config file
+# User config file (API Keys and Tokens)
 with open('config/config.json', 'r') as f:
     config = json.load(f)
 
@@ -382,7 +382,8 @@ def create_giphy(community_name):
 @login_required
 def giphy(query):
     '''
-    Searches Giphy's API for gif's based on user search input. Returns a json.
+    Searches Giphy's API for gif's based on user search input. Returns a json
+    of the first five images.
     '''
     query = urllib.parse.quote(query)
     giphy_prefix = 'https://i.giphy.com/media/'
@@ -418,30 +419,28 @@ def giphy(query):
 
 
 
-
-# VIEW SINGLE POST
 @app.route("/k/<community_name>/post/<int:post_id>", methods=['GET', 'POST'])
 def post(post_id, community_name):
+    '''
+    Single post view route. Displays the selected post and comments.
+    '''
     post = Post.query.get_or_404(post_id)
     form = SendTextForm()
 
-
+    # Object Queries
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
-   
-
     comments = Comment.query.filter_by(post_id=post_id).all()
     comments_count = Comment.query.filter_by(post_id=post_id).count()
-    # filter by post id and upvote count, get total, do same for downvote. then subtract.
+
+    # Filter by post id and upvote count, get total, do same for downvote. then subtract.
     upvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.upvote>=1).count()
     downvote = PostRatings.query.filter(PostRatings.post_id==post_id, PostRatings.downvote>=1).count()
     rating_count = upvote - downvote
 
-    # print (post.ratings)
-
-    #comment upvote and downvotes
+    
     votes = []
-    # For each post in Posts(Post query above), get the upvotes and downvotes for each post_id
+    # For each comment in comments (comment query above), get the upvotes and downvotes for each post_id
     # Then append them to a list after subtracting.
     for comment in comments:
         # filter by comment id and upvote count, get total, do same for downvote. then subtract.
@@ -458,10 +457,13 @@ def post(post_id, community_name):
                                         members_count=members_count,
                                         form=form)
 
-# UPDATE POST
+
 @app.route("/k/<community_name>/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update_post(post_id, community_name):
+    '''
+    Update Edit Post route. Allows users to edit their previously made post.
+    '''
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
@@ -479,17 +481,18 @@ def update_post(post_id, community_name):
         form.content.data=post.body
     return render_template('create_post.html', form=form, post=post,community=community, 
                                      legend='Update Post', members_count=members_count)
-# DELETE POST
+
+
 @app.route("/k/<community_name>/post/<int:post_id>/delete", methods=['POST'])
 @login_required
 def delete_post(post_id, community_name):
+    '''
+    Delete Post route. Allows users to delete their previously made post.
+    '''
     post = Post.query.get_or_404(post_id)
     ratings_query = PostRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
     comment_rating_query= CommentRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
-
     comment_query = Comment.query.filter_by(post_id=post_id).delete(synchronize_session=False)
-
-
 
     # Redirect user
     community = Community.query.filter_by(community_name=community_name).first()
@@ -502,11 +505,13 @@ def delete_post(post_id, community_name):
     return redirect('/k/'+community_name)
 
 
-# CREATE COMMENT
+
 @app.route("/k/<community_name>/post/<int:post_id>/comment/new", 
                                                         methods=['GET','POST'])
 @login_required
 def create_comment(post_id, community_name):
+    ''' Create comment route. Allows users to write comments on posts.'''
+
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
     form = CommentForm()
@@ -522,13 +527,14 @@ def create_comment(post_id, community_name):
 
 
 
-# VIEW SINGLE COMMENT
+
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>", methods=['GET', 'POST'])
 def comment(post_id, community_name, comment_id):
+    ''' View single comment route. Allows users to view a single comment'''
+
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
-    
     comment = Comment.query.get(comment_id)
 
 
@@ -544,12 +550,12 @@ def comment(post_id, community_name, comment_id):
 
 
 
-
-# UPDATE COMMENT
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/update", 
                                                         methods=['GET', 'POST'])
 @login_required
 def update_comment(post_id, community_name, comment_id):
+    ''' Update Edit comment route. Allows users to edit their comments.'''
+
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
     members_count = CommunityMembers.query.filter_by(community_id=community.id).count()
@@ -566,11 +572,14 @@ def update_comment(post_id, community_name, comment_id):
         form.content.data=comment.body
     return render_template('create_comment.html', form=form, post=post,community=community, 
                                 legend='Update Post', members_count=members_count)
-# DELETE COMMENT
+
+
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/delete",
                                                     methods=['POST'])
 @login_required
 def delete_comment(post_id, community_name, comment_id):
+    ''' Delete comment route. Allows users to delete their comments.'''
+
     post = Post.query.get_or_404(post_id)
     community = Community.query.filter_by(community_name=community_name).first()
     comment_rating_query= CommentRatings.query.filter_by(post_id=post_id).delete(synchronize_session=False)
@@ -583,11 +592,11 @@ def delete_comment(post_id, community_name, comment_id):
     return redirect('/k/'+community_name+'/post/'+str(post.id))
 
 
-# UPVOTE POST
+
 @app.route("/k/<community_name>/posts/<int:post_id>/upvote")
 @login_required
 def upvote(community_name, post_id):
-    # Post.query.filter_by(post_id=post_id).votecount+=1
+    ''' Upvote post route. Allows upvotes on posts.'''
 
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,upvote=1)
     db.session.add(post_rating)
@@ -599,33 +608,17 @@ def upvote(community_name, post_id):
     db.session.add(rating)
     db.session.commit()
 
-    # rating_count = PostRatings.query.filter_by(post_id=post_id).count()
     downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()
     upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
-
     vote_count = upvote_count - downvote_count
-
-
-    """ Upvote steps (single)
-    check if downvote exists, if it exists, delete it
-
-    Check if a row in post ratings exists for the current user post id and upvote via .count and seeing if it's greater than zero,
-    and if it's greater than zero, don't do anything and return the jsonfiy vote count, etc.
-
-    if false:
-
-        do line 499 - 507 (put user upvotes in our db, etc)
-
-
-
-    """
 
     return jsonify({'vote_count': vote_count, 'post_id': post_id})
 
-# DOWNVOTE POST
+
 @app.route("/k/<community_name>/posts/<int:post_id>/downvote")
 @login_required
 def downvote(community_name, post_id):
+    ''' Downvote post route. Allows downvotes on posts.'''
 
     post_rating=PostRatings(user_id=current_user.id,post_id=post_id,downvote=1)
     db.session.add(post_rating)
@@ -639,51 +632,51 @@ def downvote(community_name, post_id):
 
     downvote_count = PostRatings.query.filter_by(post_id=post_id, downvote=1).count()
     upvote_count = PostRatings.query.filter_by(post_id=post_id, upvote=1).count()
-
     vote_count = upvote_count - downvote_count
 
     return jsonify({'vote_count': vote_count, 'post_id': post_id})
 
-# UPVOTE COMMENT
+
+
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/upvote")
 @login_required
 def upvote_comment(community_name, post_id, comment_id):
+    ''' Upvote comment route. Allows upvotes on comments.'''
+
     comment_rating=CommentRatings(user_id=current_user.id, post_id=post_id, comment_id=comment_id,upvote=1)
     db.session.add(comment_rating)
     db.session.commit()
 
     upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.upvote>=1).count()
     downvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.downvote>=1).count()
-
     vote_count = upvote - downvote
-
 
     return jsonify({'vote_count_comment': vote_count, 'comment_id': comment_id})
 
-# DOWNVOTE COMMENT
+
 @app.route("/k/<community_name>/post/<int:post_id>/comment/<int:comment_id>/downvote")
 @login_required
 def downvote_comment(community_name, post_id, comment_id):
+    ''' Downvote comment route. Allows downvotes on comments.'''
+
     comment_rating=CommentRatings(user_id=current_user.id, post_id=post_id, comment_id=comment_id,downvote=1)
     db.session.add(comment_rating)
     db.session.commit()
+
     upvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.upvote>=1).count()
     downvote = CommentRatings.query.filter(CommentRatings.comment_id==comment_id, CommentRatings.downvote>=1).count()
-
     vote_count = upvote - downvote
-
 
     return jsonify({'vote_count_comment': vote_count, 'comment_id': comment_id})
 
 
-# User Page
 @app.route("/user/<string:username>")
 def user_account(username):
+    ''' User page where all user posts are displayed.'''
+
     user= User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(creator=user).order_by(Post.date.desc()).all()
-    # posts = Post.query.order_by(desc(Post.votecount)).all()
     
-
     votes = []
     comments = []
     communities= []
@@ -700,14 +693,15 @@ def user_account(username):
     return render_template('user_account.html', posts=posts, user=user, 
         votes=votes, comments=comments, communities=communities)
 
+
 @app.route("/k/<community_name>/post/<int:post_id>/send_sms", methods=['GET', 'POST'])
 def send_twilio_sms(community_name, post_id):
+    ''' Twilio SMS route. Allows users to send posts via Twilio SMS to phone
+    numbers. Due to free account, a default number exists.'''
 
     form = SendTextForm()
 
     if form.validate_on_submit():
-        
-
         post = Post.query.get_or_404(post_id)
         if post.image_url != None and post.body != None:
             flash('Your post has been shared!', 'success')
@@ -777,9 +771,6 @@ def send_twilio_sms(community_name, post_id):
                          )
 
     print(message.sid)
-
-    # Make Ajax call, can do an input form to get the user "number" also
-    # return jsonify({'message_sid': message.sid})
     return redirect('/k/'+community_name+'/post/'+str(post_id))
 
 #____________________________________________________________
@@ -792,7 +783,6 @@ if __name__ == "__main__":
     login_manager.login_view = "/login"
     login_manager.login_message_category = 'info'
 
-    # Use the DebugToolbar
     DebugToolbarExtension(app)
 
     app.run(host="0.0.0.0")
