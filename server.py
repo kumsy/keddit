@@ -19,13 +19,13 @@ from flask_login import (LoginManager, login_user, logout_user,
 with open('config/config.json', 'r') as f:
     config = json.load(f)
 
-# Twilio API
+# Twilio API config
 from twilio.rest import Client
 TWILIO_ACCOUNT_SID = config['twilio']['account_sid']
 TWILIO_AUTH_TOKEN = config['twilio']['auth_token']
 twilio_client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
 
-# Cloudinary API
+# Cloudinary API config
 import cloudinary, cloudinary.uploader, cloudinary.api
 cloudinary.config(
   cloud_name = config['cloudinary']['name'],
@@ -34,7 +34,7 @@ cloudinary.config(
 )
 cloudinary_prefix = 'https://res.cloudinary.com/' + config["cloudinary"]["name"] + '/image/upload/v' 
 
-# Giphy API
+# Giphy API config
 GIPHY_API_KEY = config['giphy']['api_key']
 
 # SERVER SETUP

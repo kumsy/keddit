@@ -1,6 +1,6 @@
 '''
 server.py import.
-Code with comments for future reference.
+Code with original comments for future reference.
 '''
 
 import os, secrets, pprint, json, urllib
