@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import desc
+from flask_bcrypt import Bcrypt
 from flask_login import (UserMixin, LoginManager, login_required, login_user, 
                         logout_user)
 
@@ -184,9 +185,17 @@ class CommentRatings(db.Model):
                 self.id, self.user_id, self.comment_id, self.upvote, self.downvote)
 
 
+def example_data():
+    test_user = User(username="kumsy", email="kristenpincampbell@gmail.com",
+            password=bcrypt.generate_password_hash('12').decode('utf-8'))
 
+    db.session.add(test_user)
+    db.session.commit()
 
-
+def connect_to_db_test(app, db_uri="postgresql:///testdb"):
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    db.app = app
+    db.init_app(app)
 
 
 # ______________________________________________________________________________
