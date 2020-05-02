@@ -26,8 +26,11 @@ def load_users():
     e = User(username="yoshi", email="yoshi@nintendo.com",
             password=bcrypt.generate_password_hash('n64').decode('utf-8'),
             image_file='yoshi.png')
+    f = User(username="admin", email="admin@kristen.com",
+            password='admin',
+            image_file='yoshi.png')
     
-    db.session.add_all([a, b, c, d, e])
+    db.session.add_all([a, b, c, d, e, f])
     db.session.commit()
     print('Users 😚')
 

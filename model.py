@@ -192,10 +192,10 @@ def example_data():
     db.session.add(test_user)
     db.session.commit()
 
-def connect_to_db_test(app, db_uri="postgresql:///testdb"):
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
-    db.app = app
-    db.init_app(app)
+# def connect_to_db_test(app, db_uri="postgresql:///testdb"):
+#     app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+#     db.app = app
+#     db.init_app(app)
 
 
 # ______________________________________________________________________________

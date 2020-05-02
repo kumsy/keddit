@@ -1,8 +1,8 @@
-import unittest
+import unittest, json, pprint
 
 from server import app
 from flask_bcrypt import Bcrypt
-from model import db, example_data, connect_to_db_test
+from model import db, example_data, connect_to_db
 
 class FlaskRoutes(unittest.TestCase):
     """ Tests for my keddit app. """
@@ -11,55 +11,66 @@ class FlaskRoutes(unittest.TestCase):
         self.client = app.test_client()
         app.config['TESTING'] = True
 
+        with open('config/config.json', 'r') as f:
+            config = json.load(f)
+        app.config['SECRET_KEY'] = config["secret_key"]["keddit"]
+
     def test_landingpage(self):
         result = self.client.get("/")
+        self.assertEqual(result.status_code, 200)
         self.assertIn(b"Keddit", result.data)
         self.assertNotIn(b"Facebook", result.data)
         self.assertNotIn(b"Twitter", result.data)
 
     def test_registration(self):
         result = self.client.get("/registration")
+        self.assertEqual(result.status_code, 200)
         self.assertIn(b'Join Today', result.data)
         self.assertIn(b'Sign Up', result.data)
         self.assertIn(b'Confirm Password', result.data)
         self.assertNotIn(b"Leave Today", result.data)
 
-    def test_login(self):
+    def test_login_route(self):
         result = self.client.get("/login")
+        self.assertEqual(result.status_code, 200)
         self.assertIn(b'Welcome home. We have snacks.', result.data)
         self.assertIn(b'Log In', result.data)
         self.assertNotIn(b"Log Out", result.data)
 
 
-# class UsersTestDatabase(unittest.TestCase):
-#     """ Flask tests that use my test database. """
 
-#     def setUp(self):
-#         """ Set up before each test. """
+class UsersTestDatabase(unittest.TestCase):
+    """ Flask tests that use my test database. """
 
-#         # Set flask client
-#         self.client = app.test_client()
+    def setUp(self):
+        """ Set up before each test. """
 
-#         # Show Flask errors that happen during tests
-#         app.config['TESTING'] = True
+        # Set flask client
+        self.client = app.test_client()
 
-#         # Connect to test database
-#         connect_to_db_test(app, "postgresql:///testdb")
+        # Show Flask errors that happen during tests
+        app.config['TESTING'] = True
 
-#         # Create tables and add sample data
-#         db.create_all()
-#         example_data()
+        # Connect to test database
+        connect_to_db(app)
+        # connect_to_db_test(app, "postgresql:///testdb")
 
-#     def tearDown(self):
-#         """ Perform at the end of each test. """
+        # Create tables and add sample data
+        db.create_all()
+        # example_data()
 
-#         db.session.close()
-#         db.drop_all()
+    def tearDown(self):
+        """ Perform at the end of each test. """
 
-#     def test_user(self):
+        db.session.close()
+        db.drop_all()
 
-#         result = self.client.get("/home")
-#         self.assertIn(b"k/popular", result.data)
+
+    def test_user_login(self):
+        with self.client:
+            response = self.client.post('/login', 
+            data={'email': 'admin@kristen.com', 'password': 'admin'})
+            self.assertEqual(response.status_code, 200)
 
 if __name__ == '__main__':
     unittest.main()
