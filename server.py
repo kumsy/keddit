@@ -39,6 +39,7 @@ GIPHY_API_KEY = config['giphy']['api_key']
 
 # SERVER SETUP
 app = Flask(__name__)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 app.secret_key = config["secret_key"]["keddit"]
